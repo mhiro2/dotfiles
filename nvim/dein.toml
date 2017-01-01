@@ -1,0 +1,95 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+if = "!has('nvim')"
+build = 'make'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim.git'
+hook_add = '''
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+  let g:yankround_max_history = 50
+  nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+'''
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'vim-scripts/quickhl.vim'
+hook_add = '''
+  nmap <Space>m <Plug>(quickhl-manual-this)
+  xmap <Space>m <Plug>(quickhl-manual-this)
+  nmap <Space>M <Plug>(quickhl-manual-reset)
+  xmap <Space>M <Plug>(quickhl-manual-reset)
+  nmap <Space>j <Plug>(quickhl-cword-toggle)
+'''
+
+[[plugins]]
+repo = 'rhysd/migemo-search.vim'
+if = "executable('cmigemo')"
+hook_add = '''
+  cnoremap <expr><CR> migemosearch#replace_search_word()."\<CR>"
+'''
+
+[[plugins]]
+repo = 'neomake/neomake'
+hook_add = '''
+  autocmd! BufWritePost,BufEnter * Neomake
+  let g:neomake_javascript_enabled_makers = ['eslint']
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_add = '''
+  source ~/.config/nvim/plugins/denite.rc.vim
+'''
+hook_post_source = '''
+  if executable('rg')
+      call denite#custom#var('file_rec', 'command',
+            \ ['rg', '--files', '--glob', '!.git'])
+      call denite#custom#var('grep', 'command', ['rg'])
+      call denite#custom#var('grep', 'recursive_opts', [])
+      call denite#custom#var('grep', 'final_opts', [])
+      call denite#custom#var('grep', 'separator', ['--'])
+      call denite#custom#var('grep', 'default_opts',
+            \ ['--vimgrep', '--no-heading'])
+  else
+    call denite#custom#var('file_rec', 'command',
+            \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+    call denite#custom#var('grep', 'command', ['ag'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'default_opts',
+            \ ['--follow', '--no-group', '--no-color'])
+  endif
+'''
+
+#[[plugins]]
+#repo = 'Shougo/vimfiler.vim'
+#depends = 'unite.vim'
+#hook_add = '''
+#  source ~/.config/nvim/plugins/vimfiler.rc.vim
+#'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  source ~/.config/nvim/plugins/lightline.rc.vim
+'''
+
+[[plugins]]
+repo = 'tomasr/molokai'
