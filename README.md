@@ -1,6 +1,7 @@
 # dotfiles
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/mhiro2/dotfiles/blob/master/LICENSE.txt)
+[![Build Status](https://travis-ci.org/mhiro2/dotfiles.svg?branch=master)](https://travis-ci.org/mhiro2/dotfiles)
 
 my dotfiles
 
