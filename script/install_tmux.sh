@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -eu
 
+if [ -x "/usr/lcoal/bin/tmux" ]; then
+  echo "tmux already installed"
+  exit 0
+fi
+
 readonly TMUX_BUILD_DIR=$(mktemp -d)
 readonly TMUX_VERSION="2.3"
 
