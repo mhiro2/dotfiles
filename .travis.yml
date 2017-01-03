@@ -1,9 +1,8 @@
+language: bash
 sudo: false
-
 addons:
   apt:
     packages:
       - zsh
-
 script:
   - ./setup.sh
