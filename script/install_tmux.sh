@@ -18,10 +18,12 @@ if [ -x "/usr/bin/yum" ]; then
   sudo yum -y install libevent-devel ncurses-devel
 fi
 
+echo
+echo "Install tmux"
 curl -sL https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz | tar zxC ${TMUX_BUILD_DIR}
 cd "${TMUX_BUILD_DIR}/tmux-${TMUX_VERSION}"
-./configure --prefix=/usr/local && make -j$(nproc)
-sudo make install
+./configure --silent --prefix=/usr/local && make -j$(nproc) --silent
+sudo make --silent install
 
 trap "
 rm -rf ${TMUX_BUILD_DIR}
