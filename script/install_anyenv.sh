@@ -14,9 +14,9 @@ echo
 
 echo "Install anyenv"
 if [ ! -e "${ANYENV_HOME}"/anyenv ]; then
-  sudo git clone git://github.com/riywo/anyenv.git ${ANYENV_HOME}/anyenv
-  sudo git clone git://github.com/znz/anyenv-update.git ${ANYENV_HOME}/anyenv/plugins/anyenv-update
-  sudo git clone git://github.com/znz/anyenv-git.git ${ANYENV_HOME}/anyenv/plugins/anyenv-git
+  sudo git clone https://github.com/riywo/anyenv.git ${ANYENV_HOME}/anyenv
+  sudo git clone https://github.com/znz/anyenv-update.git ${ANYENV_HOME}/anyenv/plugins/anyenv-update
+  sudo git clone https://github.com/znz/anyenv-git.git ${ANYENV_HOME}/anyenv/plugins/anyenv-git
 
   sudo chgrp -R ${ANYENV_GROUP} ${ANYENV_HOME}/anyenv
   sudo chmod -R g+rwxX ${ANYENV_HOME}/anyenv

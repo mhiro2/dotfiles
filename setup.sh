@@ -16,10 +16,10 @@ do
   case ${dotfiles} in
     ..)          continue ;;
     .git*)       continue ;;
-    .circle.yml) continue ;;
+    .travis.yml) continue ;;
     *)           ln -sf "${PWD}/${dotfiles}" ${HOME} ;;
   esac
 done
 
 # neovim
-ln -sf nvim ${HOME}/.config
+ln -sf ${PWD}/nvim ${HOME}/.config
