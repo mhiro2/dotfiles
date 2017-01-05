@@ -12,7 +12,7 @@ alias sort='LC_ALL=C sort'
 alias uniq='LC_ALL=C uniq'
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
-which pget >& /dev/null && alias pget='pget -P6'
+which pget >& /dev/null && alias pget='pget -p6'
 
 # Global aliases.
 alias -g A='| awk'
