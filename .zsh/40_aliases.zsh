@@ -65,6 +65,7 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   alias make="make -j$(nproc)"
   alias mv='nocorrect mv -i'
   alias cp='nocorrect cp -i'
+  alias fw='sudo firewall-cmd'
   alias firewall-cmd='sudo firewall-cmd'
   alias systemctl='sudo systemctl'
   alias virsh='sudo virsh'
