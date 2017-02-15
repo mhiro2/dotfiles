@@ -10,12 +10,13 @@ cinst procexp
 ## Applications
 cinst aimp
 cinst conemu
+cinst foxitreader
 cinst googlechrome
 cinst googlejapaneseinput
 cinst hain
-cinst mpc-hc
 cinst qttabbar
 cinst skype
+cinst vlc
 
 ## Developer tools
 cinst ag
@@ -29,5 +30,6 @@ cinst python2
 cinst ripgrep
 cinst vagrant
 cinst virtualbox
+cinst visualstudiocode
 cinst wget
 cinst which
