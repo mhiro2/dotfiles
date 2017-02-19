@@ -70,6 +70,3 @@ fi
 
 # anyenv (for Bash on Windows)
 [[ -s ${HOME}/.zsh/profile.d/anyenv.sh ]] && source ${HOME}/.zsh/profile.d/anyenv.sh
-
-## CUDA
-#[[ -s ${HOME}/.zsh/profile.d/cuda.sh ]] && source ${HOME}/.zsh/profile.d/cuda.sh
