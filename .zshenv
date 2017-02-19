@@ -9,7 +9,7 @@ export LANG=${LANGUAGE}
 export LC_ALL=${LANGUAGE}
 
 ## EDITOR
-export EDITOR=vim
+export EDITOR=nvim
 
 ## PATH
 typeset -U PATH path cdpath fpath manpath
