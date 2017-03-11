@@ -1,7 +1,6 @@
 # local loading
 zplug "zplug/zplug"
 
-
 ##------------------------------
 # zsh plugins
 
@@ -29,6 +28,12 @@ zplug "mollifier/anyframe", \
 # zplug "b4b4r07/enhancd", \
 #     use:init.sh
 
+# ctop
+zplug "bcicen/ctop", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"ctop"
+
 # fzf
 zplug "junegunn/fzf-bin", \
     as:command, \
@@ -40,12 +45,6 @@ zplug "junegunn/fzf-bin", \
 zplug "motemen/ghq", \
     as:command, \
     from:gh-r
-
-# jid
-zplug "simeji/jid", \
-    as:command, \
-    from:gh-r, \
-    rename-to:"jid"
 
 # jq
 zplug "stedolan/jq", \
