@@ -70,3 +70,7 @@ zplug "monochromegane/the_platinum_searcher", \
     from:gh-r, \
     rename-to:"pt", \
     frozen:1
+
+zplug "knq/usql", \
+    as:command, \
+    from:gh-r
