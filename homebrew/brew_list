@@ -16,11 +16,13 @@ gdb
 gdbm
 gettext
 git
+git-flow
 glib
 gmp
 go
 gobject-introspection
 harfbuzz
+htop-osx
 icu4c
 iproute2mac
 isl
@@ -48,6 +50,7 @@ p7zip
 pango
 pcre
 pixman
+pkcrack
 pkg-config
 radare2
 readline
