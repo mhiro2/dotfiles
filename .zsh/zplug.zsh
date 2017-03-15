@@ -15,9 +15,9 @@ zplug "zsh-users/zsh-history-substring-search"
 
 # Completions.
 zplug "zsh-users/zsh-completions"
-zplug "plugins/docker"
-zplug "plugins/docker-compose"
-zplug "plugins/kubectl"
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/docker-compose", from:oh-my-zsh
+zplug "plugins/kubectl", from:oh-my-zsh
 
 ##------------------------------
 # Useful commands
