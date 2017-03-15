@@ -26,15 +26,15 @@ zplug "plugins/kubectl", from:oh-my-zsh
 zplug "mollifier/anyframe", \
     at:4c23cb60
 
-# # enhancd
-# zplug "b4b4r07/enhancd", \
-#     use:init.sh
-
 # ctop
 zplug "bcicen/ctop", \
     as:command, \
     from:gh-r, \
     rename-to:"ctop"
+
+# # enhancd
+# zplug "b4b4r07/enhancd", \
+#     use:init.sh
 
 # fzf
 zplug "junegunn/fzf-bin", \
@@ -73,6 +73,13 @@ zplug "monochromegane/the_platinum_searcher", \
     rename-to:"pt", \
     frozen:1
 
+# rush
+zplug "shenwei356/rush", \
+    as:command, \
+    from:gh-r
+
+# usql
 zplug "knq/usql", \
     as:command, \
     from:gh-r
+
