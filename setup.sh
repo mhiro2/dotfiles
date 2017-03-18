@@ -22,5 +22,5 @@ do
 done
 
 # neovim
-mkdir ${HOME}/.config
+mkdir -p ${HOME}/.config
 ln -sf ${PWD}/nvim ${HOME}/.config/nvim
