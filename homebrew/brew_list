@@ -7,6 +7,7 @@ cmake
 coreutils
 dex2jar
 exiftool
+findutils
 fontconfig
 fontforge
 foremost
@@ -28,6 +29,8 @@ iproute2mac
 isl
 jemalloc
 jpeg
+lbzip2
+libarchive
 libewf
 libffi
 libmagic
@@ -49,14 +52,19 @@ openssl
 p7zip
 pango
 pcre
+pigz
 pixman
+pixz
 pkcrack
 pkg-config
+pv
+python
 radare2
 readline
 ricty
 ripgrep
 sleuthkit
+sqlite
 ssdeep
 the_silver_searcher
 ucl

@@ -19,6 +19,7 @@ alias -g A='| awk'
 alias -g G='| grep'
 alias -g H='| head'
 alias -g L='| lv'
+alias -g R='| rg'
 alias -g S='| sed'
 alias -g T='| tail'
 alias -g W='| wc'
@@ -26,13 +27,13 @@ alias -g X='| xargs'
 which pv >& /dev/null && alias -g P='| pv'
 
 # Parallel compression and decompression.
-# which pigz >& /dev/null && alias gzip='pigz -v'
-# which unpigz >& /dev/null && alias gunzip='unpigz'
-# which lbzip2 >& /dev/null && alias bzip2='lbzip2 -v' && alias bunzip2='lbzip2 -d'
-# which pixz >& /dev/null && alias xz='pixz' && alias unxz='pixz -d'
+which pigz >& /dev/null && alias gzip='pigz -v'
+which lbzip2 >& /dev/null && alias bzip2='lbzip2 -v' && alias bunzip2='lbzip2 -d'
+which pixz >& /dev/null && alias xz='pixz' && alias unxz='pixz -d'
 
 # Git aliases.
 alias ga='git add'
+alias gc='git checkout'
 alias gb='git branch'
 alias gd='git diff'
 alias gf='git fetch'
@@ -68,7 +69,6 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   alias fw='sudo firewall-cmd'
   alias firewall-cmd='sudo firewall-cmd'
   alias systemctl='sudo systemctl'
-  alias virsh='sudo virsh'
   alias zfs='sudo zfs'
   alias zpool='sudo zpool'
 fi
@@ -77,7 +77,5 @@ fi
 alias -s zip=zipinfo
 alias -s {tgz,gz}=gzcat
 alias -s {tbz,bz2}=bzcat
-alias -s txt=vim
-alias -s {csv,json,xml,yaml,yml}=vim
-
-### }}}
+alias -s txt=nvim
+alias -s {csv,json,xml,yaml,yml}=nvim
