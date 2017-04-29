@@ -26,8 +26,8 @@ repo = 'kana/vim-operator-user'
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
+#[[plugins]]
+#repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'vim-scripts/quickhl.vim'

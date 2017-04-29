@@ -117,3 +117,7 @@ on_ft = 'json'
 
 [[plugins]]
 repo = 'chase/vim-ansible-yaml'
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = 'tf'
