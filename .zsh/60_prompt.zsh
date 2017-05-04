@@ -1,4 +1,4 @@
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}\uE0A0 "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ☂" # Ⓓ
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ♪" # Ⓞ
