@@ -4,6 +4,7 @@ binutils
 binwalk
 cairo
 cmake
+cmigemo
 coreutils
 dex2jar
 exiftool
@@ -50,6 +51,7 @@ nkf
 nmap
 openssl
 p7zip
+packer
 pango
 pcre
 pigz
@@ -66,7 +68,9 @@ ripgrep
 sleuthkit
 sqlite
 ssdeep
+terraform
 the_silver_searcher
+tree
 ucl
 unibilium
 upx

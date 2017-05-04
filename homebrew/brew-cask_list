@@ -2,6 +2,8 @@ appcleaner
 chromium
 fiddler
 flash-ppapi
+google-chrome
+google-cloud-sdk
 google-japanese-ime
 iterm2
 java
@@ -10,5 +12,5 @@ keycast
 mono-mdk
 vagrant
 virtualbox
-vivaldi
+visual-studio-code
 wireshark
