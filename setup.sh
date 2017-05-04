@@ -17,7 +17,7 @@ for dotfiles in .?*
 do
   case ${dotfiles} in
     ..)            continue ;;
-    .config)       ln -sf "${PWD}/.config/fish" "${HOME}/.config/fish" ;;
+    .config)       continue ;;
     .editorconfig) continue ;;
     .git*)         continue ;;
     .travis.yml)   continue ;;
@@ -25,5 +25,12 @@ do
   esac
 done
 
+# fish
+if [ ! -L "${HOME}/.config/fish" ]; then
+  ln -sf "${PWD}/.config/fish" "${HOME}/.config/fish"
+fi
+
 # neovim
-ln -sf ${PWD}/nvim ${HOME}/.config/nvim
+if [ ! -L "${HOME}/.config/nvim" ]; then
+  ln -sf "${PWD}/nvim" "${HOME}/.config/nvim"
+fi
