@@ -1,5 +1,7 @@
 .tmux/plugins
-.config/fish/fishd.*
-.config/fish/fish_history
+fish/fishd.*
+fish/fish_history
+fish/fundle
+fish/functions/fundle.fish
 .DS_Store
 *~

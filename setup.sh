@@ -10,14 +10,11 @@ if [ ! -d ~/.zplug ]; then
     curl -sL zplug.sh/installer | zsh
 fi
 
-mkdir -p ${HOME}/.config
-
 # dotfiles
 for dotfiles in .?*
 do
   case ${dotfiles} in
     ..)            continue ;;
-    .config)       continue ;;
     .editorconfig) continue ;;
     .git*)         continue ;;
     .travis.yml)   continue ;;
@@ -25,9 +22,11 @@ do
   esac
 done
 
+mkdir -p ${HOME}/.config
+
 # fish
 if [ ! -L "${HOME}/.config/fish" ]; then
-  ln -sf "${PWD}/.config/fish" "${HOME}/.config/fish"
+  ln -sf "${PWD}/fish" "${HOME}/.config/fish"
 fi
 
 # neovim
