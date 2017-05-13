@@ -12,4 +12,5 @@ ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%} ♥" # ⓤ ⑊
 PROMPT='%{$fg[red]%}❖ %{$fg[yellow]%}%n@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)
 %# '
 
-RPROMPT='%* $(git_prompt_status)%{$reset_color%}'
+#RPROMPT='%* $(git_prompt_status)%{$reset_color%}'
+RPROMPT='%* '

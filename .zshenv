@@ -1,5 +1,5 @@
 # ---------------------------------
-# zsh environment file 
+# zsh environment file
 # ---------------------------------
 umask 0022
 
@@ -69,7 +69,7 @@ if [[ $UID == 0 ]]; then
 fi
 
 # anyenv (for Bash on Windows)
-[[ -s ${HOME}/.zsh/profile.d/anyenv.sh ]] && source ${HOME}/.zsh/profile.d/anyenv.sh
+#[[ -s ${HOME}/.zsh/profile.d/anyenv.sh ]] && source ${HOME}/.zsh/profile.d/anyenv.sh
 
 # linuxbrew
 export LINUXBREW_ROOT=${HOME}/.linuxbrew

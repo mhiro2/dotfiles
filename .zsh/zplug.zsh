@@ -8,7 +8,7 @@ zplug "zplug/zplug"
 zplug "lib/git", from:oh-my-zsh
 
 # Syntax highlighting.
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # History search.
 zplug "zsh-users/zsh-history-substring-search"
@@ -19,6 +19,9 @@ zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh
 
+# Visual mode for vi-mode.
+zplug "b4b4r07/zsh-vimode-visual", defer:3
+
 ##------------------------------
 # Useful commands
 
@@ -26,22 +29,22 @@ zplug "plugins/kubectl", from:oh-my-zsh
 zplug "mollifier/anyframe", \
     at:4c23cb60
 
-# ctop
-zplug "bcicen/ctop", \
-    as:command, \
-    from:gh-r, \
-    rename-to:"ctop"
+# # ctop
+# zplug "bcicen/ctop", \
+#     as:command, \
+#     from:gh-r, \
+#     rename-to:"ctop"
 
 # # enhancd
 # zplug "b4b4r07/enhancd", \
 #     use:init.sh
 
-# fzf
-zplug "junegunn/fzf-bin", \
-    as:command, \
-    from:gh-r, \
-    rename-to:"fzf", \
-    frozen:1
+# # fzf
+#zplug "junegunn/fzf-bin", \
+#    as:command, \
+#    from:gh-r, \
+#    rename-to:"fzf", \
+#    frozen:1
 
 # ghq
 zplug "motemen/ghq", \
@@ -78,8 +81,8 @@ zplug "shenwei356/rush", \
     as:command, \
     from:gh-r
 
-# usql
-zplug "knq/usql", \
-    as:command, \
-    from:gh-r
+# # usql
+#zplug "knq/usql", \
+#    as:command, \
+#    from:gh-r
 
