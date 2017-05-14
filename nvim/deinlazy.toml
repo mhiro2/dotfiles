@@ -10,6 +10,21 @@ on_event = 'TextYankPost'
 on_source = 'denite.nvim'
 
 [[plugins]]
+repo = 'rhysd/accelerated-jk'
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <silent>j <Plug>(accelerated_jk_gj)
+  nmap <silent>k <Plug>(accelerated_jk_gk)
+'''
+
+[[plugins]]
+repo = 'c0r73x/neotags.nvim'
+on_ft = ['python', 'ruby']
+hook_add = '''
+  let g:neotags_enabled = 1
+'''
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 if = "has('nvim')"
@@ -20,22 +35,22 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'zchee/deoplete-clang'
+repo = 'tweekmonster/deoplete-clang'
 depends = 'deoplete.nvim'
 on_ft = ['c', 'cpp']
 hook_source = '''
-  " libclang shared library path
-  let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
-  " clang builtin header path
-  let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
-  " libclang default compile flags
-  let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
+  autocmd FileType c,cpp let b:clang2_orig_maps = {}
 '''
 
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 depends = 'deoplete.nvim'
 on_ft = 'python'
+
+[[plugins]]
+repo = 'Shougo/deoplete-rct'
+depends = 'deoplete.nvim'
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'zchee/deoplete-go'
@@ -96,6 +111,10 @@ hook_soure = '''
 '''
 
 [[plugins]]
+repo = 'tpope/vim-endwise'
+on_ft = 'ruby'
+
+[[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_source = '''
@@ -116,7 +135,7 @@ repo = 'elzr/vim-json'
 on_ft = 'json'
 
 [[plugins]]
-repo = 'chase/vim-ansible-yaml'
+repo = 'pearofducks/ansible-vim'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'

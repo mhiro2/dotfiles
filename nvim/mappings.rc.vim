@@ -1,11 +1,9 @@
 "--------------------------------------------
 " Key Mappings:
 
-" Move cursor by display line.
-"nmap <silent>j <Plug>(accelerated_jk_gj)
-nnoremap j gj
-"nmap <silent>k <Plug>(accelerated_jk_gk)
-nnoremap k gk
+" Move cursor by display line. (see also accelerated_jk)
+"nnoremap j gj
+"nnoremap k gk
 
 " <C-a>, A: move to head.
 inoremap <C-a> <Home>

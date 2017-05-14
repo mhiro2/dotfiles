@@ -6,6 +6,7 @@ cairo
 cmake
 cmigemo
 coreutils
+ctags
 dex2jar
 exiftool
 findutils

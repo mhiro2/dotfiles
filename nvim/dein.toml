@@ -49,8 +49,7 @@ hook_add = '''
 [[plugins]]
 repo = 'neomake/neomake'
 hook_add = '''
-  autocmd! BufWritePost,BufEnter * Neomake
-  let g:neomake_javascript_enabled_makers = ['eslint']
+  autocmd! BufEnter,BufWritePost * Neomake
 '''
 
 [[plugins]]
@@ -78,12 +77,29 @@ hook_post_source = '''
   endif
 '''
 
-#[[plugins]]
-#repo = 'Shougo/vimfiler.vim'
-#depends = 'unite.vim'
-#hook_add = '''
-#  source ~/.config/nvim/plugins/vimfiler.rc.vim
-#'''
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let g:NERDTreeDirArrows = 1
+  let g:NERDTreeShowHidden = 1
+'''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+depends = 'nerdtree'
+hook_add = '''
+  let g:nerdtree_tabs_open_on_console_startup = 1
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+depends = 'nerdtree'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
