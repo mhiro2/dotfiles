@@ -34,7 +34,7 @@ alias -g T='| tail'
 alias -g W='| wc'
 alias -g X='| xargs'
 type pv >& /dev/null && alias -g P='| pv'
-type rg >& alias -g R='| rg'
+type rg >& /dev/null && alias -g R='| rg'
 
 
 ## Git aliases
