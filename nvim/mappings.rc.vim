@@ -43,6 +43,12 @@ inoremap jj <Esc>
 " Select to end of line in visual mode.
 vnoremap v $h
 
+" Continuous indent block in visualmode
+vnoremap < <gv
+vnoremap > >gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
 " Yank to end of line.
 nnoremap Y y$
 
