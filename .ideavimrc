@@ -1,0 +1,51 @@
+"--------------------------------------
+" Options:
+
+" Minimal number of screen lines to keep above and below the cursor.
+set scrolloff=5
+
+" Enable incremental search.
+set incsearch
+
+" Ignore the case of normal letters.
+set ignorecase
+
+" If the search pattern contains upper case characters, override ignorecase option.
+set smartcase
+
+" Auto copy selected text to system clipboard.
+set clipboard=unnamed
+
+" Show current mode.
+set showmode
+
+
+"--------------------------------------
+" Key mappings:
+
+" Move cursor by display line.
+nnoremap j gj
+nnoremap k gk
+
+" Easy escape.
+inoremap jj <Esc>
+
+" Clear highlight.
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" Swap ";" to ":".
+noremap ; :
+noremap : ;
+
+" Select to end of line in visual mode.
+vnoremap v $h
+
+" Don't store register.
+nnoremap x "_x
+
+" Continuous indent block in visualmode
+vnoremap < <gv
+vnoremap > >gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
