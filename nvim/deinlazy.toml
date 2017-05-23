@@ -17,12 +17,12 @@ hook_add = '''
   nmap <silent>k <Plug>(accelerated_jk_gk)
 '''
 
-[[plugins]]
-repo = 'c0r73x/neotags.nvim'
-on_ft = ['python', 'ruby']
-hook_add = '''
-  let g:neotags_enabled = 1
-'''
+#[[plugins]]
+#repo = 'c0r73x/neotags.nvim'
+#on_ft = ['python', 'ruby']
+#hook_add = '''
+#  let g:neotags_enabled = 1
+#'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
