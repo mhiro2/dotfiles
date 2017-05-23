@@ -35,7 +35,7 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'tweekmonster/deoplete-clang'
+repo = 'tweekmonster/deoplete-clang2'
 depends = 'deoplete.nvim'
 on_ft = ['c', 'cpp']
 hook_source = '''
