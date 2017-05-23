@@ -1,6 +1,33 @@
 [user]
-    name  = mhrio2
-    email = hirotsu.masaaki@gmail.com
+  name  = mhrio2
+  email = hirotsu.masaaki@gmail.com
+
+[push]
+  default = current
+
+[core]
+  editor = nvim
+  pager = lv -c
 
 [color]
-    ui = auto
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+
+[pager]
+  log = diff-highlight | lv -c
+  show = diff-highlight | lv -c
+  diff = diff-highlight | lv -c
+
+[diff]
+  compactionHeuristic = true
+
+[interactive]
+  diffFilter = diff-highlight
+
+[ghq]
+  root = ~/.ghq
+  root = ~/.go/src
