@@ -51,15 +51,17 @@ alias gst='git status'
 
 ## Architecture depends
 if [[ "${OSTYPE}" == darwin* ]]; then
+  alias be="bundle exec"
   alias la='ls -AFlhGp'
   alias ls='ls -hFG'
   type nvim >& /dev/null && alias vi='nvim' && alias vim='nvim'
   # coreutils
   if [ -d /usr/local/Cellar/coreutils ]; then
+    alias bi="bundle install --jobs=$(gnproc) --path=vendor/bundle"
     alias mv='nocorrect gmv -i'
     alias cp='nocorrect gcp -i'
     alias nproc='gnproc'
-    alias make="make -j$(nproc)"
+    alias make="make -j$(gnproc)"
     alias shuf='gshuf'
   fi
   # findutils
@@ -75,6 +77,8 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   alias mv='nocorrect mv -i'
   alias cp='nocorrect cp -i'
   alias fw='sudo firewall-cmd'
+  alias fwl='sudo firewall-cmd --list-all'
+  alias fwr='sudo firewall-cmd --reload'
   alias firewall-cmd='sudo firewall-cmd'
   alias systemctl='sudo systemctl'
   alias zfs='sudo zfs'
