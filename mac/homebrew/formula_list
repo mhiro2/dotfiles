@@ -10,6 +10,7 @@ ctags
 dex2jar
 exiftool
 findutils
+fish
 fontconfig
 fontforge
 foremost
@@ -27,6 +28,7 @@ gobject-introspection
 harfbuzz
 htop-osx
 icu4c
+ipmitool
 iproute2mac
 isl
 jemalloc
@@ -43,6 +45,7 @@ libtiff
 libtool
 libuv
 libvterm
+lua
 lua@5.1
 lv
 mpfr
@@ -55,6 +58,7 @@ p7zip
 packer
 pango
 pcre
+pcre2
 pigz
 pixman
 pixz
