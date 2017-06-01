@@ -48,6 +48,7 @@ libvterm
 lua
 lua@5.1
 lv
+mobile-shell
 mpfr
 msgpack
 neovim
@@ -64,6 +65,7 @@ pixman
 pixz
 pkcrack
 pkg-config
+protobuf
 pv
 python
 radare2
