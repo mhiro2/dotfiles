@@ -9,6 +9,7 @@ alias mkdir='mkdir -p'
 alias reboot='sudo reboot'
 alias scp='scp -p'
 alias sort='LC_ALL=C sort'
+alias sudo='sudo '
 alias uniq='LC_ALL=C uniq'
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
