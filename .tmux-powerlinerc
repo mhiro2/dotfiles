@@ -1,0 +1,3 @@
+# weather.sh {
+  export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1118370"  # Tokyo
+}
