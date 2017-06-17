@@ -91,3 +91,6 @@ bindkey -M viins '^G' anyframe-widget-cd-ghq-repository
 
 # Attach tmux session.
 bindkey -M viins '^T' anyframe-widget-tmux-attach
+
+# Checkout git branch
+bindkey -M viins '^B' anyframe-widget-checkout-git-branch
