@@ -36,6 +36,7 @@ jemalloc
 jpeg
 lbzip2
 libarchive
+libevent
 libewf
 libffi
 libmagic
@@ -80,6 +81,7 @@ sqlite
 ssdeep
 terraform
 the_silver_searcher
+tmux
 tree
 ucl
 unibilium
