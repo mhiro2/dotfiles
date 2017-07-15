@@ -1,0 +1,73 @@
+[global_config]
+  borderless = True
+  title_transmit_bg_color = "#000000"
+[keybindings]
+  zoom_in = <Alt>equal
+  zoom_out = <Alt>minus
+  zoom_normal = <Alt>0
+  new_tab = <Alt>t
+  cycle_next = Unbound
+  cycle_prev = Unbound
+  go_prev = Unbound
+  go_next = Unbound
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  split_horiz = <Alt><Shift>d
+  split_vert = <Alt>d
+  close_term = Unbound
+  copy = <Alt>c
+  paste = <Alt>v
+  toggle_scrollbar = Unbound
+  search = <Alt>f
+  close_window = Unbound
+  resize_up = Unbound
+  resize_down = Unbound
+  resize_left = Unbound
+  resize_right = Unbound
+  move_tab_right = Unbound
+  move_tab_left = Unbound
+  toggle_zoom = Unbound
+  scaled_zoom = Unbound
+  next_tab = <Alt><Shift>l
+  prev_tab = <Alt><Shift>h
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+  full_screen = <Alt><Shift>F
+  reset = Unbound
+  reset_clear = Unbound
+  hide_window = Unbound
+  group_all = Unbound
+  ungroup_all = Unbound
+  group_tab = Unbound
+  ungroup_tab = Unbound
+  new_window = Unbound
+  new_terminator = Unbound
+[profiles]
+  [[default]]
+    use_system_font = False
+    font = Ricty Diminished Discord Regular for Powerline 13
+    palette = "#1b1d1e:#f92672:#82b414:#fd971f:#268bd2:#8c54fe:#56c2d6:#ccccc6:#505354:#ff5995:#b7ed46:#feed6c:#62ade3:#bfa0fe:#94d8e5:#f8f8f2"
+    background_type = transparent
+    background_color = "#282828"
+    background_darkness = 0.88
+    foreground_color = "#fcfcfc"
+    scroll_back_infinite = True
+[layouts]
+  [[default]]
+    [[child1]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[window0]]
+      type = Window
+      parent = ""
+[plugins]
