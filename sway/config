@@ -30,6 +30,9 @@ bindsym $mod+space exec rofi -show combi -location 0 -sidebar-mode
 bindsym $mod+b exec chromium
 bindsym $mod+shift+b exec chromium --incognito
 
+# Mailer.
+bindsym $mod+m exec Shift
+
 # File manager.
 bindsym $mod+s exec spacefm
 
@@ -69,22 +72,23 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Make the current focus fullscreen.
 bindsym $mod+f fullscreen
 
-    # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+# Screenshots.
+bindsym $mod+Print exec swaygrab ~/ScreenShot/$(date +"%Y-%m-%d_%H:%M:%S.png")
 
-    # Swap focus between the tiling area and the floating area
-    #bindsym $mod+space focus mode_toggle
+# Brightness setting.
+bindsym XF86MonBrightnessDown exec light -U 5; exec pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86MonBrightnessDown exec light -U 1; exec pkill -SIGRTMIN+10 i3blocks
+bindsym XF86MonBrightnessUp exec light -A 5; exec pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86MonBrightnessUp exec light -A 1; exec pkill -SIGRTMIN+10 i3blocks
 
-    # move focus to the parent container
-    bindsym $mod+a focus parent
+# Volume setting.
+bindsym XF86AudioMute exec pulseaudio-ctl mute on; exec pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec pulseaudio-ctl down 5; exec pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86AudioLowerVolume exec pulseaudio-ctl down 1; exec pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up 5; exec pkill -SIGRTMIN+10 i3blocks
+bindsym Shift+XF86AudioRaiseVolume exec pulseaudio-ctl up 1; exec pkill -SIGRTMIN+10 i3blocks
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    #bindsym $mod+minus scratchpad show
-
+# Window resizing.
 bindsym $mod+r mode "resize"
 mode "resize" {
     bindsym h resize shrink width 2 px or 2 ppt
@@ -97,29 +101,23 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
+# Status bar.
 bar {
-    status_command i3blocks
-    mode dock
     position top
-    workspace_buttons yes
-
-#    position top
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
+    mode dock
+    font Migu 1C
+    workspace_button yes
+    status_command i3blocks -c ~/.config/sway/i3blocks.conf
+    colors {
+      focused_workspace #cc2222 #cc4444 #ffffff
+    }
 }
 
-# wallpaper
-output * bg /usr/local/share/image/PC.png fill
+# Color.
+client.focused #000000 #cc2222 #ffffff #000000 #000000
 
-# Color
-# TODO
+# Wallpaper.
+output * bg /usr/local/share/image/PC.png fill
 
 ## XPS13 trackpad
 input 1739:30383:DLL075B:01_06CB:76AF_To {
@@ -127,4 +125,7 @@ input 1739:30383:DLL075B:01_06CB:76AF_To {
   natural_scroll enabled
   dwt enabled
 }
+
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id pulseaudio --daemonize=no
 
