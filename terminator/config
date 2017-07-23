@@ -10,10 +10,10 @@
   cycle_prev = Unbound
   go_prev = Unbound
   go_next = Unbound
-  go_up = <Alt>k
-  go_down = <Alt>j
-  go_left = <Alt>h
-  go_right = <Alt>l
+  go_up = Unbound
+  go_down = Unbound
+  go_left = Unbound
+  go_right = Unbound
   split_horiz = <Alt><Shift>d
   split_vert = <Alt>d
   close_term = Unbound
