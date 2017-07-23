@@ -21,7 +21,6 @@ for dotfiles in .?*
 do
   case ${dotfiles} in
     ..)            continue ;;
-    .editorconfig) continue ;;
     .git*)         continue ;;
     .travis.yml)   continue ;;
     *)             ln -sf "${PWD}/${dotfiles}" ${HOME} ;;
