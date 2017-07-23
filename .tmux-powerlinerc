@@ -1,3 +1,10 @@
+# General {
+  # The theme to use.
+  export TMUX_POWERLINE_THEME="mytheme"
+  # Overlay directory to look for themes.
+  export TMUX_POWERLINE_DIR_USER_THEMES="~/.tmux/themes"
+# }
+
 # weather.sh {
   export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1118370"  # Tokyo
-}
+# }
