@@ -19,11 +19,6 @@ alias zmv='noglob zmv -W'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type pget >& /dev/null; alias pget='pget -p6'
 
-# parralel compression and decompression
-type pigz >& /dev/null && alias gzip='pigz -v'
-type lbzip2 >& /dev/null && alias bzip2='lbzip2 -v' && alias bunzip2='lbzip2 -d'
-type pixz >& /dev/null && alias xz='pixz' && alias unxz='pixz -d'
-
 
 ## Global aliases.
 alias -g A='| awk'
@@ -36,6 +31,7 @@ alias -g W='| wc'
 alias -g X='| xargs'
 type pv >& /dev/null && alias -g P='| pv'
 type rg >& /dev/null && alias -g R='| rg'
+type xsel >& /dev/null && alias -g X='| xsel -bi'
 
 
 ## Git aliases
@@ -72,11 +68,13 @@ if [[ "${OSTYPE}" == darwin* ]]; then
   fi
 elif [[ "${OSTYPE}" == linux* ]]; then
   type nvim >& /dev/null && alias vim='nvim'
+  type sway >& /dev/null && alias sway='XKB_DEFAULT_OPTIONS=ctrl:nocaps sway'
+  type xdg-open >& /dev/null && alias open='xdg-open'
   alias la='ls -aFhl --color'
   alias tl='tmux ls'
   alias make="make -j$(nproc)"
-  alias mv='nocorrect mv -i'
-  alias cp='nocorrect cp -i'
+  alias mv='mv -i'
+  alias cp='cp -i'
   alias fw='sudo firewall-cmd'
   alias fwl='sudo firewall-cmd --list-all'
   alias fwr='sudo firewall-cmd --reload'
