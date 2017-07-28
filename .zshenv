@@ -53,7 +53,7 @@ export GOPATH=${HOME}/.go
 export GOBIN=${GOPATH}/bin
 export PATH=${GOBIN}:${PATH}
 
-## neovim
+## XDG base directory
 export XDG_CONFIG_HOME=${HOME}/.config
 
 ## fzf
@@ -64,11 +64,11 @@ HISTFILE=${HOME}/.zsh_history
 HISTSIZE=100000
 SAVEHIST=${HISTSIZE}
 if [[ $UID == 0 ]]; then
-    unset HISTFILE
-    export SAVEHIST=0
+  unset HISTFILE
+  export SAVEHIST=0
 fi
 
-# anyenv (for Bash on Windows)
+# anyenv
 [[ -s ${HOME}/.zsh/profile.d/anyenv.sh ]] && source ${HOME}/.zsh/profile.d/anyenv.sh
 
 # linuxbrew
