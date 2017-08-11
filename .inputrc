@@ -1,0 +1,69 @@
+#-----------------------------
+# Readline configuration file
+#-----------------------------
+
+# Include system-wide settings
+$include /etc/inputrc
+
+# Use vi keybind
+set editing-mode vi
+
+# Disable bell
+set bell-style none
+
+# Colored completion by LS_COLORS
+set colored-stats on
+
+# Ignore case on completion
+set completion-ignore-case on
+
+# Common prefix length on completion
+set completion-prefix-display-length 3
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# Show extra file information when completing
+set visible-stats on
+
+# Do not autocomplete hidden files unless the pattern explicitly begins with a dot
+set match-hidden-files off
+
+# for UTF-8
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# Keymap
+$if mode=vi
+  set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+    "k": history-search-backward
+    "j": history-search-forward
+    "\C-a": vi-insert-beg
+    "\C-e": vi-append-eol
+    "\C-k": kill-whole-line
+    "\C-l": clear-screen
+    "\C-n": history-search-forward
+    "\C-p": history-search-backward
+    "\C-u": unix-line-discard
+    "?": reverse-search-history
+    "/": forward-search-history
+
+  set keymap vi-insert
+    "jj": vi-movement-mode
+    "\C-a": beginning-of-line
+    "\C-e": end-of-line
+    "\C-k": kill-whole-line
+    "\C-l": clear-screen
+    "\C-n": history-search-forward
+    "\C-p": history-search-backward
+    "\C-u": unix-line-discard
+    "\C-w": backward-kill-word
+$endif
+
