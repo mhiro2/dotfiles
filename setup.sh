@@ -38,3 +38,8 @@ fi
 if [ ! -L "${HOME}/.config/nvim" ]; then
   ln -sf "${PWD}/nvim" "${HOME}/.config/nvim"
 fi
+
+# yapf
+if [ ! -L "${HOME}/.config/yapf" ]; then
+  ln -sf "${PWD}/yapf" "${HOME}/.config/yapf"
+fi
