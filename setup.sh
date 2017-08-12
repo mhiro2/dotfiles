@@ -20,7 +20,9 @@ for dotfiles in .?*
 do
   case ${dotfiles} in
     ..)            continue ;;
-    .git*)         continue ;;
+    .git)          continue ;;
+    .gitignore)    continue ;;
+    .gitmodules)   continue ;;
     .travis.yml)   continue ;;
     *)             ln -sf "${PWD}/${dotfiles}" ${HOME} ;;
   esac
@@ -36,6 +38,16 @@ fi
 # neovim
 if [ ! -L "${XDG_CONFIG_HOME}/nvim" ]; then
   ln -sf "${PWD}/nvim" "${XDG_CONFIG_HOME}/nvim"
+fi
+
+# peco
+if [ ! -L "${XDG_CONFIG_HOME}/peco" ]; then
+  ln -sf "${PWD}/peco" "${XDG_CONFIG_HOME}/peco"
+fi
+
+# pip
+if [ ! -L "${XDG_CONFIG_HOME}/pip" ]; then
+  ln -sf "${PWD}/pip" "${XDG_CONFIG_HOME}/pip"
 fi
 
 # sway
