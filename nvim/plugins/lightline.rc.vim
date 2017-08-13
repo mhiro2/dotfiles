@@ -5,6 +5,7 @@ let g:lightline = {
   \   'left': [
   \     ['mode', 'paste'],
   \     ['fugtive', 'gitgutter', 'filename'],
+  \     ['ale'],
   \   ]
   \ },
   \ 'component_function': {
@@ -15,10 +16,13 @@ let g:lightline = {
   \   'filetype': 'LightlineFiletype',
   \   'fileencoding': 'LightlineFileencoding',
   \   'mode': 'LightlineMode',
+  \   'ale': 'ALEStatus'
   \ },
   \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
   \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
   \ }
+
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
 
 function! LightlineModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -51,4 +55,8 @@ endfunction
 
 function! LightlineMode()
   return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! ALEStatus()
+  return ALEGetStatusLine()
 endfunction

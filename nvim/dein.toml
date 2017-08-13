@@ -46,10 +46,16 @@ hook_add = '''
   cnoremap <expr><CR> migemosearch#replace_search_word()."\<CR>"
 '''
 
+#[[plugins]]
+#repo = 'neomake/neomake'
+#hook_add = '''
+#  autocmd! BufEnter,BufWritePost * Neomake
+#'''
+
 [[plugins]]
-repo = 'neomake/neomake'
+repo = 'w0rp/ale'
 hook_add = '''
-  autocmd! BufEnter,BufWritePost * Neomake
+  source ~/.config/nvim/plugins/ale.rc.vim
 '''
 
 [[plugins]]
