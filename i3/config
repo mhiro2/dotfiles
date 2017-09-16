@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font for window titles.
-font pango:Migu 1C 11
+font pango:Migu 1C 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -111,11 +111,14 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+# Color.
+client.focused #000000 #cc2222 #ffffff #000000 #000000
+
 # Status bar.
 bar {
     position top
     mode dock
-    font pango:DejaVu Sans Mono 13
+    font pango:Migu 1C 12
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     colors {
       focused_workspace #cc2222 #cc4444 #ffffff
@@ -126,4 +129,5 @@ exec --no-startup-id feh --bg-fill /usr/local/share/image/PC.png
 exec --no-startup-id compton -cbm 0.75 --config ~/.config/compton/compton.conf
 exec --no-startup-id setxkbmap -option 'ctrl:nocaps'
 exec --no-startup-id fcitx
+exec --no-startup-id xrandr --output DP-1 --primary --mode 1920x1200 --pos 0x0 --rotate normal
 
