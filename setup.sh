@@ -30,19 +30,32 @@ done
 
 mkdir -p ${XDG_CONFIG_HOME}
 
-# compton
-if [ ! -L "${XDG_CONFIG_HOME}/compton" ]; then
-  ln -sf "${PWD}/compton" "${XDG_CONFIG_HOME}/compton"
+# for ArchLinux
+if [ -f /etc/arch-release ]; then
+  # compton
+  if [ ! -L "${XDG_CONFIG_HOME}/compton" ]; then
+    ln -sf "${PWD}/compton" "${XDG_CONFIG_HOME}/compton"
+  fi
+
+  # i3
+  if [ ! -L "${XDG_CONFIG_HOME}/i3" ]; then
+    ln -sf "${PWD}/i3" "${XDG_CONFIG_HOME}/i3"
+  fi
+
+  # sway
+  if [ ! -L "${XDG_CONFIG_HOME}/sway" ]; then
+    ln -sf "${PWD}/sway" "${XDG_CONFIG_HOME}/sway"
+  fi
+
+  # terminator
+  if [ ! -L "${XDG_CONFIG_HOME}/terminator" ]; then
+    ln -sf "${PWD}/terminator" "${XDG_CONFIG_HOME}/terminator"
+  fi
 fi
 
 # fish
 if [ ! -L "${XDG_CONFIG_HOME}/fish" ]; then
   ln -sf "${PWD}/fish" "${XDG_CONFIG_HOME}/fish"
-fi
-
-# i3
-if [ ! -L "${XDG_CONFIG_HOME}/i3" ]; then
-  ln -sf "${PWD}/i3" "${XDG_CONFIG_HOME}/i3"
 fi
 
 # neovim
@@ -58,16 +71,6 @@ fi
 # pip
 if [ ! -L "${XDG_CONFIG_HOME}/pip" ]; then
   ln -sf "${PWD}/pip" "${XDG_CONFIG_HOME}/pip"
-fi
-
-# sway
-if [ ! -L "${XDG_CONFIG_HOME}/sway" ]; then
-  ln -sf "${PWD}/sway" "${XDG_CONFIG_HOME}/sway"
-fi
-
-# terminator
-if [ ! -L "${XDG_CONFIG_HOME}/terminator" ]; then
-  ln -sf "${PWD}/terminator" "${XDG_CONFIG_HOME}/terminator"
 fi
 
 # yapf
