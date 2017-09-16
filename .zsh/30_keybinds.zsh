@@ -25,9 +25,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 bindkey -M vicmd '^K' kill-line
 bindkey -M viins '^K' kill-line
 
-# Kill the current line.
-bindkey -M vicmd '^U' kill-whole-line
-bindkey -M viins '^U' kill-whole-line
+# Kill from the beginning of the line to the cursor position.
+bindkey -M vicmd '^U' backward-kill-line
+bindkey -M viins '^U' backward-kill-line
 
 # Delete the current word.
 bindkey -M vicmd '^D' delete-word
