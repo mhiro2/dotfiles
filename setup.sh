@@ -30,9 +30,19 @@ done
 
 mkdir -p ${XDG_CONFIG_HOME}
 
+# compton
+if [ ! -L "${XDG_CONFIG_HOME}/compton" ]; then
+  ln -sf "${PWD}/compton" "${XDG_CONFIG_HOME}/compton"
+fi
+
 # fish
 if [ ! -L "${XDG_CONFIG_HOME}/fish" ]; then
   ln -sf "${PWD}/fish" "${XDG_CONFIG_HOME}/fish"
+fi
+
+# i3
+if [ ! -L "${XDG_CONFIG_HOME}/i3" ]; then
+  ln -sf "${PWD}/i3" "${XDG_CONFIG_HOME}/i3"
 fi
 
 # neovim
