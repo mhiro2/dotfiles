@@ -39,11 +39,11 @@ zplug "mollifier/anyframe", \
 # zplug "b4b4r07/enhancd", \
 #     use:init.sh
 
-# exa
-zplug "ogham/exa", \
-    as:command, \
-    rename-to:"exa", \
-    from:gh-r
+# # exa
+# zplug "ogham/exa", \
+#     as:command, \
+#     rename-to:"exa", \
+#     from:gh-r
 
 # # fzf
 #zplug "junegunn/fzf-bin", \
@@ -82,10 +82,10 @@ zplug "monochromegane/the_platinum_searcher", \
     rename-to:"pt", \
     frozen:1
 
-# rush
-zplug "shenwei356/rush", \
-    as:command, \
-    from:gh-r
+# # rush
+# zplug "shenwei356/rush", \
+#     as:command, \
+#     from:gh-r
 
 # # usql
 #zplug "knq/usql", \
