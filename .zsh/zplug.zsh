@@ -87,6 +87,9 @@ zplug "monochromegane/the_platinum_searcher", \
 #     as:command, \
 #     from:gh-r
 
+# tmux-xpanes
+zplug "greymd/tmux-xpanes"
+
 # # usql
 #zplug "knq/usql", \
 #    as:command, \
