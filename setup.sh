@@ -1,13 +1,24 @@
-#!/bin/sh -eu
+#!/usr/bin/env bash
+
+set -eu
 
 cd $(dirname $0)
 
 git submodule init
 git submodule update
 
+readonly ARCH_XDG_CONFIGS=(compton i3 sway terminator)
+readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip yapf)
+
 zplug_install () {
   local installer='https://raw.githubusercontent.com/zplug/installer/master/installer.zsh'
   curl -sL --proto-redir -all,https $installer | zsh
+}
+
+mklink_xdg_config () {
+  if [ ! -L "${XDG_CONFIG_HOME}/${1}" ]; then
+    ln -sf "${PWD}/${1}" "${XDG_CONFIG_HOME}/${1}"
+  fi
 }
 
 # install zplug
@@ -20,9 +31,7 @@ for dotfiles in .?*
 do
   case ${dotfiles} in
     ..)            continue ;;
-    .git)          continue ;;
-    .gitignore)    continue ;;
-    .gitmodules)   continue ;;
+    .git*)         continue ;;
     .travis.yml)   continue ;;
     *)             ln -sf "${PWD}/${dotfiles}" ${HOME} ;;
   esac
@@ -32,49 +41,15 @@ mkdir -p ${XDG_CONFIG_HOME}
 
 # for ArchLinux
 if [ -f /etc/arch-release ]; then
-  # compton
-  if [ ! -L "${XDG_CONFIG_HOME}/compton" ]; then
-    ln -sf "${PWD}/compton" "${XDG_CONFIG_HOME}/compton"
-  fi
-
-  # i3
-  if [ ! -L "${XDG_CONFIG_HOME}/i3" ]; then
-    ln -sf "${PWD}/i3" "${XDG_CONFIG_HOME}/i3"
-  fi
-
-  # sway
-  if [ ! -L "${XDG_CONFIG_HOME}/sway" ]; then
-    ln -sf "${PWD}/sway" "${XDG_CONFIG_HOME}/sway"
-  fi
-
-  # terminator
-  if [ ! -L "${XDG_CONFIG_HOME}/terminator" ]; then
-    ln -sf "${PWD}/terminator" "${XDG_CONFIG_HOME}/terminator"
-  fi
+  for item in ${ARCH_XDG_CONFIGS[@]}
+  do
+    mklink_xdg_config ${item}
+  done
 fi
 
-# fish
-if [ ! -L "${XDG_CONFIG_HOME}/fish" ]; then
-  ln -sf "${PWD}/fish" "${XDG_CONFIG_HOME}/fish"
-fi
-
-# neovim
-if [ ! -L "${XDG_CONFIG_HOME}/nvim" ]; then
-  ln -sf "${PWD}/nvim" "${XDG_CONFIG_HOME}/nvim"
-fi
-
-# peco
-if [ ! -L "${XDG_CONFIG_HOME}/peco" ]; then
-  ln -sf "${PWD}/peco" "${XDG_CONFIG_HOME}/peco"
-fi
-
-# pip
-if [ ! -L "${XDG_CONFIG_HOME}/pip" ]; then
-  ln -sf "${PWD}/pip" "${XDG_CONFIG_HOME}/pip"
-fi
-
-# yapf
-if [ ! -L "${XDG_CONFIG_HOME}/yapf" ]; then
-  ln -sf "${PWD}/yapf" "${XDG_CONFIG_HOME}/yapf"
-fi
+# common
+for item in ${COMMON_XDG_CONFIGS[@]}
+do
+  mklink_xdg_config ${item}
+done
 
