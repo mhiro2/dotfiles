@@ -82,16 +82,12 @@ zplug "monochromegane/the_platinum_searcher", \
     rename-to:"pt", \
     frozen:1
 
-# # rush
-# zplug "shenwei356/rush", \
-#     as:command, \
-#     from:gh-r
-
 # tmux-xpanes
 zplug "greymd/tmux-xpanes"
 
-# # usql
-#zplug "knq/usql", \
-#    as:command, \
-#    from:gh-r
+##------------------------------
+# other
+
+# gdb-peda
+zplug "longld/peda"
 
