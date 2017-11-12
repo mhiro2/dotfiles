@@ -7,7 +7,7 @@ if [ -x "/usr/lcoal/bin/tmux" ]; then
 fi
 
 readonly TMUX_BUILD_DIR=$(mktemp -d)
-readonly TMUX_VERSION="2.5"
+readonly TMUX_VERSION="2.6"
 
 # Ubuntu16
 if [ -x "/usr/bin/apt-get" ]; then
