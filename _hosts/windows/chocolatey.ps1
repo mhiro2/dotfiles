@@ -10,6 +10,7 @@ cinst procexp
 ## Applications
 cinst aimp
 cinst conemu
+cinst firefox
 cinst foxitreader
 cinst googlechrome
 cinst googlejapaneseinput

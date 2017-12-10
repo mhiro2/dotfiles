@@ -27,8 +27,8 @@ bindsym $mod+Return exec terminator
 bindsym $mod+space exec rofi -show combi -location 0 -sidebar-mode
 
 # Browser.
-bindsym $mod+b exec chromium
-bindsym $mod+shift+b exec chromium --incognito
+bindsym $mod+b exec firefox
+bindsym $mod+shift+b exec firefox -private
 
 # Mailer.
 bindsym $mod+m exec Shift
