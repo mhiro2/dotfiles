@@ -15,8 +15,8 @@ cinst foxitreader
 cinst googlechrome
 cinst googlejapaneseinput
 cinst hain
-cinst qttabbar
 cinst skype
+cinst tablacus
 cinst vlc
 
 ## Developer tools
