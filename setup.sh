@@ -8,7 +8,7 @@ git submodule init
 git submodule update
 
 readonly ARCH_XDG_CONFIGS=(compton i3 sway terminator)
-readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip yapf)
+readonly COMMON_XDG_CONFIGS=(dunst fish git nvim peco pip yapf)
 
 zplug_install () {
   local installer='https://raw.githubusercontent.com/zplug/installer/master/installer.zsh'
