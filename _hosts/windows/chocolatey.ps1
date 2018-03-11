@@ -10,6 +10,7 @@ cinst procexp
 ## Applications
 cinst aimp
 cinst conemu
+cinst etcher
 cinst firefox
 cinst foxitreader
 cinst googlechrome
