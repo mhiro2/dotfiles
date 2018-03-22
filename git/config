@@ -2,6 +2,9 @@
   name  = mhrio2
   email = hirotsu.masaaki@gmail.com
 
+[commit]
+  template = ~/.config/git/commit_template
+
 [push]
   default = current
 
