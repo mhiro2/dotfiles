@@ -122,9 +122,12 @@ bar {
     }
 }
 
-exec --no-startup-id feh --bg-fill /usr/local/share/image/PC.png
+exec --no-startup-id ~/.fehbg
 exec --no-startup-id compton -cbm 0.75 --config ~/.config/compton/compton.conf
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id setxkbmap -option 'ctrl:nocaps'
 exec --no-startup-id fcitx
+exec --no-startup-id nm-applet
+exec --no-startup-id pulseaudio --start
 exec --no-startup-id xrandr --output DP-1 --primary --mode 1920x1200 --pos 0x0 --rotate normal
 
