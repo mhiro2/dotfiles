@@ -46,6 +46,17 @@ alias grv='git revert'
 alias gst='git status'
 
 
+## Docker aliases
+alias dil='docker image ls'
+alias dip='docker image prune'
+alias dir='docker image rm $(dil | peco | awk '"'"'{ print $3 }'"'"')'
+alias dps='docker container ps -a'
+alias dce='docker container exec -it $(dps | peco | cut -d'"'"' '"'"' -f 1) /bin/bash'
+alias dcea='docker container exec -it $(dps | peco | cut -d'"'"' '"'"' -f 1) /bin/ash'
+alias dcr='docker container rm $(dps | grep "Exited" | peco | cut -d'"'"' '"'"' -f 1)'
+alias dcp='docker container prune'
+
+
 ## Architecture depends
 if [[ "${OSTYPE}" == darwin* ]]; then
   alias be="bundle exec"
