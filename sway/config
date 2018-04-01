@@ -31,13 +31,10 @@ bindsym $mod+b exec firefox
 bindsym $mod+shift+b exec firefox -private
 
 # Mailer.
-bindsym $mod+m exec Shift
+bindsym $mod+m exec mailspring
 
 # Slack.
 bindsym $mod+s exec slack
-
-# File manager.
-#bindsym $mod+s exec spacefm
 
 # Reload sway.
 bindsym $mod+Shift+r reload

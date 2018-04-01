@@ -7,3 +7,7 @@ export DefaultIMModule=fcitx
 ## key repeat
 xset r rate 180 30
 
+## for mailspring
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcsll,secrets,ssh)
+export SSH_AUTH_SOCK
