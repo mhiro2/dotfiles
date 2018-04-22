@@ -47,7 +47,7 @@ $if mode=vi
     "j": history-search-forward
     "\C-a": vi-insert-beg
     "\C-e": vi-append-eol
-    "\C-k": kill-whole-line
+    "\C-k": kill-line
     "\C-l": clear-screen
     "\C-n": history-search-forward
     "\C-p": history-search-backward
@@ -59,7 +59,7 @@ $if mode=vi
     "jj": vi-movement-mode
     "\C-a": beginning-of-line
     "\C-e": end-of-line
-    "\C-k": kill-whole-line
+    "\C-k": kill-line
     "\C-l": clear-screen
     "\C-n": history-search-forward
     "\C-p": history-search-backward
