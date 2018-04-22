@@ -7,28 +7,44 @@
 #     $ \vim
 # ---------------------------------------------------
 
+function peco-ssh {
+  local host=$(grep '^Host' ~/.ssh/config | awk '{ print $2 }' | peco --prompt '[ssh]')
+  if [ -n "${host}" ]; then
+    echo "ssh ${host}"
+    \ssh ${host}
+  fi
+}
+
 ## Common aliases
 alias df='df -h'
 alias du='du -h'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
+alias history='history -i'
+alias hist='history'
 alias http-server='python -m SimpleHTTPServer'
 alias lv='LC_ALL=ja_JP.UTF-8 lv -c'
 alias mkdir='mkdir -p'
+alias pk='anyframe-widget-kill'
+alias pssh='peco-ssh'
 alias reboot='sudo reboot'
 alias scp='scp -p'
 alias sort='LC_ALL=C sort'
 alias sudo='sudo '
+alias tl='tmux ls'
 alias uniq='LC_ALL=C uniq'
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
+type consul >& /dev/null && alias ce='consul exec' \
+                         && alias cm='consul members'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type htop >& /dev/null && alias top='htop'
 type nvim >& /dev/null && alias vim='nvim'
 type pget >& /dev/null && alias pget='pget -p6'
+type xpanes >& /dev/null && alias xp='xpanes'
 
 ## Git aliases
 alias ga='git add'
@@ -43,15 +59,15 @@ alias gr='git reset'
 alias gst='git status'
 
 ## Docker aliases
-alias dce='docker container exec -it $(dps | peco | cut -d'"'"' '"'"' -f 1) /bin/bash'
-alias dcea='docker container exec -it $(dps | peco | cut -d'"'"' '"'"' -f 1) /bin/ash'
-alias dcl='docker container logs $(dps | peco | cut -d'"'"' '"'"' -f 1)'
-alias dcrm='docker container rm $(dps | grep "Exited" | peco | cut -d'"'"' '"'"' -f 1)'
+alias dce='docker container exec -it $(dps | peco --prompt "[exec /bin/bash]" | cut -d'"'"' '"'"' -f 1) /bin/bash'
+alias dcea='docker container exec -it $(dps | peco --prompt "[exec /bin/ash]" | cut -d'"'"' '"'"' -f 1) /bin/ash'
+alias dcl='docker container logs $(dps | peco --prompt "[logs]" | cut -d'"'"' '"'"' -f 1)'
+alias dcrm='docker container rm $(dps | grep "Exited" | peco --prompt "[rm]" | cut -d'"'"' '"'"' -f 1)'
 alias dcp='docker container prune'
-alias dcs='docker container stop $(dps | grep -v "Exited" | peco | cut -d'"'"' '"'"' -f 1)'
+alias dcs='docker container stop $(dps | grep -v "Exited" | peco --prompt "[stop]" | cut -d'"'"' '"'"' -f 1)'
 alias dil='docker image ls'
 alias dip='docker image prune'
-alias dirm='docker image rm $(dil | peco | awk '"'"'{ print $3 }'"'"')'
+alias dirm='docker image rm $(dil | peco --prompt "[rm]" | awk '"'"'{ print $3 }'"'"')'
 alias dnl='docker network ls'
 alias dnp='docker network prune'
 alias dps='docker container ps -a'
@@ -72,12 +88,6 @@ type pv >& /dev/null && alias -g P='| pv'
 type rg >& /dev/null && alias -g R='| rg'
 type xsel >& /dev/null && alias -g X='| xsel -bi'
 type yq >& /dev/null && alias -g J='| yq'
-
-## Development
-alias bi="bundle install --jobs=$(nproc) --path=vendor/bundle"
-alias be='bundle exec'
-alias pir='pip install -r requirements.txt'
-alias tl='tmux ls'
 
 ## Architecture depends
 if [[ "${OSTYPE}" == darwin* ]]; then
@@ -127,6 +137,11 @@ elif [[ "${OSTYPE}" == linux* ]]; then
 
   type sway >& /dev/null && alias sway='XKB_DEFAULT_OPTIONS=ctrl:nocaps sway'
 fi
+
+## Development
+alias bi="bundle install --jobs=$(nproc) --path=vendor/bundle"
+alias be='bundle exec'
+alias pir='pip install -r requirements.txt'
 
 ## Suffix aliases
 alias -s zip=zipinfo
