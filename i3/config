@@ -6,7 +6,7 @@
 set $mod Mod4
 
 # Font for window titles.
-font pango:Migu 1C 10
+font pango:Migu 1C Nerd Font Complete 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -115,7 +115,7 @@ client.focused #000000 #cc2222 #ffffff #000000 #000000
 bar {
     position top
     mode dock
-    font pango:Migu 1C 12
+    font pango:Migu 1C Nerd Font Complete 12
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     colors {
       focused_workspace #cc2222 #cc4444 #ffffff

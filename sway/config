@@ -105,7 +105,7 @@ mode "resize" {
 bar {
     position top
     mode dock
-    font Migu 1C
+    font Migu 1C Nerd Font Complete
     workspace_button yes
     status_command i3blocks -c ~/.config/sway/i3blocks.conf
     colors {

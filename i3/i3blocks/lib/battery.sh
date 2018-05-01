@@ -14,22 +14,22 @@ if [ -f ~/.cache/i3blocks-battery ]; then
 
   case ${POWER_STATE} in
   [Cc]harging)
-    echo -en "\uf1e6"
+    echo -en "\uf1e6 "
     # TODO: notify-send -> dunst
   ;;
   [Dd]ischarging)
     if ((1<=${BATTERY_REMAIN} && ${BATTERY_REMAIN}<=5)); then
-      echo -en "\uf244"
+      echo -en "\uf244 "
     elif ((6<=${BATTERY_REMAIN} && ${BATTERY_REMAIN}<=25)); then
-      echo -en "\uf243"
+      echo -en "\uf243 "
     elif ((26<=${BATTERY_REMAIN} && ${BATTERY_REMAIN}<=50)); then
-      echo -en "\uf242"
+      echo -en "\uf242 "
     elif ((51<=${BATTERY_REMAIN} && ${BATTERY_REMAIN}<=80)); then
-      echo -en "\uf241"
+      echo -en "\uf241 "
     elif ((81<=${BATTERY_REMAIN} && ${BATTERY_REMAIN}<=100)); then
-      echo -en "\uf240"
+      echo -en "\uf240 "
     else
-      echo -en "\uf244"
+      echo -en "\uf244 "
     fi
 
     # TODO: notify-send -> dunst

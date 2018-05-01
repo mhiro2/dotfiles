@@ -43,7 +43,7 @@
   #
 
   # Message font.
-  font = Migu 1C Bold 12
+  font = Migu 1C Nerd Font Complete Bold 12
 
   # Allow a small subset of html markup in notifications.
   markup = full

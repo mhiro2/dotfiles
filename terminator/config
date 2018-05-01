@@ -54,7 +54,7 @@
 [profiles]
   [[default]]
     use_system_font = False
-    font = Ricty Diminished Discord Regular for Powerline 13
+    font = Ricty Diminished Discord Nerd Font Complete 13
     palette = "#1b1d1e:#f92672:#82b414:#fd971f:#268bd2:#8c54fe:#56c2d6:#ccccc6:#505354:#ff5995:#b7ed46:#feed6c:#62ade3:#bfa0fe:#94d8e5:#f8f8f2"
     background_type = transparent
     background_color = "#282828"
