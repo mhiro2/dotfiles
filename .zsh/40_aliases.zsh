@@ -88,8 +88,8 @@ alias -g X='| xargs'
 type jq >& /dev/null && alias -g J='| jq'
 type pv >& /dev/null && alias -g P='| pv'
 type rg >& /dev/null && alias -g R='| rg'
-type xsel >& /dev/null && alias -g X='| xsel -bi'
-type yq >& /dev/null && alias -g J='| yq'
+#type xsel >& /dev/null && alias -g X='| xsel -bi'
+type yq >& /dev/null && alias -g Y='| yq'
 
 ## Architecture depends
 if [[ "${OSTYPE}" == darwin* ]]; then
