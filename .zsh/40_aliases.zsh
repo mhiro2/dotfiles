@@ -38,6 +38,8 @@ autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
+type atool >& /dev/null && alias al='atool -l' \
+                        && alias ax='atool -x'
 type consul >& /dev/null && alias ce='consul exec' \
                          && alias cm='consul members'
 type http >& /dev/null && alias https='http --default-scheme=https'
