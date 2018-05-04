@@ -71,10 +71,3 @@ fi
 # anyenv
 [[ -s ${HOME}/.zsh/profile.d/anyenv.sh ]] && source ${HOME}/.zsh/profile.d/anyenv.sh
 
-# linuxbrew
-export LINUXBREW_ROOT=${HOME}/.linuxbrew
-if [ -d "${LINUXBREW_ROOT}" ]; then
-  export PATH=${LINUXBREW_ROOT}/bin:$PATH
-  export MANPATH=${LINUXBREW_ROOT}/share/man:$MANPATH
-  export INFOPATH=${LINUXBREW_ROOT}/share/info:$INFOPATH
-fi
