@@ -49,7 +49,8 @@ zplug 'stedolan/jq', \
 # lstf
 zplug 'yuuki/lstf', \
   as:command, \
-  from:gh-r
+  from:gh-r, \
+  if:"[[ $OSTYPE == linux* ]]"
 
 # peco
 zplug 'peco/peco', \
