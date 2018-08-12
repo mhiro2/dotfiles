@@ -71,6 +71,12 @@ zplug 'Code-Hex/pget', \
   as:command, \
   from:gh-r
 
+# progress
+zplug 'Xfennec/progress', \
+  as:command, \
+  hook-build:'make', \
+  rename-to:pg
+
 # pt
 zplug 'monochromegane/the_platinum_searcher', \
   as:command, \
