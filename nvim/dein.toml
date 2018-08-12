@@ -46,12 +46,6 @@ hook_add = '''
   cnoremap <expr><CR> migemosearch#replace_search_word()."\<CR>"
 '''
 
-#[[plugins]]
-#repo = 'neomake/neomake'
-#hook_add = '''
-#  autocmd! BufEnter,BufWritePost * Neomake
-#'''
-
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
@@ -60,6 +54,7 @@ hook_add = '''
   let g:ale_sign_error = '✖'
   let g:ale_lint_delay = 400
   "let g:ale_lint_on_text_changed = 'normal'
+  let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
 '''
 
 [[plugins]]
@@ -115,6 +110,28 @@ repo = 'airblade/vim-gitgutter'
 repo = 'itchyny/lightline.vim'
 hook_add = '''
   source ~/.config/nvim/plugins/lightline.rc.vim
+'''
+
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+depends = ['ale', 'lightline.vim']
+hook_add = '''
+  let g:lightline.component_expand = {
+    \   'linter_checking': 'lightline#ale#checking',
+    \   'linter_warnings': 'lightline#ale#warnings',
+    \   'linter_errors': 'lightline#ale#errors',
+    \   'linter_ok': 'lightline#ale#ok',
+    \ }
+  let g:lightline.component_type = {
+    \   'linter_checking': 'left',
+    \   'linter_warnings': 'warning',
+    \   'linter_errors': 'error',
+    \   'linter_ok': 'left',
+    \ }
+  let g:lightline#ale#indicator_checking = "\uf110 "
+  let g:lightline#ale#indicator_warnings = "\uf071 "
+  let g:lightline#ale#indicator_errors = "\uf05e "
+  let g:lightline#ale#indicator_ok = "\uf00c "
 '''
 
 [[plugins]]
