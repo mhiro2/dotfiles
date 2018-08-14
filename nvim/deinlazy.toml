@@ -140,3 +140,7 @@ repo = 'pearofducks/ansible-vim'
 [[plugins]]
 repo = 'hashivim/vim-terraform'
 on_ft = 'tf'
+
+[[plugins]]
+repo = 'hotwatermorning/auto-git-diff'
+on_ft = 'gitrebase'
