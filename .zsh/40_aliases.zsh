@@ -81,7 +81,7 @@ alias dvp='docker volume prune'
 ## kubernetes aliases
 function kon {
   save_aliases=$(alias -L)
-  source .zsh/lib/.kubectl_aliases
+  source ~/.zsh/lib/.kubectl_aliases
   #source <(kubectl completion zsh)
 }
 
