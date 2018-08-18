@@ -83,6 +83,11 @@ zplug 'monochromegane/the_platinum_searcher', \
   from:gh-r, \
   rename-to:pt
 
+# rb
+zplug 'thisredone/rb', \
+  as:command, \
+  use:'rb'
+
 # ripgrep
 zplug 'BurntSushi/ripgrep', \
   as:command, \
