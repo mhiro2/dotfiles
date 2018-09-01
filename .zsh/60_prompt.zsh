@@ -1,16 +1,12 @@
-ZSH_THEME_GIT_PROMPT_PREFIX=" on %{$fg[green]%}\uE0A0 "
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[yellow]%} ☂" # Ⓓ
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ♪" # Ⓞ
-ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[cyan]%} ✚ " # ⓐ ⑃
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%} ✎"  # ⓜ ⑁
-ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} ✖" # ⓧ ⑂
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭" # ⓣ
-ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%} ➜" # ⓡ ⑄
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[magenta]%} ♥" # ⓤ ⑊
+HOST_PROMPT="%K{160}%F{255}  %F{160}%k%F{214} %n@%m%f%k%f:"
+DIR_PROMPT="%F{87}%~ %k%f"
+PROMPT_HEAD="%F{1}%F{3}%F{2}%f"
 
-PROMPT='%{$fg[red]%}❖ %{$fg[yellow]%}%n@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg[blue]%}%~%{$reset_color%}$(git_prompt_info)
-%# '
+ZSH_THEME_GIT_PROMPT_PREFIX="%K{2}%F{0}  "
+ZSH_THEME_GIT_PROMPT_SUFFIX=" %K{0}%F{2}%k%f"
 
-#RPROMPT='%* $(git_prompt_status)%{$reset_color%}'
+PROMPT='${HOST_PROMPT}${DIR_PROMPT}$(git_prompt_info)
+$PROMPT_HEAD '
+
 RPROMPT='%* '
+
