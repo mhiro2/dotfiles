@@ -6,5 +6,6 @@ Extensions:
 - EditorConfig
 - dark-molokai-theme
 - material-icon-theme
+- Rainbow CSV
 - vscodeintellicode
 - vim
