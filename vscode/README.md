@@ -1,11 +1,12 @@
 ## Visual Studio Code
 
 Extensions:
-- bracket-pair-colorizer
-- gitlens
-- EditorConfig
-- dark-molokai-theme
-- material-icon-theme
+- Bracket Pair Colorizer
+- GitLens
+- EditorConfig for VS Code
+- Dark Molokai Theme
+- Material Icon Theme
 - Rainbow CSV
-- vscodeintellicode
-- vim
+- Visual Studio IntelliCode
+- Vim
+- Visual Studio Code Tools for AI
