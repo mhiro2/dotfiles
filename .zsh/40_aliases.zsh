@@ -116,9 +116,9 @@ if [[ "${OSTYPE}" == darwin* ]]; then
   alias ls='ls -hFG'
   # coreutils
   if [ -d /usr/local/Cellar/coreutils ]; then
-    alias cp='nocorrect gcp -i'
-    alias mv='nocorrect gmv -i'
-    alias rm='nocorrect grm -i'
+    alias cp='gcp -i'
+    alias mv='gmv -i'
+    alias rm='grm -i'
 
     alias make="make -j$(gnproc)"
     alias nproc='gnproc'
@@ -130,9 +130,9 @@ if [[ "${OSTYPE}" == darwin* ]]; then
     alias xargs='gxargs'
   fi
 elif [[ "${OSTYPE}" == linux* ]]; then
-  alias cp='nocorrect cp -i'
-  alias mv='nocorrect mv -i'
-  alias rm='nocorrect rm -i'
+  alias cp='cp -i'
+  alias mv='mv -i'
+  alias rm='rm -i'
   alias la='ls -aFhl --color'
   alias ll='ls -Fhl --color'
   alias ls='ls --color'
