@@ -7,6 +7,7 @@ cd $(dirname $0)
 git submodule init
 git submodule update
 
+readonly XDG_CONFIG_HOME=${HOME}/.config
 readonly ARCH_XDG_CONFIGS=(compton dunst i3 sway terminator)
 readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip xonsh yapf)
 
