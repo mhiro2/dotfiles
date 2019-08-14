@@ -69,13 +69,7 @@ bindkey -M viins '^Q' show_buffer_stack
 
 # Use anyframe.
 autoload -Uz anyframe-init anyframe-init
-if grep -qi Microsoft /proc/sys/kernel/osrelease >& /dev/null; then
-    # for Bash on Windows
-    zstyle ":anyframe:selector:" use fzf
-    zstyle ":anyframe:selector:fzf:" command 'fzf --extended --ansi'
-else
-    zstyle ":anyframe:selector:" use peco
-fi
+zstyle ":anyframe:selector:" use peco
 
 # Smart change directory using cdr.
 bindkey -M viins '^S' anyframe-widget-cdr
