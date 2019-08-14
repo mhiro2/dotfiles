@@ -6,7 +6,9 @@ Extensions:
 - EditorConfig for VS Code
 - Dark Molokai Theme
 - Material Icon Theme
+- Output Colorizer
+- Prettier
 - Rainbow CSV
+- Remote Development
 - Visual Studio IntelliCode
 - Vim
-- Visual Studio Code Tools for AI
