@@ -12,10 +12,6 @@ $ git clone https://github.com/mhiro2/dotfiles
 $ cd dotfiles && ./setup.sh
 ```
 
-## Note
-
-See also my [Ansible playbook](https://github.com/mhiro2/ansible-mhiro2.git).
-
 ## License
 
 This software may be modified and distributed under the terms of the MIT license. 
