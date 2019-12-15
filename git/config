@@ -8,6 +8,9 @@
 [push]
   default = current
 
+[pull]
+  ff = only
+
 [core]
   editor = nvim
   pager = lv -c
@@ -30,6 +33,20 @@
 
 [interactive]
   diffFilter = diff-highlight
+
+[alias]
+  a  = add
+  b  = branch
+  c  = checkout
+  d  = diff
+  f  = fetch
+  l  = log
+  lo = log --pretty=oneline
+  p  = push
+  r  = reset
+  st = status
+  ss = status -s
+  sh = show
 
 [ghq]
   root = ~/.ghq
