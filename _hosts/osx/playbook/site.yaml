@@ -1,0 +1,6 @@
+---
+- name: Setup MacBook
+  hosts: localhost
+  roles:
+    - role: homebrew
+      tags: homebrew
