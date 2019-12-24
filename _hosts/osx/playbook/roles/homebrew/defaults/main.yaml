@@ -30,11 +30,13 @@ homebrew_packages:
   - git
   - go
   - grpcurl
+  - hadolint
   - htop
   - httpie
   - imagemagick
   - iproute2mac
   - jq
+  - jsonlint
   - k9s
   - kubectx
   - kubernetes-cli
@@ -46,15 +48,19 @@ homebrew_packages:
   - netcat
   - nkf
   - nmap
+  - node
   - packer
   - parallel
   - peco
   - pigz
+  - prettier
   - pv
   - python
   - readline
   - ripgrep
   - rsync
+  - shellcheck
+  - shfmt
   - socat
   - sqlite
   - stern
@@ -62,12 +68,15 @@ homebrew_packages:
   - telnet
   - terraform
   - terraformer
+  - tflint
   - the_silver_searcher
   - tmux
   - tree
   - watch
   - wget
   - xz
+  - yamllint
+  - yapf
   - yq
   - zsh
   - zstd
