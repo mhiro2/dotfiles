@@ -47,14 +47,53 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 hook_add = '''
-  let g:ale_echo_msg_format = '[%linter%] %s'
+  " fix
+  let g:ale_fix_on_save = 1
+  let g:ale_fixers = {
+    \ '*':          ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'bash':       ['shfmt'],
+    \ 'css':        ['prettier'],
+    \ 'go':         ['goimports'],
+    \ 'javascript': ['eslint', 'prettier'],
+    \ 'json':       ['prettier'],
+    \ 'html':       ['prettier'],
+    \ 'markdown':   ['prettier'],
+    \ 'python':     ['isort', 'yapf'],
+    \ 'ruby':       ['rubocop'],
+    \ 'sh':         ['shfmt'],
+    \ 'terraform':  ['terraform'],
+    \ 'typescript': ['eslint', 'prettier'],
+    \ 'yaml':       ['prettier'],
+  \}
+
+  " lint
+  let g:ale_linters = {
+    \ 'bash':       ['shellcheck'],
+    \ 'dockerfile': ['hadolint'],
+    \ 'go':         ['gofmt', 'golint'],
+    \ 'json':       ['jsonlint'],
+    \ 'python':     ['flake8', 'mypy'],
+    \ 'ruby':       ['rubocop'],
+    \ 'sh':         ['shellcheck'],
+    \ 'terraform':  ['tflint'],
+    \ 'yaml':       ['yamllint'],
+  \ }
+  let g:ale_lint_delay = 400
+  let g:ale_lint_on_text_changed = 'never'
+
+  " python
+  let g:ale_python_mypy_options = '--ignore-missing-imports'
+
+  " shell
+  let g:ale_sh_shfmt_options = '-i 2 -ci -kp'
+
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
   let g:ale_sign_warning = '⚠'
   let g:ale_sign_error = '✖'
-  let g:ale_lint_delay = 400
-  "let g:ale_lint_on_text_changed = 'normal'
-  let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '']
 '''
 
 [[plugins]]
