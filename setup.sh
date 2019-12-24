@@ -11,12 +11,12 @@ readonly XDG_CONFIG_HOME=${HOME}/.config
 readonly ARCH_XDG_CONFIGS=(compton dunst i3 sway terminator)
 readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip xonsh yapf)
 
-zplug_install () {
+zplug_install()  {
   local installer='https://raw.githubusercontent.com/zplug/installer/master/installer.zsh'
   curl -sL --proto-redir -all,https $installer | zsh
 }
 
-mklink_xdg_config () {
+mklink_xdg_config()  {
   if [ ! -L "${XDG_CONFIG_HOME}/${1}" ]; then
     ln -sf "${PWD}/${1}" "${XDG_CONFIG_HOME}/${1}"
   fi
@@ -28,8 +28,7 @@ if [ ! -d ~/.zplug ]; then
 fi
 
 # dotfiles
-for dotfiles in .?*
-do
+for dotfiles in .?*; do
   case ${dotfiles} in
     ..)            continue ;;
     .git*)         continue ;;
@@ -42,15 +41,12 @@ mkdir -p ${XDG_CONFIG_HOME}
 
 # for ArchLinux
 if [ -f /etc/arch-release ]; then
-  for item in ${ARCH_XDG_CONFIGS[@]}
-  do
+  for item in "${ARCH_XDG_CONFIGS[@]}"; do
     mklink_xdg_config ${item}
   done
 fi
 
 # common
-for item in ${COMMON_XDG_CONFIGS[@]}
-do
+for item in "${COMMON_XDG_CONFIGS[@]}"; do
   mklink_xdg_config ${item}
 done
-
