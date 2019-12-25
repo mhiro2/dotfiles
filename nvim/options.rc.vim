@@ -3,7 +3,7 @@
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=5
- 
+
 " Don't create backup.
 set nowritebackup
 set nobackup
@@ -34,14 +34,14 @@ set whichwrap=b,s,<,>,[,]
 
 " Disable auto wrap.
 autocmd MyAutoCmd FileType *
-      \ if &l:textwidth != 80 && &filetype !=# 'help' |
+      \ if &l:textwidth != 99 && &filetype !=# 'help' |
       \    setlocal textwidth=0 |
       \ endif
 
 " Highlight column after 'textwidth'.
 if exists('&colorcolumn')
   set colorcolumn=+1
-  autocmd FileType c,cpp,python setlocal textwidth=80
+  autocmd FileType c,cpp,python setlocal textwidth=99
 endif
 
 " Enable folding.
