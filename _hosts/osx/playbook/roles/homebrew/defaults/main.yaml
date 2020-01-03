@@ -96,6 +96,7 @@ homebrew_cask_apps:
   - iterm2
   - karabiner-elements
   - mailspring
+  - multipass
   - odrive
   - parallels-client
   - slack
