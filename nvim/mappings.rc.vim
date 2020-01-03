@@ -8,11 +8,22 @@
 " <C-a>, A: move to head.
 inoremap <C-a> <Home>
 nnoremap <C-a> <Home>
-"
+cnoremap <C-a> <Home>
+
 " <C-e>, E: move to end.
 inoremap <C-e> <End>
 nnoremap <C-e> <End>
-"
+cnoremap <C-e> <End>
+
+" <C-k>, K: delete to end.
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+
+" <C-p>: previous history.
+cnoremap <C-p> <Up>
+
+" <C-n>: next history.
+cnoremap <C-n> <Down>
+
 " Move window.
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -39,6 +50,9 @@ noremap : ;
 
 " Easy escape.
 inoremap jj <Esc>
+cnoremap jj <C-c>
+inoremap j<Space> j
+cnoremap j<Space> j
 
 " Select to end of line in visual mode.
 vnoremap v $h
@@ -59,37 +73,14 @@ nnoremap x "_x
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
 
+function! s:smart_close()
+  if winnr('$') != 1
+    close
+  endif
+endfunction
+
 " Close help and git window by pressing q.
-autocmd FileType help,git-status,git-log,qf,J6uil_say,vimconsole,
-       \gitcommit,quickrun,qfreplace,ref,vcs-commit,vcs-status
-       \ nnoremap <buffer><silent> q :<C-u>call <sid>smart_close()<CR>
+autocmd FileType help,git-status,git-log,qf,vimconsole,gitcommit,quickrun,qfreplace,ref,vcs-commit,vcs-status
+  \ nnoremap <buffer><silent> q :<C-u>call <sid>smart_close()<CR>
 autocmd FileType * if (&readonly || !&modifiable) && !hasmapto('q', 'n')
-        \ | nnoremap <buffer><silent> q :<C-u>call <sid>smart_close()<CR>| endif
-
-" <C-a>, A: move to head.
-cnoremap <C-a> <Home>
-
-" <C-b>: previous char.
-"cnoremap <C-b> <Left>
-
-" <C-d>: delete char.
-"cnoremap <C-d> <Del>
-
-" <C-e>, E: move to end.
-cnoremap <C-e> <End>
-
-" <C-f>: next char.
-"cnoremap <C-f> <Right>
-
-" <C-n>: next history.
-"cnoremap <C-n> <Down>
-
-" <C-p>: previous history.
-"cnoremap <C-p> <Up>
-
-" <C-k>, K: delete to end.
-"cnoremap <C-k> <C-\>e getcmdpos() == 1 ?
-"      \ '' : getcmdline()[:getcmdpos()-2]<CR>
-
-" <C-y>: paste.
-"cnoremap <C-y> <C-r>*
+  \ | nnoremap <buffer><silent> q :<C-u>call <sid>smart_close()<CR>| endif
