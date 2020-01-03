@@ -206,3 +206,6 @@ hi Comment term=italic cterm=none ctermfg=darkgray ctermbg=none
 hi Pmenu ctermbg=white ctermfg=black
 hi PmenuSel ctermbg=20 ctermfg=white
 hi PmenuSbar ctermbg=1 ctermfg=0
+
+" Floating window.
+highlight NormalFloat ctermbg=0 ctermfg=white
