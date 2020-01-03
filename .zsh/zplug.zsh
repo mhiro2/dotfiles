@@ -39,6 +39,12 @@ zplug 'slimm609/checksec.sh', \
   as:command, \
   use:'checksec'
 
+# fd
+zplug 'sharkdp/fd', \
+  as:command, \
+  from:gh-r, \
+  rename-to:fd
+
 # fzf
 zplug 'junegunn/fzf-bin', \
   as:command, \
