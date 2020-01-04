@@ -2,11 +2,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-if = "!has('nvim')"
-build = 'make'
-
-[[plugins]]
 repo = 'LeafCage/yankround.vim.git'
 hook_add = '''
   nmap p <Plug>(yankround-p)
