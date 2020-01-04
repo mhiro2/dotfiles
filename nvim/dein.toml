@@ -24,11 +24,11 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'vim-scripts/quickhl.vim'
 hook_add = '''
-  nmap qm <Plug>(quickhl-manual-this)
-  xmap qm <Plug>(quickhl-manual-this)
-  nmap qM <Plug>(quickhl-manual-reset)
-  xmap qM <Plug>(quickhl-manual-reset)
-  nmap qj <Plug>(quickhl-cword-toggle)
+  nmap qj <Plug>(quickhl-manual-this)
+  xmap qj <Plug>(quickhl-manual-this)
+  nmap qJ <Plug>(quickhl-manual-reset)
+  xmap qJ <Plug>(quickhl-manual-reset)
+  nmap ql <Plug>(quickhl-cword-toggle)
 '''
 
 [[plugins]]
