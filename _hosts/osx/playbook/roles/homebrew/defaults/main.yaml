@@ -72,6 +72,7 @@ homebrew_packages:
   - the_silver_searcher
   - tmux
   - tree
+  - unar
   - watch
   - wget
   - xz
