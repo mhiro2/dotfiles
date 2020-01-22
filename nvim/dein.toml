@@ -19,6 +19,9 @@ repo = 'rhysd/clever-f.vim'
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
