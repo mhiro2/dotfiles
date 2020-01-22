@@ -48,7 +48,6 @@ hook_add = '''
   let g:ale_fix_on_save = 1
   let g:ale_fixers = {
     \ '*':          ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'bash':       ['shfmt'],
     \ 'css':        ['prettier'],
     \ 'go':         ['goimports'],
     \ 'javascript': ['eslint', 'prettier'],
@@ -57,7 +56,6 @@ hook_add = '''
     \ 'markdown':   ['prettier'],
     \ 'python':     ['isort', 'yapf'],
     \ 'ruby':       ['rubocop'],
-    \ 'sh':         ['shfmt'],
     \ 'terraform':  ['terraform'],
     \ 'typescript': ['eslint', 'prettier'],
     \ 'yaml':       ['prettier'],
@@ -80,9 +78,6 @@ hook_add = '''
 
   " python
   let g:ale_python_mypy_options = '--ignore-missing-imports'
-
-  " shell
-  let g:ale_sh_shfmt_options = '-i 2 -ci -kp'
 
   let g:ale_echo_msg_error_str = 'E'
   let g:ale_echo_msg_warning_str = 'W'
