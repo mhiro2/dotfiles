@@ -58,7 +58,6 @@ hook_add = '''
     \ 'ruby':       ['rubocop'],
     \ 'terraform':  ['terraform'],
     \ 'typescript': ['eslint', 'prettier'],
-    \ 'yaml':       ['prettier'],
   \}
 
   " lint
