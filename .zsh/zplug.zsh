@@ -52,7 +52,7 @@ zplug 'junegunn/fzf-bin', \
   rename-to:fzf
 
 # ghq
-zplug 'motemen/ghq', \
+zplug 'x-motemen/ghq', \
   as:command, \
   from:gh-r
 
@@ -108,4 +108,3 @@ zplug 'greymd/tmux-xpanes'
 
 # gdb-peda
 zplug 'longld/peda'
-
