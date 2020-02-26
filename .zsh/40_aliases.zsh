@@ -20,7 +20,6 @@ alias df='df -h'
 alias du='du -h'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias g='git'
 alias grep='grep --color=auto'
 alias history='history -i'
 alias hist='history'
@@ -33,21 +32,37 @@ alias reboot='sudo reboot'
 alias scp='scp -p'
 alias sort='LC_ALL=C sort'
 alias sudo='sudo '
+alias ta='anyframe-widget-tmux-attach'
 alias tl='tmux ls'
 alias uniq='LC_ALL=C uniq'
 autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
-type atool >& /dev/null && alias al='atool -l' \
-                        && alias ax='atool -x'
-type consul >& /dev/null && alias ce='consul exec' \
-                         && alias cm='consul members'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type htop >& /dev/null && alias top='htop'
 type nvim >& /dev/null && alias vim='nvim'
 type pget >& /dev/null && alias pget='pget -p6'
 type xpanes >& /dev/null && alias xp='xpanes'
+
+## Git aliases
+alias g='git'
+alias ga='git add'
+alias gaa='anyframe-widget-git-add'
+alias gb='git branch'
+alias gc='git checkout'
+alias gd='git diff'
+alias gf='git fetch'
+alias gl='git log'
+alias glo='git log --pretty=oneline'
+alias gm='git merge'
+alias gp='git push'
+alias gr='git reset'
+alias grb='git rebase'
+alias gst='git status'
+alias gss='git status -s'
+alias gsh='git show'
+alias gt='git tag'
 
 ## Docker aliases
 alias dce='docker container exec -it $(dcls | peco --prompt "[exec /bin/bash]" | cut -d'"'"' '"'"' -f 1) /bin/bash'
@@ -151,7 +166,6 @@ fi
 ## Development
 alias bi="bundle install --jobs=$(nproc) --path=vendor/bundle"
 alias be='bundle exec'
-alias pir='pip install -r requirements.txt'
 
 ## Suffix aliases
 alias -s zip=zipinfo
@@ -159,4 +173,3 @@ alias -s {tgz,gz}=gzcat
 alias -s {tbz,bz2}=bzcat
 alias -s {md,txt}=vim
 alias -s {csv,json,xml,yaml,yml}=vim
-
