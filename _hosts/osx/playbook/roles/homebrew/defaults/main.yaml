@@ -12,6 +12,7 @@ homebrew_packages:
   - atool
   - awscli
   - azure-cli
+  - bat
   - binutils
   - binwalk
   - cmake
