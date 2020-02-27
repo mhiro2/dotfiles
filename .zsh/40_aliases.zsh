@@ -39,6 +39,7 @@ autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
+type bat >& /dev/null && alias cat='bat'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type htop >& /dev/null && alias top='htop'
 type nvim >& /dev/null && alias vim='nvim'
