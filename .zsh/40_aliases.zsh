@@ -24,7 +24,6 @@ alias grep='grep --color=auto'
 alias history='history -i'
 alias hist='history'
 alias http-server='python -m SimpleHTTPServer'
-alias lv='LC_ALL=ja_JP.UTF-8 lv -c'
 alias mkdir='mkdir -p'
 alias pk='anyframe-widget-kill'
 alias pssh='peco-ssh'
@@ -39,7 +38,10 @@ autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
-type bat >& /dev/null && alias cat='bat'
+type bat >& /dev/null && alias cat='bat -pp' && \
+                         alias lv='bat -p --paging=always' && \
+                         alias lvv='bat --paging=always' && \
+                         alias less='bat --paging=always'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type htop >& /dev/null && alias top='htop'
 type nvim >& /dev/null && alias vim='nvim'
