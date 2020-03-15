@@ -1,11 +1,14 @@
 ---
 homebrew_taps:
+  - datawire/blackbird
   - derailed/k9s
   - homebrew/cask
   - homebrew/cask-fonts
   - homebrew/core
+  - nektos/tap
 
 homebrew_packages:
+  - act
   - ansible
   - anyenv
   - aria2
@@ -20,6 +23,7 @@ homebrew_packages:
   - coreutils
   - ctags
   - curl
+  - fd
   - ffmpeg
   - findutils
   - fontconfig
@@ -32,6 +36,7 @@ homebrew_packages:
   - go
   - grpcurl
   - hadolint
+  - helm
   - htop
   - httpie
   - imagemagick
@@ -39,6 +44,7 @@ homebrew_packages:
   - jq
   - jsonlint
   - k9s
+  - kind
   - kubectx
   - kubernetes-cli
   - lsof
@@ -66,6 +72,7 @@ homebrew_packages:
   - sqlite
   - stern
   - sysdig
+  - telepresence
   - telnet
   - terraform
   - terraformer
@@ -99,7 +106,9 @@ homebrew_cask_apps:
   - karabiner-elements
   - mailspring
   - multipass
+  - ngrok
   - odrive
+  - osxfuse
   - parallels-client
   - slack
   - visual-studio-code
