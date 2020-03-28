@@ -96,6 +96,7 @@ homebrew_cask_apps:
   - alfred
   - appcleaner
   - balenaetcher
+  - deepl
   - disablemonitor
   - docker
   - font-noto-sans-cjk-jp
