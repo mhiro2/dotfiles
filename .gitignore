@@ -1,3 +1,10 @@
-.tmux/plugins
+# OS dependent files
 .DS_Store
+Thumbs.db
+
+# Vim
+.netrwhist
 *~
+
+# tmux
+.tmux/plugins
