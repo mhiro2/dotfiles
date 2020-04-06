@@ -113,6 +113,7 @@ homebrew_cask_apps:
   - osxfuse
   - parallels-client
   - slack
+  - snowflake-snowsql
   - visual-studio-code
   - wireshark
   - zoomus

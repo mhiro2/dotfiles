@@ -69,5 +69,7 @@ if [[ $UID == 0 ]]; then
 fi
 
 # anyenv
-[[ -s ${HOME}/.zsh/profile.d/anyenv.sh ]] && source ${HOME}/.zsh/profile.d/anyenv.sh
+source ${HOME}/.zsh/profile.d/anyenv.sh
 
+# Snowflake
+source ${HOME}/.zsh/profile.d/snowflake.sh
