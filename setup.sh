@@ -2,14 +2,14 @@
 
 set -eu
 
-cd $(dirname $0)
+cd "$(dirname "$0")"
 
 git submodule init
 git submodule update
 
 readonly XDG_CONFIG_HOME=${HOME}/.config
 readonly ARCH_XDG_CONFIGS=(compton dunst i3 sway terminator)
-readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip xonsh yapf)
+readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip xonsh yamllint yapf)
 
 zplug_install()  {
   local installer='https://raw.githubusercontent.com/zplug/installer/master/installer.zsh'
@@ -33,20 +33,20 @@ for dotfiles in .?*; do
     ..)            continue ;;
     .git*)         continue ;;
     .travis.yml)   continue ;;
-    *)             ln -sf "${PWD}/${dotfiles}" ${HOME} ;;
+    *)             ln -sf "${PWD}/${dotfiles}" "${HOME}" ;;
   esac
 done
 
-mkdir -p ${XDG_CONFIG_HOME}
+mkdir -p "${XDG_CONFIG_HOME}"
 
 # for ArchLinux
 if [ -f /etc/arch-release ]; then
   for item in "${ARCH_XDG_CONFIGS[@]}"; do
-    mklink_xdg_config ${item}
+    mklink_xdg_config "${item}"
   done
 fi
 
 # common
 for item in "${COMMON_XDG_CONFIGS[@]}"; do
-  mklink_xdg_config ${item}
+  mklink_xdg_config "${item}"
 done
