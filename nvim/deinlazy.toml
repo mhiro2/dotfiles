@@ -226,6 +226,12 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'tbodt/deoplete-tabnine'
+depends = 'deoplete.nvim'
+on_event = ['InsertEnter']
+build = './install.sh'
+
+[[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = ['InsertCharPre']
