@@ -28,6 +28,9 @@ zplug 'plugins/docker-compose', from:oh-my-zsh, lazy:true,  if:"[[ $OSTYPE == da
 # Visual mode for vi-mode.
 zplug 'b4b4r07/zsh-vimode-visual', defer:3
 
+# Display current k8s context and namespace.
+zplug "superbrothers/zsh-kubectl-prompt", defer:2
+
 ##------------------------------
 # Useful commands
 
