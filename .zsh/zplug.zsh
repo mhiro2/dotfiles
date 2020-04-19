@@ -39,6 +39,11 @@ zplug 'slimm609/checksec.sh', \
   as:command, \
   use:'checksec'
 
+# dive
+zplug 'wagoodman/dive', \
+  as:command, \
+  from:gh-r
+
 # fd
 zplug 'sharkdp/fd', \
   as:command, \

@@ -23,6 +23,7 @@ homebrew_packages:
   - coreutils
   - ctags
   - curl
+  - dive
   - fd
   - ffmpeg
   - findutils
