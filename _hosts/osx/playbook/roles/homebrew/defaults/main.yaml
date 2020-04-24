@@ -5,6 +5,7 @@ homebrew_taps:
   - homebrew/cask
   - homebrew/cask-fonts
   - homebrew/core
+  - instrumenta/instrumenta
   - nektos/tap
 
 homebrew_packages:
@@ -20,6 +21,7 @@ homebrew_packages:
   - binwalk
   - cmake
   - cmigemo
+  - conftest
   - coreutils
   - ctags
   - curl
@@ -50,6 +52,8 @@ homebrew_packages:
   - kind
   - kubectx
   - kubernetes-cli
+  - kubeval
+  - kustomize
   - lsof
   - luajit
   - lv
