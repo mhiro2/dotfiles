@@ -102,6 +102,7 @@ homebrew_cask_apps:
   - "0xed"
   - alfred
   - appcleaner
+  - authy
   - balenaetcher
   - deepl
   - disablemonitor
