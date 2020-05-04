@@ -16,9 +16,6 @@ else
   let s:dein_cache_path = expand('~/.cache/vim/dein')
 endif
 
-let g:python2_bin_dir = $PYENV_ROOT . '/versions/neovim2/bin/'
-let g:python3_bin_dir = $PYENV_ROOT . '/versions/neovim3/bin/'
-
 let s:dein_dir = s:dein_cache_path
                  \ .'/repos/github.com/Shougo/dein.vim'
 
@@ -49,5 +46,5 @@ filetype plugin indent on
 runtime! options.rc.vim
 runtime! mappings.rc.vim
 
-let g:python_host_prog = g:python2_bin_dir . 'python'
+let g:python3_bin_dir = $PYENV_ROOT . '/versions/neovim3/bin/'
 let g:python3_host_prog = g:python3_bin_dir . 'python'
