@@ -221,8 +221,6 @@ build = 'make'
 hook_source = '''
   let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin/gocode'
   let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-  let g:deoplete#sources#go#use_cache = 1
-  let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
 '''
 
 [[plugins]]
@@ -284,13 +282,17 @@ on_ft = ['ruby']
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = ['go']
+build = 'GoInstallBinaries'
 hook_source = '''
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
+  autocmd FileType go setlocal shiftwidth=4 tabstop=4 softtabstop=4 noexpandtab
+
   let g:go_highlight_fields = 1
-  let g:go_highlight_types = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_methods = 1
   let g:go_highlight_operators = 1
-  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_extra_types = 1
 '''
 
 [[plugins]]
