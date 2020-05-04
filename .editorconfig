@@ -19,3 +19,6 @@ trim_trailing_whitespace = false
 [*.py]
 indent_size = 4
 
+[{*.go,*.rego}]
+indent_size = 4
+indent_style = tab
