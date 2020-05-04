@@ -198,6 +198,8 @@ set t_Co=256
 
 " Change colorscheme.
 set background=dark
+let g:molokai_original = 1
+let g:rehash256 = 1
 colorscheme molokai
 
 hi Comment term=italic cterm=none ctermfg=darkgray ctermbg=none
