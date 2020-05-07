@@ -178,10 +178,20 @@ on_source = ['denite.nvim']
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = ['context_filetype.vim']
-if = "has('nvim')"
-on_i = 1
+on_event = 'InsertEnter'
 hook_source = '''
-  let g:deoplete#enable_at_startup = 1
+  call deoplete#custom#option('ignore_sources', {
+    \ '_': ['buffer'],
+    \ 'help': ['tabnine'],
+    \ })
+
+  call deoplete#custom#source('tabnine', 'min_pattern_length', 2)
+  call deoplete#custom#source('tabnine', 'rank', 100)
+  call deoplete#custom#var('tabnine', {
+    \ 'line_limit': 300,
+    \ 'max_num_results': 10,
+    \ 'markers': ['.git/'],
+    \ })
 
   function! s:check_back_space() abort
     let col = col('.') - 1
@@ -193,6 +203,8 @@ hook_source = '''
     \ <SID>check_back_space() ? "\<TAB>" :
     \ deoplete#manual_complete()
   inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  call deoplete#enable()
 '''
 
 [[plugins]]
