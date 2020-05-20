@@ -60,7 +60,9 @@ set splitbelow
 set splitright
 " Set minimal width for current window.
 set winwidth=30
-" Set maximam maximam command line window.
+" Set height of command line.
+set cmdheight=2
+" Set maximam command line window.
 set cmdwinheight=5
 " No equal window size.
 set noequalalways
