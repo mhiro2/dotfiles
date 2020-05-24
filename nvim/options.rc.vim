@@ -17,6 +17,9 @@ set autoread
 " Display another buffer when current buffer isn't saved.
 set hidden
 
+" The number of milliseconds between stop typing and trigger CursorHold event. (default: 4000)
+set updatetime=300
+
 " Input method is always off.
 if has('multi_byte_ime')
   set iminsert=0 imsearch=0
