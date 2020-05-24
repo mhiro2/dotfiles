@@ -94,7 +94,68 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-  source ~/.config/nvim/plugins/lightline.rc.vim
+  let g:lightline = {
+    \ 'colorscheme': 'landscape',
+    \ 'mode_map': {'c': 'NORMAL'},
+    \ 'active': {
+    \   'left': [
+    \     ['mode', 'paste'],
+    \     ['gitbranch', 'readonly', 'filename', 'cocstatus', 'currentfunction'],
+    \     ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok'],
+    \   ]
+    \ },
+    \ 'component_function': {
+    \   'readonly': 'LightlineReadonly',
+    \   'filename': 'LightlineFilename',
+    \   'fileformat': 'LightlineFileformat',
+    \   'filetype': 'LightlineFiletype',
+    \   'fileencoding': 'LightlineFileencoding',
+    \   'mode': 'LightlineMode',
+    \   'gitbranch': 'LightlineFugitive',
+    \   'cocstatus': 'coc#status',
+    \   'currentfunction': 'CocCurrentFunction',
+    \ },
+    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+    \ }
+
+  function! LightlineReadonly()
+    return &readonly && &filetype !=# 'help' ? "\uf023" : ''
+  endfunction
+
+  function! LightlineFilename()
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    let modified = &modified ? ' +' : ''
+    return filename . modified
+  endfunction
+
+  function! LightlineFugitive()
+    if exists('*FugitiveHead')
+      let branch = FugitiveHead()
+      return branch !=# '' ? "\ue0a0 ".branch : ''
+    endif
+    return ''
+  endfunction
+
+  function! LightlineFileformat()
+    return winwidth(0) > 70 ? &fileformat : ''
+  endfunction
+
+  function! LightlineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+  endfunction
+
+  function! LightlineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+  endfunction
+
+  function! LightlineMode()
+    return winwidth(0) > 60 ? lightline#mode() : ''
+  endfunction
+
+  function! CocCurrentFunction()
+      return get(b:, 'coc_current_function', '')
+  endfunction
 '''
 
 [[plugins]]
