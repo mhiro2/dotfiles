@@ -42,6 +42,12 @@ zplug 'slimm609/checksec.sh', \
   as:command, \
   use:'checksec'
 
+# delta
+zplug 'dandavison/delta', \
+  as:command, \
+  from:gh-r, \
+  rename-to:delta
+
 # dive
 zplug 'wagoodman/dive', \
   as:command, \
