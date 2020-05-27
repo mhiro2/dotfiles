@@ -13,7 +13,7 @@
 
 [core]
   editor = nvim
-  pager = lv -c
+  pager = delta --plus-color="#084200" --plus-emph-color="#14a100" --minus-color="#660000" --minus-emph-color="#e00b00" --theme='Monokai Extended'
 
 [color]
   ui = auto
@@ -25,15 +25,12 @@
 
 [pager]
   branch = cat
-  log = diff-highlight | lv -c
-  show = diff-highlight | lv -c
-  diff = diff-highlight | lv -c
 
 [diff]
   compactionHeuristic = true
 
 [interactive]
-  diffFilter = diff-highlight
+  diffFilter = delta --color-only
 
 [alias]
   a  = add
