@@ -207,12 +207,14 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
 
-hi Comment term=italic cterm=none ctermfg=darkgray ctermbg=none
+" Overwrite molokai colorscheme.
+highlight LineNr ctermfg=247 ctermbg=none
+highlight Comment ctermfg=245 ctermbg=none
 
 " Popup color.
-hi Pmenu ctermbg=white ctermfg=black
-hi PmenuSel ctermbg=20 ctermfg=white
-hi PmenuSbar ctermbg=1 ctermfg=0
+highlight Pmenu ctermbg=white ctermfg=black
+highlight PmenuSel ctermbg=20 ctermfg=white
+highlight PmenuSbar ctermbg=1 ctermfg=0
 
 " Floating window.
 highlight NormalFloat ctermbg=0 ctermfg=white
