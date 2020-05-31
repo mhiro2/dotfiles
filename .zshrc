@@ -9,21 +9,22 @@ autoload -Uz colors && colors
 autoload -Uz add-zsh-hock
 autoload -Uz is-at-latest
 
-# Load plugins.
-if [[ -f ${HOME}/.zplug/init.zsh ]]; then
-    export ZPLUG_HOME=${HOME}/.zplug
-    export ZPLUG_BIN=${ZPLUG_HOME}/bin
-    export ZPLUG_REPOS=${ZPLUG_HOME}/repos
-    export ZPLUG_ROOT=${ZPLUG_REPOS}/zplug/zplug
-    export ZPLUG_LOADFILE=${HOME}/.zsh/zplug.zsh
+# Load plugins with zinit.
+if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
+  source "${HOME}/.zinit/bin/zinit.zsh"
+  autoload -Uz _zinit
+  (( ${+_comps} )) && _comps[zinit]=_zinit
 
-    source ${HOME}/.zplug/init.zsh
+  zinit light-mode for \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
 
-    zplug load
+  source "${HOME}/.zsh/zinit.zsh"
 fi
 
 # Load config files.
 for f in ${HOME}/.zsh/[0-9]*.(sh|zsh)
 do
-    source "${f}"
+  source "${f}"
 done

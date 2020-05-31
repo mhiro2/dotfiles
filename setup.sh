@@ -11,9 +11,9 @@ readonly XDG_CONFIG_HOME=${HOME}/.config
 readonly ARCH_XDG_CONFIGS=(compton dunst i3 sway terminator)
 readonly COMMON_XDG_CONFIGS=(fish git nvim peco pip xonsh yamllint yapf)
 
-zplug_install()  {
-  local installer='https://raw.githubusercontent.com/zplug/installer/master/installer.zsh'
-  curl -sL --proto-redir -all,https $installer | zsh
+zinit_install()  {
+  mkdir "${HOME}/.zinit"
+  git clone https://github.com/zdharma/zinit.git "${HOME}/.zinit/bin"
 }
 
 mklink_xdg_config()  {
@@ -22,9 +22,9 @@ mklink_xdg_config()  {
   fi
 }
 
-# install zplug
-if [ ! -d ~/.zplug ]; then
-  zplug_install
+# install zinit
+if [ ! -d "${HOME}/.zinit" ]; then
+  zinit_install
 fi
 
 # dotfiles
