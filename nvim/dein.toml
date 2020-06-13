@@ -56,9 +56,12 @@ hook_add = '''
   endfunction
 
   inoremap <silent><expr> <Tab>
-    \ pumvisible() ? "\<C-n>" :
+    \ pumvisible() ? coc#_select_confirm() :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
     \ <SID>check_back_space() ? "\<Tab>" :
     \ coc#refresh()
+
+  let g:coc_snippet_next = '<tab>'
 
   " Use <c-space> to trigger completion.
   inoremap <silent><expr> <c-space> coc#refresh()
@@ -91,6 +94,7 @@ hook_post_update = '''
   CocInstall coc-json
   CocInstall coc-go
   CocInstall coc-python
+  CocInstall coc-snippets
   CocInstall coc-tabnine
   CocInstall coc-tsserver
   CocInstall coc-yaml
