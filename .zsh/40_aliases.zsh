@@ -87,8 +87,9 @@ alias dvls='docker volume ls'
 alias dvp='docker volume prune'
 
 alias k='kubectl'
-alias kns='kubens'
-alias kcx='kubectx'
+alias krew='kubectl krew'
+alias kns='kubectl ns'
+alias kcx='kubectl ctx'
 alias st='stern'
 
 ## Global aliases.
