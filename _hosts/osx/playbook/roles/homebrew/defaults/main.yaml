@@ -50,7 +50,7 @@ homebrew_packages:
   - jsonlint
   - k9s
   - kind
-  - kubectx
+  - krew
   - kubernetes-cli
   - kubeval
   - kustomize

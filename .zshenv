@@ -71,5 +71,8 @@ fi
 # anyenv
 source ${HOME}/.zsh/profile.d/anyenv.sh
 
+# krew
+source ${HOME}/.zsh/profile.d/krew.sh
+
 # Snowflake
 source ${HOME}/.zsh/profile.d/snowflake.sh
