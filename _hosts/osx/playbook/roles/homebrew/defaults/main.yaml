@@ -1,5 +1,6 @@
 ---
 homebrew_taps:
+  - argoproj/tap
   - datawire/blackbird
   - derailed/k9s
   - homebrew/cask
@@ -12,6 +13,7 @@ homebrew_packages:
   - act
   - ansible
   - anyenv
+  - argocd
   - aria2
   - atool
   - awscli
