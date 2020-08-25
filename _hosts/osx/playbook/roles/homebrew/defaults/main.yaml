@@ -123,6 +123,7 @@ homebrew_cask_apps:
   - odrive
   - osxfuse
   - parallels-client
+  - pock
   - slack
   - snowflake-snowsql
   - visual-studio-code
