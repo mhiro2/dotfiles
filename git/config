@@ -47,5 +47,5 @@
   sh = show
 
 [ghq]
-  root = ~/.ghq
-  root = ~/.go/src
+  root = ~/go/src
+  root = ~/ghq
