@@ -1,5 +1,6 @@
 ---
 homebrew_taps:
+  - aquasecurity/trivy
   - argoproj/tap
   - datawire/blackbird
   - derailed/k9s
@@ -94,6 +95,7 @@ homebrew_packages:
   - the_silver_searcher
   - tmux
   - tree
+  - trivy
   - unar
   - watch
   - wget
