@@ -156,6 +156,11 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   type sway >& /dev/null && alias sway='XKB_DEFAULT_OPTIONS=ctrl:nocaps sway'
 fi
 
+## Overwrite ls aliases with logo-ls
+type logo-ls >& /dev/null && alias la='logo-ls -lA' \
+                          && alias ll='logo-ls -l' \
+                          && alias ls='logo-ls'
+
 ## Development
 alias bi="bundle install --jobs=$(nproc) --path=vendor/bundle"
 alias be='bundle exec'

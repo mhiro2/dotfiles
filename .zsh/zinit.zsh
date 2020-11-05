@@ -66,6 +66,10 @@ zinit load x-motemen/ghq
 zinit ice from"gh-r" as"program" pick"*/gojq"
 zinit load itchyny/gojq
 
+# logo-ls
+zinit ice from"gh-r" as"program" pick"*/logo-ls"
+zinit load Yash-Handa/logo-ls
+
 # lstf
 zinit ice if'[[ "$OSTYPE" = linux* ]]' from"gh-r" as"program" pick"*/lstf"
 zinit load yuuki/lstf
