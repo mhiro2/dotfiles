@@ -86,7 +86,7 @@ alias dnp='docker network prune'
 alias dvls='docker volume ls'
 alias dvp='docker volume prune'
 
-alias k='kubectl'
+alias k='kubecolor'
 alias krew='kubectl krew'
 alias kns='kubectl ns'
 alias kcx='kubectl ctx'
