@@ -157,8 +157,8 @@ elif [[ "${OSTYPE}" == linux* ]]; then
 fi
 
 ## Overwrite ls aliases with logo-ls
-type logo-ls >& /dev/null && alias la='logo-ls -lA' \
-                          && alias ll='logo-ls -l' \
+type logo-ls >& /dev/null && alias la='logo-ls -lAh' \
+                          && alias ll='logo-ls -lh' \
                           && alias ls='logo-ls'
 
 ## Development
