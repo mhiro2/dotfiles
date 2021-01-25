@@ -15,6 +15,18 @@ function peco-ssh {
   fi
 }
 
+function firestore-emulator-start {
+  FIRESTORE_EMULATOR_HOST="127.0.0.1:9999"
+  gcloud beta emulators firestore start --host-port="${FIRESTORE_EMULATOR_HOST}" &
+  export FIRESTORE_EMULATOR_HOST
+}
+
+function firestore-emulator-stop {
+  kill -9 $(lsof -t -i tcp:9999)
+  unset FIRESTORE_EMULATOR_HOST
+}
+
+
 ## Common aliases
 alias df='df -h'
 alias du='du -h'
