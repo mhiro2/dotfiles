@@ -43,6 +43,7 @@ homebrew_packages:
   - ghq
   - git
   - go
+  - golangci-lint
   - graphviz
   - grpcurl
   - hadolint
