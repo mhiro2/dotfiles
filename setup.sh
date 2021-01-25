@@ -9,7 +9,7 @@ git submodule update
 
 readonly XDG_CONFIG_HOME=${HOME}/.config
 readonly ARCH_XDG_CONFIGS=(compton dunst i3 sway terminator)
-readonly COMMON_XDG_CONFIGS=(bat fish git nvim peco pip xonsh yamllint yapf)
+readonly COMMON_XDG_CONFIGS=(bat git nvim peco pip xonsh yamllint yapf)
 
 zinit_install()  {
   mkdir "${HOME}/.zinit"
