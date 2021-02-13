@@ -183,4 +183,4 @@ alias -s {tgz,gz}=gzcat
 alias -s {tbz,bz2}=bzcat
 alias -s {md,txt}=vim
 alias -s csv=csview
-alias -s {json,xml,yaml,yml}=vim
+alias -s {json,xml,yaml,yml}=bat
