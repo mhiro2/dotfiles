@@ -42,6 +42,10 @@ zinit snippet $(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
 # anyframe
 zinit light mollifier/anyframe
 
+# csview
+zinit ice from"gh-r" as"program" pick"*/csview"
+zinit load wfxr/csview
+
 # delta
 zinit ice from"gh-r" as"program" pick"*/delta"
 zinit load dandavison/delta
