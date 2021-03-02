@@ -74,6 +74,10 @@ zinit load itchyny/gojq
 zinit ice from"gh-r" as"program" pick"*/grex"
 zinit load pemistahl/grex
 
+# ko
+zinit ice from"gh-r" as"program" pick"*/ko"
+zinit load google/ko
+
 # kubecolor
 zinit ice from"gh-r" as"program" pick"*/kubecolor"
 zinit load dty1er/kubecolor
