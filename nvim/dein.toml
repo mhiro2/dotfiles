@@ -113,7 +113,7 @@ hook_add = '''
     \ 'json':       ['prettier'],
     \ 'html':       ['prettier'],
     \ 'markdown':   ['prettier'],
-    \ 'python':     ['isort', 'yapf'],
+    \ 'python':     ['isort', 'black'],
     \ 'ruby':       ['rubocop'],
     \ 'terraform':  ['terraform'],
     \ 'typescript': ['eslint', 'prettier'],
