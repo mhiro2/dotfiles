@@ -4,6 +4,7 @@ homebrew_taps:
   - argoproj/tap
   - datawire/blackbird
   - derailed/k9s
+  - FairwindsOps/tap
   - homebrew/cask
   - homebrew/cask-fonts
   - homebrew/core
@@ -76,6 +77,7 @@ homebrew_packages:
   - parallel
   - peco
   - pigz
+  - pluto
   - prettier
   - pv
   - python
