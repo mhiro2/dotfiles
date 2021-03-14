@@ -1,23 +1,23 @@
 ---
 - block:
     - name: Install homebrew
-      shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      ansible.builtin.shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       args:
         creates: /usr/local/Cellar
 
     - name: Add third-pirty repositories for homebrew
-      homebrew_tap:
+      community.general.homebrew_tap:
         name: "{{ item }}"
         state: present
       with_items: "{{ homebrew_taps }}"
 
     - name: Install packages using homebrew
-      homebrew:
+      community.general.homebrew:
         name: "{{ homebrew_packages }}"
         state: present
 
     - name: Install cask packages using homebrew
-      homebrew_cask:
+      community.general.homebrew_cask:
         name: "{{ homebrew_cask_apps }}"
         state: present
 
