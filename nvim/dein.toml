@@ -16,6 +16,9 @@ hook_add = '''
 repo = 'rhysd/clever-f.vim'
 
 [[plugins]]
+repo = 'unblevable/quick-scope'
+
+[[plugins]]
 repo = 'kana/vim-operator-user'
 
 [[plugins]]
