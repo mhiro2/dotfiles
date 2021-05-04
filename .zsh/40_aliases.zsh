@@ -16,13 +16,13 @@ function peco-ssh {
 }
 
 function firestore-emulator-start {
-  FIRESTORE_EMULATOR_HOST="127.0.0.1:9999"
+  FIRESTORE_EMULATOR_HOST="127.0.0.1:8081"
   gcloud beta emulators firestore start --host-port="${FIRESTORE_EMULATOR_HOST}" &
   export FIRESTORE_EMULATOR_HOST
 }
 
 function firestore-emulator-stop {
-  kill -9 $(lsof -t -i tcp:9999)
+  kill -9 $(lsof -t -i tcp:8081)
   unset FIRESTORE_EMULATOR_HOST
 }
 
