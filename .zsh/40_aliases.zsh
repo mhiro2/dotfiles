@@ -129,8 +129,6 @@ if [[ "${OSTYPE}" == darwin* ]]; then
     alias cp='gcp -i'
     alias mv='gmv -i'
     alias rm='grm -i'
-
-    alias make="make -j$(gnproc)"
     alias nproc='gnproc'
     alias shuf='gshuf'
   fi
@@ -146,7 +144,6 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   alias la='ls -aFhl --color'
   alias ll='ls -Fhl --color'
   alias ls='ls --color'
-  alias make="make -j$(nproc)"
 
   type xdg-open >& /dev/null && alias open='xdg-open'
   type xsel >& /dev/null && alias pbcopy='xsel -bi' \
