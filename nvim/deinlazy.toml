@@ -1,7 +1,4 @@
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
 repo = 'rhysd/accelerated-jk'
 on_map = {n = '<Plug>'}
 hook_add = '''
@@ -10,11 +7,22 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/deol.nvim'
-on_cmd = ['Deol']
+repo = 'hotwatermorning/auto-git-diff'
+on_ft = ['gitrebase']
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = {nxv = '<plug>'}
 hook_add = '''
-  nnoremap <silent>zo :<C-u>Deol -split=floating<CR>
+  nmap gc <plug>(caw:prefix)
+  xmap gc <plug>(caw:prefix)
+  nmap gcc <Plug>(caw:hatpos:toggle)
+  xmap gcc <Plug>(caw:hatpos:toggle)
+  vmap gcc <Plug>(caw:hatpos:toggle)
 '''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -154,9 +162,15 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-on_event = ['TextYankPost']
+repo = 'chemzqm/denite-git'
 on_source = ['denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = ['Deol']
+hook_add = '''
+  nnoremap <silent>zo :<C-u>Deol -split=floating<CR>
+'''
 
 [[plugins]]
 repo      = 'raghur/fruzzy'
@@ -168,34 +182,17 @@ hook_add  = '''
 hook_post_update = 'call fruzzy#install()'
 
 [[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_event = ['TextYankPost']
+on_source = ['denite.nvim']
+
+[[plugins]]
 repo = 'Jagua/vim-denite-ghq'
 on_source = ['denite.nvim']
 
 [[plugins]]
-repo = 'chemzqm/denite-git'
-on_source = ['denite.nvim']
-
-[[plugins]]
-repo = 'tyru/caw.vim'
-on_map = {nxv = '<plug>'}
-hook_add = '''
-  nmap gc <plug>(caw:prefix)
-  xmap gc <plug>(caw:prefix)
-  nmap gcc <Plug>(caw:hatpos:toggle)
-  xmap gcc <Plug>(caw:hatpos:toggle)
-  vmap gcc <Plug>(caw:hatpos:toggle)
-'''
-
-[[plugins]]
-repo = 'rhysd/vim-operator-surround'
-depends = ['vim-operator-user']
-on_map = {n = '<Plug>'}
-hook_add = '''
-  nmap <silent>sa <Plug>(operator-surround-append)a
-  nmap <silent>sd <Plug>(operator-surround-delete)a
-  nmap <silent>sr <Plug>(operator-surround-replace)a
-  nmap <silent>sc <Plug>(operator-surround-replace)a
-'''
+repo = 'tpope/vim-endwise'
+on_ft = ['ruby']
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
@@ -211,9 +208,12 @@ hook_soure = '''
 '''
 
 [[plugins]]
-repo = 'tpope/vim-endwise'
-on_ft = ['ruby']
-
-[[plugins]]
-repo = 'hotwatermorning/auto-git-diff'
-on_ft = ['gitrebase']
+repo = 'rhysd/vim-operator-surround'
+depends = ['vim-operator-user']
+on_map = {n = '<Plug>'}
+hook_add = '''
+  nmap <silent>sa <Plug>(operator-surround-append)a
+  nmap <silent>sd <Plug>(operator-surround-delete)a
+  nmap <silent>sr <Plug>(operator-surround-replace)a
+  nmap <silent>sc <Plug>(operator-surround-replace)a
+'''

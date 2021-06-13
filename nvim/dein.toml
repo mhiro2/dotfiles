@@ -2,47 +2,53 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'LeafCage/yankround.vim.git'
+repo = 'dense-analysis/ale'
 hook_add = '''
-  nmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap <C-p> <Plug>(yankround-prev)
-  nmap <C-n> <Plug>(yankround-next)
-  let g:yankround_max_history = 50
-  nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+  " fix
+  let g:ale_fix_on_save = 1
+  let g:ale_fixers = {
+    \ '*':          ['remove_trailing_lines', 'trim_whitespace'],
+    \ 'css':        ['prettier'],
+    \ 'go':         ['goimports'],
+    \ 'javascript': ['eslint', 'prettier'],
+    \ 'json':       ['prettier'],
+    \ 'html':       ['prettier'],
+    \ 'markdown':   ['prettier'],
+    \ 'python':     ['isort', 'black'],
+    \ 'ruby':       ['rubocop'],
+    \ 'rust':       ['rustfmt'],
+    \ 'terraform':  ['terraform'],
+    \ 'typescript': ['eslint', 'prettier'],
+  \}
+
+  " lint
+  let g:ale_linters = {
+    \ 'bash':       ['shellcheck'],
+    \ 'dockerfile': ['hadolint'],
+    \ 'go':         ['gofmt', 'golint'],
+    \ 'json':       ['jsonlint'],
+    \ 'python':     ['flake8', 'mypy'],
+    \ 'ruby':       ['rubocop'],
+    \ 'rust':       ['rls'],
+    \ 'sh':         ['shellcheck'],
+    \ 'terraform':  ['tflint'],
+    \ 'yaml':       ['yamllint'],
+  \ }
+  let g:ale_lint_delay = 400
+  let g:ale_lint_on_text_changed = 'never'
+
+  " python
+  let g:ale_python_mypy_options = '--ignore-missing-imports'
+
+  let g:ale_echo_msg_error_str = 'E'
+  let g:ale_echo_msg_warning_str = 'W'
+  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_sign_error = '✖'
 '''
 
 [[plugins]]
 repo = 'rhysd/clever-f.vim'
-
-[[plugins]]
-repo = 'unblevable/quick-scope'
-
-[[plugins]]
-repo = 'kana/vim-operator-user'
-
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'vim-scripts/quickhl.vim'
-hook_add = '''
-  nmap qj <Plug>(quickhl-manual-this)
-  xmap qj <Plug>(quickhl-manual-this)
-  nmap qJ <Plug>(quickhl-manual-reset)
-  xmap qJ <Plug>(quickhl-manual-reset)
-  nmap ql <Plug>(quickhl-cword-toggle)
-'''
-
-[[plugins]]
-repo = 'rhysd/migemo-search.vim'
-if = "executable('cmigemo')"
-hook_add = '''
-  cnoremap <expr><CR> migemosearch#replace_search_word()."\<CR>"
-'''
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
@@ -104,54 +110,28 @@ hook_post_update = '''
 '''
 
 [[plugins]]
-repo = 'dense-analysis/ale'
+repo = 'editorconfig/editorconfig-vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
 hook_add = '''
-  " fix
-  let g:ale_fix_on_save = 1
-  let g:ale_fixers = {
-    \ '*':          ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'css':        ['prettier'],
-    \ 'go':         ['goimports'],
-    \ 'javascript': ['eslint', 'prettier'],
-    \ 'json':       ['prettier'],
-    \ 'html':       ['prettier'],
-    \ 'markdown':   ['prettier'],
-    \ 'python':     ['isort', 'black'],
-    \ 'ruby':       ['rubocop'],
-    \ 'terraform':  ['terraform'],
-    \ 'typescript': ['eslint', 'prettier'],
-  \}
-
-  " lint
-  let g:ale_linters = {
-    \ 'bash':       ['shellcheck'],
-    \ 'dockerfile': ['hadolint'],
-    \ 'go':         ['gofmt', 'golint'],
-    \ 'json':       ['jsonlint'],
-    \ 'python':     ['flake8', 'mypy'],
-    \ 'ruby':       ['rubocop'],
-    \ 'sh':         ['shellcheck'],
-    \ 'terraform':  ['tflint'],
-    \ 'yaml':       ['yamllint'],
-  \ }
-  let g:ale_lint_delay = 400
-  let g:ale_lint_on_text_changed = 'never'
-
-  " python
-  let g:ale_python_mypy_options = '--ignore-missing-imports'
-
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_sign_warning = '⚠'
-  let g:ale_sign_error = '✖'
+  nnoremap <space>f :Fern . -drawer -reveal=% -toggle -stay -width=40<CR>
 '''
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
+repo = 'lambdalisue/fern-hijack.vim'
+depends = ['lambdalisue/fern.vim']
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
+repo = 'lambdalisue/fern-git-status.vim'
+depends = ['lambdalisue/fern.vim']
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add = '''
+  let g:fern#renderer = "nerdfont"
+'''
+depends = ['lambdalisue/fern.vim', 'lambdalisue/nerdfont.vim']
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -243,7 +223,70 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'editorconfig/editorconfig-vim'
+repo = 'rhysd/migemo-search.vim'
+if = "executable('cmigemo')"
+hook_add = '''
+  cnoremap <expr><CR> migemosearch#replace_search_word()."\<CR>"
+'''
 
 [[plugins]]
 repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'unblevable/quick-scope'
+
+[[plugins]]
+repo = 'vim-scripts/quickhl.vim'
+hook_add = '''
+  nmap qj <Plug>(quickhl-manual-this)
+  xmap qj <Plug>(quickhl-manual-this)
+  nmap qJ <Plug>(quickhl-manual-reset)
+  xmap qJ <Plug>(quickhl-manual-reset)
+  nmap ql <Plug>(quickhl-cword-toggle)
+'''
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+on_map = [['n', '<Plug>']]
+hook_add = '''
+  nmap w <Plug>(easymotion-lineforward)
+  nnoremap W w
+  nmap b <Plug>(easymotion-linebackward)
+  nnoremap B b
+  nmap [Alt]j <Plug>(easymotion-j)
+  nmap [Alt]k <Plug>(easymotion-k)
+  nmap ' <Plug>(easymotion-prefix)
+
+  let g:EasyMotion_startofline = 0
+  let g:EasyMotion_show_prompt = 0
+  let g:EasyMotion_verbose = 0
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim.git'
+hook_add = '''
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+  let g:yankround_max_history = 50
+  nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+'''
