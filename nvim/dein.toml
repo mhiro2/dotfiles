@@ -29,7 +29,7 @@ hook_add = '''
     \ 'json':       ['jsonlint'],
     \ 'python':     ['flake8', 'mypy'],
     \ 'ruby':       ['rubocop'],
-    \ 'rust':       ['rls'],
+    \ 'rust':       ['analyzer'],
     \ 'sh':         ['shellcheck'],
     \ 'terraform':  ['tflint'],
     \ 'yaml':       ['yamllint'],
@@ -103,6 +103,7 @@ hook_post_update = '''
   CocInstall coc-json
   CocInstall coc-go
   CocInstall coc-python
+  CocInstall coc-rust-analyzer
   CocInstall coc-snippets
   CocInstall coc-tabnine
   CocInstall coc-tsserver
