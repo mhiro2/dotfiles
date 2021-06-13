@@ -53,6 +53,10 @@ export GOPATH=${HOME}/go
 export GOBIN=${GOPATH}/bin
 export PATH=${GOBIN}:${PATH}
 
+# Settings for rust
+export CARGO_HOME=${HOME}/.cargo
+export PATH=${CARGO_HOME}/bin:${PATH}
+
 ## XDG base directory
 export XDG_CONFIG_HOME=${HOME}/.config
 
