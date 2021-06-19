@@ -102,7 +102,7 @@ hook_add = '''
 hook_post_update = '''
   CocInstall coc-json
   CocInstall coc-go
-  CocInstall coc-python
+  CocInstall coc-pyright
   CocInstall coc-rust-analyzer
   CocInstall coc-snippets
   CocInstall coc-tabnine
