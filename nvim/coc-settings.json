@@ -1,4 +1,38 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "go",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "markdown",
+    "python",
+    "rust",
+    "typescript",
+    "typescriptreact",
+    "yaml"
+  ],
+  "coc.preferences.willSaveHandlerTimeout": 1000,
+  "diagnostic.enableSign": true,
+  "diagnostic.enableMessage": "always",
+  "diagnostic.enableHighlightLineNumber": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "float",
+  "diagnostic.errorSign": "✖",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic-languageserver.filetypes": {
+    "dockerfile": "hadolint",
+    "sh": "shellcheck"
+  },
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -6,17 +40,10 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
-    },
-    "golangci-lint-languageserver": {
-      "command": "golangci-lint-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "command": ["golangci-lint", "run", "--enable-all", "--disable", "lll", "--out-format", "json"]
-      }
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
     },
     "terraform": {
       "command": "terraform-lsp",
@@ -27,5 +54,6 @@
   "python.formatting.provider": "black",
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.mypyEnabled": true
+  "python.linting.mypyEnabled": true,
+  "python.sortImports.path": "isort"
 }

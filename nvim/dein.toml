@@ -4,47 +4,10 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
-  " fix
   let g:ale_fix_on_save = 1
   let g:ale_fixers = {
-    \ '*':          ['remove_trailing_lines', 'trim_whitespace'],
-    \ 'css':        ['prettier'],
-    \ 'go':         ['goimports'],
-    \ 'javascript': ['eslint', 'prettier'],
-    \ 'json':       ['prettier'],
-    \ 'html':       ['prettier'],
-    \ 'markdown':   ['prettier'],
-    \ 'python':     ['isort', 'black'],
-    \ 'ruby':       ['rubocop'],
-    \ 'rust':       ['rustfmt'],
-    \ 'terraform':  ['terraform'],
-    \ 'typescript': ['eslint', 'prettier'],
+    \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \}
-
-  " lint
-  let g:ale_linters = {
-    \ 'bash':       ['shellcheck'],
-    \ 'dockerfile': ['hadolint'],
-    \ 'go':         ['gofmt', 'golint'],
-    \ 'json':       ['jsonlint'],
-    \ 'python':     ['flake8', 'mypy'],
-    \ 'ruby':       ['rubocop'],
-    \ 'rust':       ['analyzer'],
-    \ 'sh':         ['shellcheck'],
-    \ 'terraform':  ['tflint'],
-    \ 'yaml':       ['yamllint'],
-  \ }
-  let g:ale_lint_delay = 400
-  let g:ale_lint_on_text_changed = 'never'
-
-  " python
-  let g:ale_python_mypy_options = '--ignore-missing-imports'
-
-  let g:ale_echo_msg_error_str = 'E'
-  let g:ale_echo_msg_warning_str = 'W'
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  let g:ale_sign_warning = '⚠'
-  let g:ale_sign_error = '✖'
 '''
 
 [[plugins]]
@@ -98,11 +61,22 @@ hook_add = '''
   " Formatting selected code.
   xmap <leader>f <Plug>(coc-format-selected)
   nmap <leader>f <Plug>(coc-format-selected)
+
+  " python
+  autocmd FileType python let b:coc_root_patterns = ['.git', '.env', '.venv', 'pyproject.toml']
+  autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'python.sortImports')
+
+  " golang
+  autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 '''
 hook_post_update = '''
+  CocInstall coc-diagnostic
+  CocInstall coc-eslint
+  CocInstall coc-html
   CocInstall coc-json
   CocInstall coc-go
   CocInstall coc-pyright
+  CocInstall coc-prettier
   CocInstall coc-rust-analyzer
   CocInstall coc-snippets
   CocInstall coc-tabnine
@@ -287,6 +261,9 @@ hook_add = '''
   let g:go_highlight_function_calls = 1
   let g:go_highlight_methods = 1
   let g:go_highlight_structs = 1
+
+  " terraform
+  let g:terraform_fmt_on_save = 1
 '''
 
 [[plugins]]
