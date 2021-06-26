@@ -175,6 +175,8 @@ syntax enable
 set title
 " Show line number.
 set number
+" Merge signcolumn and number column into one.
+set signcolumn=number
 " Show the line and column number of the cursor position.
 set ruler
 " Always display a status line at the bottom of the window.
