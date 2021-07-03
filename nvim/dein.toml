@@ -75,6 +75,7 @@ hook_post_update = '''
   CocInstall coc-html
   CocInstall coc-json
   CocInstall coc-go
+  CocInstall coc-pairs
   CocInstall coc-pyright
   CocInstall coc-prettier
   CocInstall coc-rust-analyzer
