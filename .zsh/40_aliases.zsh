@@ -104,6 +104,9 @@ alias kns='kubectl ns'
 alias kcx='kubectl ctx'
 alias st='stern'
 
+## GCP
+alias gcurl='curl --header "Authorization: Bearer $(gcloud auth print-identity-token)"'
+
 ## Global aliases.
 alias -g A='| awk'
 alias -g G='| grep'
