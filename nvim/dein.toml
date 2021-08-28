@@ -215,6 +215,21 @@ repo = 'lambdalisue/nerdfont.vim'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+on_event = 'BufRead'
+hook_add = '''
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = 'all',
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+'''
+hook_post_update = 'TSUpdate'
+
+[[plugins]]
 repo = 'unblevable/quick-scope'
 
 [[plugins]]
@@ -252,20 +267,6 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'kana/vim-operator-user'
-
-[[plugins]]
-repo = 'sheerun/vim-polyglot'
-hook_add = '''
-  " golang
-  let g:go_highlight_format_strings = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_function_calls = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_structs = 1
-
-  " terraform
-  let g:terraform_fmt_on_save = 1
-'''
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim.git'
