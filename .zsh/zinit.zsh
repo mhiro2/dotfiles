@@ -100,6 +100,10 @@ zinit light BurntSushi/ripgrep
 # tmux-xpanes
 zinit light greymd/tmux-xpanes
 
+# tv
+zinit ice from"gh-r" as"program" pick"*/tv"
+zinit load uzimaru0000/tv
+
 # xxh
 zinit ice from"gh-r" as"program" pick"*/xxh"
 zinit load xxh/xxh
