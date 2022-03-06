@@ -16,7 +16,7 @@
 
 [core]
   editor = nvim
-  pager = delta --plus-color="#084200" --plus-emph-color="#14a100" --minus-color="#660000" --minus-emph-color="#e00b00" --theme='Monokai Extended'
+  pager = delta
 
 [color]
   ui = auto
@@ -31,9 +31,10 @@
 
 [diff]
   compactionHeuristic = true
+  colorMoved = default
 
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = delta --color-only --features=interactive
 
 [alias]
   a  = add
@@ -50,13 +51,20 @@
   sh = show
 
 [delta]
+  negative = true
   features = side-by-side line-numbers decorations
+  minus-style = normal "#660000"
+  minus-emph-style = normal "#e00b00"
+  plus-style = syntax "#084200"
+  plus-emph-style = syntax "#14a100"
+  syntax-theme = "Monokai Extended"
   whitespace-error-style = 22 reverse
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
   file-decoration-style = none
+  hunk-header-decoration-style = cyan box ul
 
 [ghq]
   root = ~/go/src
