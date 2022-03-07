@@ -43,5 +43,5 @@ update:
 .PHONY: zinit
 zinit:
 ifndef $(ZINIT_CMD)
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+	/bin/bash -c "$$(curl -fsSL https://git.io/zinit-install)"
 endif
