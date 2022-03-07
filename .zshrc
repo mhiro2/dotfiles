@@ -9,18 +9,20 @@ autoload -Uz colors && colors
 autoload -Uz add-zsh-hock
 autoload -Uz is-at-latest
 
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
 # Load plugins with zinit.
-if [[ -f "${HOME}/.zinit/bin/zinit.zsh" ]]; then
-  source "${HOME}/.zinit/bin/zinit.zsh"
+if [[ -d "${ZINIT_HOME}" ]]; then
+  source "${ZINIT_HOME}/zinit.zsh"
 
   autoload -Uz _zinit
   (( ${+_comps} )) && _comps[zinit]=_zinit
 
   zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
   source "${HOME}/.zsh/zinit.zsh"
 fi
