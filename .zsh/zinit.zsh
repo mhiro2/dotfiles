@@ -73,10 +73,6 @@ zinit load pemistahl/grex
 zinit ice from"gh-r" as"program" pick"*/ko"
 zinit load google/ko
 
-# kubecolor
-zinit ice from"gh-r" as"program" pick"*/kubecolor"
-zinit load dty1er/kubecolor
-
 # logo-ls
 zinit ice from"gh-r" as"program" pick"*/logo-ls"
 zinit load Yash-Handa/logo-ls
