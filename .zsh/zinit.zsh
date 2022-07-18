@@ -5,7 +5,7 @@
 zinit snippet OMZL::git.zsh
 
 # Syntax highlighting.
-zinit light 'zdharma/fast-syntax-highlighting'
+zinit light 'zdharma-continuum/fast-syntax-highlighting'
 
 # History search.
 zinit light 'zsh-users/zsh-history-substring-search'
@@ -69,17 +69,9 @@ zinit load itchyny/gojq
 zinit ice from"gh-r" as"program" pick"*/grex"
 zinit load pemistahl/grex
 
-# ko
-zinit ice from"gh-r" as"program" pick"*/ko"
-zinit load google/ko
-
 # logo-ls
 zinit ice from"gh-r" as"program" pick"*/logo-ls"
 zinit load Yash-Handa/logo-ls
-
-# lstf
-zinit ice if'[[ "$OSTYPE" = linux* ]]' from"gh-r" as"program" pick"*/lstf"
-zinit load yuuki/lstf
 
 # peco
 zinit ice from"gh-r" as"program" pick"*/peco"
