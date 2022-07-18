@@ -69,9 +69,9 @@ zinit load itchyny/gojq
 zinit ice from"gh-r" as"program" pick"*/grex"
 zinit load pemistahl/grex
 
-# logo-ls
-zinit ice from"gh-r" as"program" pick"*/logo-ls"
-zinit load Yash-Handa/logo-ls
+# lsd
+zinit ice from"gh-r" as"program" pick"*/lsd"
+zinit load Peltoche/lsd
 
 # peco
 zinit ice from"gh-r" as"program" pick"*/peco"
