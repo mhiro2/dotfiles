@@ -12,10 +12,13 @@ bindkey -M viins '^A' vi-beginning-of-line
 bindkey -M viins '^E' vi-end-of-line
 
 # Search forward and backward in the history for a specified string.
-bindkey -M vicmd '^N' history-beginning-search-forward
-bindkey -M vicmd '^P' history-beginning-search-backward
-bindkey -M viins '^N' history-beginning-search-forward
-bindkey -M viins '^P' history-beginning-search-backward
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey -M vicmd '^N' history-beginning-search-forward-end
+bindkey -M vicmd '^P' history-beginning-search-backward-end
+bindkey -M viins '^N' history-beginning-search-forward-end
+bindkey -M viins '^P' history-beginning-search-backward-end
 
 # Search forward and backward in the history for any part of string.
 bindkey -M vicmd 'k' history-substring-search-up
