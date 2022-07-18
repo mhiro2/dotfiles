@@ -15,18 +15,6 @@ function peco-ssh {
   fi
 }
 
-function firestore-emulator-start {
-  FIRESTORE_EMULATOR_HOST="127.0.0.1:8081"
-  gcloud beta emulators firestore start --host-port="${FIRESTORE_EMULATOR_HOST}" &
-  export FIRESTORE_EMULATOR_HOST
-}
-
-function firestore-emulator-stop {
-  kill -9 $(lsof -t -i tcp:8081)
-  unset FIRESTORE_EMULATOR_HOST
-}
-
-
 ## Common aliases
 alias df='df -h'
 alias du='du -h'
@@ -54,10 +42,9 @@ type bat >& /dev/null && alias cat='bat -pp' && \
                          alias lv='bat -p --paging=always' && \
                          alias lvv='bat --paging=always' && \
                          alias less='bat --paging=always'
+type gojq >& /dev/null && alias jq='gojq'
 type http >& /dev/null && alias https='http --default-scheme=https'
-type htop >& /dev/null && alias top='htop'
 type nvim >& /dev/null && alias vim='nvim'
-type pget >& /dev/null && alias pget='pget -p6'
 type xpanes >& /dev/null && alias xp='xpanes'
 
 ## Git aliases
@@ -98,7 +85,7 @@ alias dnp='docker network prune'
 alias dvls='docker volume ls'
 alias dvp='docker volume prune'
 
-alias k='kubecolor'
+alias k='kubectl'
 alias krew='kubectl krew'
 alias kns='kubectl ns'
 alias kcx='kubectl ctx'
@@ -172,10 +159,6 @@ fi
 type lsd >& /dev/null && alias la='lsd -lah' \
                       && alias ll='lsd -lh' \
                       && alias ls='lsd'
-
-## Development
-alias bi="bundle install --jobs=$(nproc) --path=vendor/bundle"
-alias be='bundle exec'
 
 ## Suffix aliases
 alias -s zip=zipinfo
