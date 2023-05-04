@@ -77,9 +77,6 @@ source ${HOME}/.zsh/profile.d/anyenv.sh
 # krew
 source ${HOME}/.zsh/profile.d/krew.sh
 
-# Snowflake
-source ${HOME}/.zsh/profile.d/snowflake.sh
-
 # GCP
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
