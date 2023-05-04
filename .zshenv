@@ -16,6 +16,8 @@ typeset -U PATH path cdpath fpath manpath
 setopt no_global_rcs
 
 path=(
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /usr/bin(N-/)
@@ -27,6 +29,7 @@ path=(
 cdpath=(${HOME})
 
 manpath=(
+  /opt/homebrew/share/man(N-/)
   /usr/local/share/man(N-/)
   /usr/share/man(N-/)
 )
@@ -34,7 +37,7 @@ manpath=(
 typeset -xT SUDO_PATH sudo_path
 typeset -U sudo_path
 sudo_path=(
-  {,/usr/local,/usr}/sbin(N-/)
+  {,/opt/homebrew,/usr/local,/usr}/sbin(N-/)
 )
 
 typeset -T LD_LIBRARY_PATH ld_library_path; typeset -U ld_library_path
