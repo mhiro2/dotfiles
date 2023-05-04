@@ -3,7 +3,6 @@ EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules
 DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
 DOT_FILES_ALL    := $(DOT_FILES) $(XDG_CONFIG_FILES)
 
-BREW_CMD  := $(shell command -v brew 2> /dev/null)
 ZINIT_CMD := $(shell command -v zinit 2> /dev/null)
 
 .PHONY: all
@@ -11,8 +10,11 @@ all: init brew zinit
 
 .PHONY: brew
 brew:
-ifndef $(BREW_CMD)
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ifeq ($(shell uname), Darwin)
+  ifeq ($(shell uname -m), arm64)
+		arch -arm64e /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  endif
+	arch -x86_64 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 endif
 
 .PHONY: clean
