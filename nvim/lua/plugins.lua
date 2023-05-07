@@ -199,7 +199,6 @@ return {
               "bashls",
               "clangd",
               "dagger",
-              "denols",
               "dockerls",
               "eslint",
               "golangci_lint_ls",
@@ -231,7 +230,6 @@ return {
             automatic_setup = true,
             ensure_installed = {
               "black",
-              "deno_fmt",
               "goimports",
               "jq",
               "prettier",
@@ -254,11 +252,15 @@ return {
           end
 
           local null_ls = require("null-ls")
+          local utils = require("null-ls.utils")
+
           null_ls.setup({
+            root_dir = utils.root_pattern(".null-ls-root", ".git", "package.json"),
             sources = {
               null_ls.builtins.formatting.black,
-              null_ls.builtins.formatting.deno_fmt,
-              null_ls.builtins.diagnostics.eslint,
+              null_ls.builtins.diagnostics.eslint.with({
+                prefer_local = "node_modules/.bin",
+              }),
               null_ls.builtins.formatting.goimports,
               null_ls.builtins.formatting.prettier,
               null_ls.builtins.formatting.rustfmt,
@@ -310,7 +312,6 @@ return {
       lspconfig.bashls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.dagger.setup({ capabilities = capabilities })
-      lspconfig.denols.setup({ capabilities = capabilities })
       lspconfig.dockerls.setup({ capabilities = capabilities })
       lspconfig.eslint.setup({ capabilities = capabilities })
       lspconfig.golangci_lint_ls.setup({ capabilities = capabilities })
