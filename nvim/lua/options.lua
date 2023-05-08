@@ -138,6 +138,7 @@ vim.opt.background = "dark"
 vim.cmd("colorscheme sonokai")
 vim.g.sonokai_style = "espresso"
 vim.g.sonokai_better_performance = 1
+vim.api.nvim_set_hl(0, "MatchParen", { fg = "white", bg = "#f85e84", bold = true })
 
 -- Enable syntax color.
 vim.opt.syntax = "enable"
