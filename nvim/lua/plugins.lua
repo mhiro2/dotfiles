@@ -8,7 +8,7 @@ return {
     end,
   },
   {
-    "gituhb/copilot.vim",
+    "github/copilot.vim",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
