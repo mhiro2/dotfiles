@@ -37,6 +37,10 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 # anyframe
 zinit light mollifier/anyframe
 
+# bat
+zinit ice from"gh-r" as"program" pick"*/bat"
+zinit load sharkdp/bat
+
 # csview
 zinit ice from"gh-r" as"program" pick"*/csview"
 zinit load wfxr/csview
@@ -69,9 +73,13 @@ zinit load itchyny/gojq
 zinit ice from"gh-r" as"program" pick"*/grex"
 zinit load pemistahl/grex
 
+# killport
+zinit ice from"gh-r" as"program" pick"*/killport"
+zinit load jkfran/killport
+
 # lsd
 zinit ice from"gh-r" as"program" pick"*/lsd"
-zinit load Peltoche/lsd
+zinit load lsd-rs/lsd
 
 # peco
 zinit ice from"gh-r" as"program" pick"*/peco"
