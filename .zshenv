@@ -74,9 +74,6 @@ if [[ $UID == 0 ]]; then
   export SAVEHIST=0
 fi
 
-# anyenv
-source ${HOME}/.zsh/profile.d/anyenv.sh
-
 # krew
 source ${HOME}/.zsh/profile.d/krew.sh
 
