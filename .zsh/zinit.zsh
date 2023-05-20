@@ -37,6 +37,9 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 # anyframe
 zinit light mollifier/anyframe
 
+# asdf
+zinit light asdf-vm/asdf
+
 # bat
 zinit ice from"gh-r" as"program" pick"*/bat"
 zinit load sharkdp/bat
