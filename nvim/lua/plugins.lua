@@ -257,7 +257,9 @@ return {
           null_ls.setup({
             root_dir = utils.root_pattern(".null-ls-root", ".git", "package.json"),
             sources = {
-              null_ls.builtins.formatting.black,
+              null_ls.builtins.formatting.black.with({
+                extra_args = { "--line-length", "99" },
+              }),
               null_ls.builtins.diagnostics.eslint.with({
                 prefer_local = "node_modules/.bin",
               }),
