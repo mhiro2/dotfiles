@@ -27,6 +27,9 @@ if [[ -d "${ZINIT_HOME}" ]]; then
   source "${HOME}/.zsh/zinit.zsh"
 fi
 
+# Activate mise
+eval "$(mise activate zsh)"
+
 # Load config files.
 for f in ${HOME}/.zsh/[0-9]*.(sh|zsh)
 do
