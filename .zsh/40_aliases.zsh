@@ -39,7 +39,7 @@ alias zmv='noglob zmv -W'
 
 ## Optional aliases
 type bat >& /dev/null && alias cat='bat -pp' && \
-                         alias lv='bat -p --paging=always' && \
+                         alias lv='bat -p' && \
                          alias lvv='bat --paging=always' && \
                          alias less='bat --paging=always'
 type gojq >& /dev/null && alias jq='gojq'
