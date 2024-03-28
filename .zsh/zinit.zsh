@@ -61,6 +61,14 @@ zinit load sharkdp/fd
 zinit ice from"gh-r" as"program"
 zinit load junegunn/fzf-bin
 
+# just
+zinit ice from"gh-r" as"program"
+zinit load casey/just
+
+# jnv
+zinit ice from"gh-r" as"program" pick"*/jnv"
+zinit load ynqa/jnv
+
 # ghq
 zinit ice from"gh-r" as"program" pick"*/ghq"
 zinit load x-motemen/ghq
@@ -99,10 +107,6 @@ zinit light BurntSushi/ripgrep
 
 # tmux-xpanes
 zinit light greymd/tmux-xpanes
-
-# tv
-zinit ice from"gh-r" as"program" pick"*/tv"
-zinit load uzimaru0000/tv
 
 # xxh
 zinit ice from"gh-r" as"program" pick"*/xxh"
