@@ -207,11 +207,11 @@ return {
               "html",
               "jsonls",
               "lua_ls",
-              "pyright",
               "ruff_lsp",
               "rust_analyzer",
               "sqlls",
               "terraformls",
+              "tflint",
               "tsserver",
               "yamlls",
             },
@@ -222,22 +222,19 @@ return {
       {
         "jay-babu/mason-null-ls.nvim",
         dependencies = {
-          "jose-elias-alvarez/null-ls.nvim",
+          "nvimtools/none-ls.nvim",
           "nvim-lua/plenary.nvim",
         },
         config = function()
           require("mason-null-ls").setup({
-            automatic_setup = true,
+            automatic_installation = true,
             ensure_installed = {
-              "black",
               "goimports",
               "jq",
               "prettier",
-              "rego",
-              "rustfmt",
+              "regols",
               "sqlfluff",
               "stylua",
-              "terraform_fmt",
             },
           })
 
@@ -257,15 +254,8 @@ return {
           null_ls.setup({
             root_dir = utils.root_pattern(".null-ls-root", ".git", "package.json"),
             sources = {
-              null_ls.builtins.formatting.black.with({
-                extra_args = { "--line-length", "99" },
-              }),
-              null_ls.builtins.diagnostics.eslint.with({
-                prefer_local = "node_modules/.bin",
-              }),
               null_ls.builtins.formatting.goimports,
               null_ls.builtins.formatting.prettier,
-              null_ls.builtins.formatting.rustfmt,
               null_ls.builtins.formatting.stylua,
             },
             on_attach = function(client, bufnr)
