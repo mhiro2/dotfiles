@@ -105,8 +105,16 @@ zinit light Xfennec/progress
 zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
 zinit light BurntSushi/ripgrep
 
+# tailspin
+zinit ice from"gh-r" as"program" pick"*/tailspin"
+zinit light bensadeh/tailspin
+
 # tmux-xpanes
 zinit light greymd/tmux-xpanes
+
+# viddy
+zinit ice from"gh-r" as"program" pick"*/viddy"
+zinit light sachaos/viddy
 
 # xxh
 zinit ice from"gh-r" as"program" pick"*/xxh"

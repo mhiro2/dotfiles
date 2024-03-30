@@ -45,6 +45,7 @@ type bat >& /dev/null && alias cat='bat -pp' && \
 type gojq >& /dev/null && alias jq='gojq'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type nvim >& /dev/null && alias vim='nvim'
+type viddy >& /dev/null && alias watch='viddy'
 type xpanes >& /dev/null && alias xp='xpanes'
 
 ## Git aliases
