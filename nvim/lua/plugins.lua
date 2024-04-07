@@ -42,7 +42,7 @@ return {
     end,
   },
   {
-    "phaazon/hop.nvim",
+    "smoka7/hop.nvim",
     event = "VimEnter",
     keys = {
       { "w", mode = "n" },
