@@ -1,7 +1,11 @@
 ##------------------------------
 # zsh plugins
 
-# git prompt
+# Disable async git prompt in oh-my-zsh to avoid the error.
+# ref: https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#disable-async-git-prompt
+zstyle ':omz:alpha:lib:git' async-prompt no
+
+# Git prompt.
 zinit snippet OMZL::git.zsh
 
 # Syntax highlighting.
