@@ -91,9 +91,6 @@ vim.opt.expandtab = true
 -- Enable break indent.
 vim.opt.breakindent = true
 
--- Change default directory.
-vim.opt.browsedir = "buffer"
-
 -- Auto copy selected text to system clipboard.
 vim.opt.clipboard = "unnamedplus"
 
