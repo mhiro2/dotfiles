@@ -10,9 +10,6 @@ return {
   {
     "github/copilot.vim",
     event = "VimEnter",
-    config = function()
-      vim.g.copilot_no_tab_map = true
-    end,
   },
   {
     "lambdalisue/fern.vim",
