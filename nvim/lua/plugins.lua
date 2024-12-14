@@ -211,6 +211,7 @@ return {
           require("mason-lspconfig").setup({
             automatic_installation = true,
             ensure_installed = {
+              "basedpyright",
               "bashls",
               "clangd",
               "dagger",
@@ -316,6 +317,17 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local lspconfig = require("lspconfig")
+      lspconfig.basedpyright.setup({
+        capabilities = capabilities,
+        settings = {
+          basedpyright = {
+            analysis = {
+              -- basedpyright is used only for go-to-definition feature.
+              typeCheckingMode = "off",
+            },
+          },
+        },
+      })
       lspconfig.bashls.setup({ capabilities = capabilities })
       lspconfig.clangd.setup({ capabilities = capabilities })
       lspconfig.dagger.setup({ capabilities = capabilities })
@@ -334,6 +346,20 @@ return {
       lspconfig.ts_ls.setup({ capabilities = capabilities })
       lspconfig.yamlls.setup({ capabilities = capabilities })
     end,
+    opts = {
+      servers = {
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                reportMissingImports = false,
+                typeCheckingMode = "standard",
+              },
+            },
+          },
+        },
+      },
+    },
   },
   {
     "kylechui/nvim-surround",
