@@ -222,12 +222,12 @@ return {
               "html",
               "jsonls",
               "lua_ls",
-              "ruff_lsp",
+              "ruff",
               "rust_analyzer",
               "sqlls",
               "terraformls",
               "tflint",
-              "tsserver",
+              "ts_ls",
               "yamlls",
             },
             max_concurrent_installers = 10,
@@ -328,10 +328,10 @@ return {
       lspconfig.jsonls.setup({ capabilities = capabilities })
       lspconfig.lua_ls.setup({ capabilities = capabilities })
       lspconfig.sqlls.setup({ capabilities = capabilities })
-      lspconfig.ruff_lsp.setup({ capabilities = capabilities })
+      lspconfig.ruff.setup({ capabilities = capabilities })
       lspconfig.rust_analyzer.setup({ capabilities = capabilities })
       lspconfig.terraformls.setup({ capabilities = capabilities })
-      lspconfig.tsserver.setup({ capabilities = capabilities })
+      lspconfig.ts_ls.setup({ capabilities = capabilities })
       lspconfig.yamlls.setup({ capabilities = capabilities })
     end,
   },
