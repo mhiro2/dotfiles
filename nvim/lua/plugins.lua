@@ -1,11 +1,7 @@
 return {
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-      vim.keymap.set("n", "<C-_>", "gcc", {})
-      vim.keymap.set("v", "<C-_>", "gc", {})
-    end,
+    opts = {},
   },
   {
     "github/copilot.vim",
@@ -32,13 +28,11 @@ return {
   },
   {
     "j-hui/fidget.nvim",
+    opts = {},
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("gitsigns").setup()
-    end,
+    opts = {},
   },
   {
     "smoka7/hop.nvim",
@@ -121,9 +115,7 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
+    config = true,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -376,9 +368,7 @@ return {
     "kylechui/nvim-surround",
     version = "*",
     event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    config = true,
   },
   {
     "nvim-treesitter/nvim-treesitter",
