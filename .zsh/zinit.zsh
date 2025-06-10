@@ -38,88 +38,42 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 #------------------------------
 # Useful commands
 
-# anyframe
 zinit light mollifier/anyframe
 
-# bat
 zinit ice from"gh-r" as"program" pick"*/bat"
 zinit load sharkdp/bat
 
-# csview
-zinit ice from"gh-r" as"program" pick"*/csview"
-zinit load wfxr/csview
-
-# delta
-zinit ice from"gh-r" as"program" pick"*/delta"
-zinit load dandavison/delta
-
-# dive
-zinit ice from"gh-r" as"program"
-zinit load wagoodman/dive
-
-# fd
 zinit ice from"gh-r" as"program" pick"*/fd"
 zinit load sharkdp/fd
 
-# fzf
 zinit ice from"gh-r" as"program"
 zinit load junegunn/fzf-bin
 
-# just
-zinit ice from"gh-r" as"program"
-zinit load casey/just
-
-# jnv
-zinit ice from"gh-r" as"program" pick"*/jnv"
-zinit load ynqa/jnv
-
-# ghq
 zinit ice from"gh-r" as"program" pick"*/ghq"
 zinit load x-motemen/ghq
 
-# gojq
-zinit ice from"gh-r" as"program" pick"*/gojq"
-zinit load itchyny/gojq
-
-# grex
-zinit ice from"gh-r" as"program" pick"*/grex"
-zinit load pemistahl/grex
-
-# killport
-zinit ice from"gh-r" as"program" pick"*/killport"
-zinit load jkfran/killport
-
-# lsd
 zinit ice from"gh-r" as"program" pick"*/lsd"
 zinit load lsd-rs/lsd
 
-# mise
-zinit ice from"gh-r" as"program" mv"mise* -> mise"
-zinit light jdx/mise
-
-# peco
 zinit ice from"gh-r" as"program" pick"*/peco"
 zinit load peco/peco
 
-# progress
-zinit ice as"program" make
-zinit light Xfennec/progress
-
-# ripgrep
 zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
 zinit light BurntSushi/ripgrep
 
-# tailspin
-zinit ice from"gh-r" as"program" pick"*/tailspin"
-zinit light bensadeh/tailspin
-
-# tmux-xpanes
 zinit light greymd/tmux-xpanes
 
-# viddy
-zinit ice from"gh-r" as"program" pick"*/viddy"
-zinit light sachaos/viddy
+zinit wait lucid from"gh-r" as"program" for \
+  pick"*/csview" wfxr/csview \
+  pick"*/delta" dandavison/delta \
+  wagoodman/dive \
+  pick"*/gojq" itchyny/gojq \
+  pick"*/grex" pemistahl/grex \
+  pick"*/jnv" ynqa/jnv \
+  pick"*/killport" jkfran/killport \
+  pick"*/tailspin" bensadeh/tailspin \
+  pick"*/viddy" sachaos/viddy \
+  pick"*/xxh" xxh/xxh
 
-# xxh
-zinit ice from"gh-r" as"program" pick"*/xxh"
-zinit load xxh/xxh
+zinit wait lucid for \
+  as"program" make Xfennec/progress \

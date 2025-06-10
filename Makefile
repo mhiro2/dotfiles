@@ -4,9 +4,10 @@ DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
 DOT_FILES_ALL    := $(DOT_FILES) $(XDG_CONFIG_FILES)
 
 ZINIT_CMD := $(shell command -v zinit 2> /dev/null)
+MISE_CMD := $(shell command -v mise 2> /dev/null)
 
 .PHONY: all
-all: init brew zinit
+all: init brew zinit mise
 
 .PHONY: brew
 brew:
@@ -41,6 +42,16 @@ list:
 .PHONY: update
 update:
 	git pull origin main
+
+.PHONY: mise
+mise:
+ifndef $(MISE_CMD)
+ifeq ($(shell uname), Darwin)
+	brew install mise
+else
+	curl -s https://mise.run | sh
+endif
+endif
 
 .PHONY: zinit
 zinit:
