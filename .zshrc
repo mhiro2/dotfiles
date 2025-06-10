@@ -6,7 +6,7 @@ limit coredumpsize 0
 
 autoload -Uz compinit && compinit -u
 autoload -Uz colors && colors
-autoload -Uz add-zsh-hock
+autoload -Uz add-zsh-hook
 autoload -Uz is-at-latest
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
