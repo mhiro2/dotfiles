@@ -3,7 +3,7 @@
 -----------------------------------
 
 vim.scriptencoding = "utf-8"
-vim.opt.fileencoding = "uft-8"
+vim.opt.fileencoding = "utf-8"
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
