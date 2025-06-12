@@ -38,8 +38,6 @@ zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
 #------------------------------
 # Useful commands
 
-zinit light mollifier/anyframe
-
 zinit ice from"gh-r" as"program" pick"*/bat"
 zinit load sharkdp/bat
 
@@ -47,16 +45,13 @@ zinit ice from"gh-r" as"program" pick"*/fd"
 zinit load sharkdp/fd
 
 zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
+zinit light junegunn/fzf
 
 zinit ice from"gh-r" as"program" pick"*/ghq"
 zinit load x-motemen/ghq
 
 zinit ice from"gh-r" as"program" pick"*/lsd"
 zinit load lsd-rs/lsd
-
-zinit ice from"gh-r" as"program" pick"*/peco"
-zinit load peco/peco
 
 zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
 zinit light BurntSushi/ripgrep
