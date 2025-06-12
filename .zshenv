@@ -73,10 +73,3 @@ if [[ $UID == 0 ]]; then
   unset HISTFILE
   export SAVEHIST=0
 fi
-
-# krew
-source ${HOME}/.zsh/profile.d/krew.sh
-
-# GCP
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-export CLOUDSDK_PYTHON_SITEPACKAGES=1
