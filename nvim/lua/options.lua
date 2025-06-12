@@ -60,9 +60,6 @@ vim.opt.helpheight = 12
 -- Search
 -----------------------------------
 
--- Don't redraw while macro executing.
-vim.opt.lazyredraw = true
-
 -- Searches wrap around the end of the file.
 vim.opt.wrapscan = true
 
