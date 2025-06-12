@@ -7,8 +7,8 @@
 #     $ \vim
 # ---------------------------------------------------
 
-function peco-ssh {
-  local host=$(grep '^Host' ~/.ssh/config | awk '{ print $2 }' | peco --prompt '[ssh]')
+function fzf-ssh-alias {
+  local host=$(grep '^Host' ~/.ssh/config | awk '{ print $2 }' | fzf --prompt 'ssh> ' --height=40% --layout=reverse)
   if [ -n "${host}" ]; then
     echo "ssh ${host}"
     \ssh ${host}
@@ -25,13 +25,13 @@ alias history='history -i'
 alias hist='history'
 alias http-server='python -m http.server'
 alias mkdir='mkdir -p'
-alias pk='anyframe-widget-kill'
-alias pssh='peco-ssh'
+alias pk='fzf-kill'
+alias pssh='fzf-ssh-alias'
 alias reboot='sudo reboot'
 alias scp='scp -p'
 alias sort='LC_ALL=C sort'
 alias sudo='sudo '
-alias ta='anyframe-widget-tmux-attach'
+alias ta='fzf-tmux-attach'
 alias tl='tmux ls'
 alias uniq='LC_ALL=C uniq'
 autoload -Uz zmv
@@ -51,7 +51,7 @@ type xpanes >& /dev/null && alias xp='xpanes'
 ## Git aliases
 alias g='git'
 alias ga='git add'
-alias gaa='anyframe-widget-git-add'
+alias gaa='fzf-git-add'
 alias gb='git branch'
 alias gc='git checkout'
 alias gd='git diff'
@@ -68,19 +68,19 @@ alias gsh='git show'
 alias gt='git tag'
 
 ## Docker aliases
-alias dce='docker container exec -it $(dcls | peco --prompt "[exec /bin/bash]" | cut -d'"'"' '"'"' -f 1) /bin/bash'
-alias dcea='docker container exec -it $(dcls | peco --prompt "[exec /bin/ash]" | cut -d'"'"' '"'"' -f 1) /bin/ash'
-alias dcl='docker container logs $(dcla | peco --prompt "[logs]" | cut -d'"'"' '"'"' -f 1)'
-alias dclf='docker container logs -f $(dcls | peco --prompt "[logs]" | cut -d'"'"' '"'"' -f 1)'
+alias dce='docker container exec -it $(dcls | fzf --prompt "exec> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1) /bin/bash'
+alias dcea='docker container exec -it $(dcls | fzf --prompt "ash> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1) /bin/ash'
+alias dcl='docker container logs $(dcla | fzf --prompt "logs> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
+alias dclf='docker container logs -f $(dcls | fzf --prompt "logs> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
 alias dcla='docker container ls -a'
 alias dcls='docker container ls'
 alias dcp='docker container prune'
-alias dcrm='docker container rm $(dcla | grep "Exited" | peco --prompt "[rm]" | cut -d'"'"' '"'"' -f 1)'
-alias dcs='docker container stop $(dcls | peco --prompt "[stop]" | cut -d'"'"' '"'"' -f 1)'
+alias dcrm='docker container rm $(dcla | grep "Exited" | fzf --prompt "rm> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
+alias dcs='docker container stop $(dcls | fzf --prompt "stop> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
 alias dib='DOCKER_BUILDKIT=1 docker image build'
 alias dils='docker image ls'
 alias dip='docker image prune'
-alias dirm='docker image rm $(dils | peco --prompt "[rm]" | awk '"'"'{ print $3 }'"'"')'
+alias dirm='docker image rm $(dils | fzf --prompt "rm> " --height=40% --layout=reverse | awk '"'"'{ print $3 }'"'"')'
 alias dnls='docker network ls'
 alias dnp='docker network prune'
 alias dvls='docker volume ls'

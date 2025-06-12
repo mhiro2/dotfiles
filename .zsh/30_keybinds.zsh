@@ -70,24 +70,23 @@ zle -N show_buffer_stack
 bindkey -M vicmd '^Q' show_buffer_stack
 bindkey -M viins '^Q' show_buffer_stack
 
-# Use anyframe.
-autoload -Uz anyframe-init anyframe-init
-zstyle ":anyframe:selector:" use peco
+# Load fzf widgets.
+source ~/.zsh/fzf_widgets.zsh
 
 # Smart change directory using cdr.
-bindkey -M viins '^S' anyframe-widget-cdr
+bindkey -M viins '^S' fzf-cdr
 
 # Smart history search and execute.
-bindkey -M viins '^R' anyframe-widget-execute-history
+bindkey -M viins '^R' fzf-execute-history
 
 # Smart history search and put command line.
-bindkey -M viins '^F' anyframe-widget-put-history
+bindkey -M viins '^F' fzf-put-history
 
 # Search ghq projects.
-bindkey -M viins '^G' anyframe-widget-cd-ghq-repository
+bindkey -M viins '^G' fzf-cd-ghq-repository
 
 # Attach tmux session.
-bindkey -M viins '^T' anyframe-widget-tmux-attach
+bindkey -M viins '^T' fzf-tmux-attach
 
 # Checkout git branch
-bindkey -M viins '^B' anyframe-widget-checkout-git-branch
+bindkey -M viins '^B' fzf-checkout-git-branch
