@@ -90,3 +90,6 @@ bindkey -M viins '^T' fzf-tmux-attach
 
 # Checkout git branch
 bindkey -M viins '^B' fzf-checkout-git-branch
+
+# Switch git worktree
+bindkey -M viins '^W' fzf-git-worktree

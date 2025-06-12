@@ -104,3 +104,15 @@ fzf-ssh() {
     ssh "${selected_host}"
   fi
 }
+
+# Git worktree selector
+fzf-git-worktree() {
+  local selected_worktree
+  selected_worktree=$(git worktree list 2>/dev/null | fzf --prompt="worktree> " --height=40% --layout=reverse | awk '{print $1}')
+  if [[ -n "$selected_worktree" ]]; then
+    LBUFFER="cd ${selected_worktree}"
+    zle accept-line
+  fi
+  zle reset-prompt
+}
+zle -N fzf-git-worktree
