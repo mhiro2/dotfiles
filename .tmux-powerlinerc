@@ -6,5 +6,7 @@
 # }
 
 # weather.sh {
-  export TMUX_POWERLINE_SEG_WEATHER_LOCATION="1118370"  # Tokyo
+  # Use OpenWeatherMap API
+  export TMUX_POWERLINE_SEG_WEATHER_LOCATION="Tokyo,JP"
+  export TMUX_POWERLINE_SEG_WEATHER_UNIT="c"
 # }
