@@ -62,7 +62,7 @@ zle -N fzf-tmux-attach
 # Checkout git branch
 fzf-checkout-git-branch() {
   local selected_branch
-  selected_branch=$(git branch -a | sed 's/^..//' | sed 's/^remotes\///' | sort -u | fzf --prompt="branch> " --height=40% --layout=reverse)
+  selected_branch=$(git branch | sed 's/^..//' | sort -u | fzf --prompt="branch> " --height=40% --layout=reverse)
   if [[ -n "$selected_branch" ]]; then
     LBUFFER="git checkout ${selected_branch}"
     zle accept-line
