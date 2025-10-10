@@ -61,10 +61,12 @@ bindkey -M menuselect 'l' vi-forward-char
 
 # Use commandline stack.
 show_buffer_stack() {
+  local stacked_command
   zle vi-end-of-line
-  POSTDISPLAY="
-stack: $LBUFFER"
+  stacked_command="${BUFFER}"
   zle push-line-or-edit
+  stacked_command="${stacked_command//$'\n'/\\n}"
+  zle -M "stack: ${stacked_command}"
 }
 zle -N show_buffer_stack
 bindkey -M vicmd '^Q' show_buffer_stack
