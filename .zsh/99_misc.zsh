@@ -15,9 +15,10 @@ zstyle ":chpwd:*" recent-dirs-pushd true
 # Terminal title.
 case "${TERM}" in
   rxvt*|xterm*)
-    precmd() {
-      echo -ne "\e]0;${USER}@${HOST%%.*}:${PWD}\x7"
+    zsh-set-terminal-title() {
+      printf "\e]0;%s@%s:%s\x7" "${USER}" "${HOST%%.*}" "${PWD}"
     }
+    add-zsh-hook precmd zsh-set-terminal-title
     ;;
 esac
 
