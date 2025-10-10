@@ -4,14 +4,34 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  event = "VimEnter",
+  cmd = "Telescope",
+  keys = {
+    {
+      "zf",
+      function()
+        require("telescope.builtin").find_files()
+      end,
+      desc = "Telescope Find Files",
+      mode = "n",
+    },
+    {
+      "zg",
+      function()
+        require("telescope.builtin").live_grep()
+      end,
+      desc = "Telescope Live Grep",
+      mode = "n",
+    },
+    {
+      "zb",
+      function()
+        require("telescope.builtin").buffers()
+      end,
+      desc = "Telescope Buffers",
+      mode = "n",
+    },
+  },
   config = function()
     require("telescope").setup()
-
-    local builtin = require("telescope.builtin")
-
-    vim.keymap.set("n", "zf", builtin.find_files, {})
-    vim.keymap.set("n", "zg", builtin.live_grep, {})
-    vim.keymap.set("n", "zb", builtin.buffers, {})
   end,
 }

@@ -6,14 +6,17 @@ return {
     "lambdalisue/fern-renderer-nerdfont.vim",
     "lambdalisue/nerdfont.vim",
   },
-  event = "VimEnter",
+  cmd = "Fern",
+  keys = {
+    {
+      "<space>f",
+      "<cmd>Fern . -drawer -reveal=% -toggle -stay -width=40<CR>",
+      desc = "Toggle Fern drawer",
+      mode = "n",
+      silent = true,
+    },
+  },
   config = function()
     vim.g["fern#renderer"] = "nerdfont"
-    vim.keymap.set(
-      "n",
-      "<space>f",
-      ":Fern . -drawer -reveal=% -toggle -stay -width=40<CR>",
-      { noremap = true, silent = true }
-    )
   end,
 }
