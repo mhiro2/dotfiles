@@ -7,6 +7,7 @@ return {
       config = true,
       build = ":MasonUpdate",
     },
+    "folke/neodev.nvim",
     {
       "mason-org/mason-lspconfig.nvim",
       config = function()
@@ -39,6 +40,11 @@ return {
     },
   },
   config = function()
+    local ok, neodev = pcall(require, "neodev")
+    if ok then
+      neodev.setup()
+    end
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -60,13 +66,32 @@ return {
       virtual_text = false,
     })
 
-    -- Show line diagnostics automatically in hover window.
-    vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+    -- Show line diagnostics automatically in hover window without clearing other autocmds.
+    local diag_hover_group = vim.api.nvim_create_augroup("UserLspDiagnosticHover", { clear = true })
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      group = diag_hover_group,
+      callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+      end,
+    })
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     vim.lsp.config("*", {
       capabilities = capabilities,
+    })
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          workspace = {
+            checkThirdParty = false,
+            library = vim.api.nvim_get_runtime_file("", true),
+          },
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
     })
 
     vim.lsp.enable({

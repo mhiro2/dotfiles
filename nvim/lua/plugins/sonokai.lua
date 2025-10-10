@@ -1,4 +1,5 @@
 return {
   "sainnhe/sonokai",
-  event = "VimEnter",
+  lazy = false,
+  priority = 1000,
 }

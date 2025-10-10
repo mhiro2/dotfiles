@@ -33,12 +33,12 @@ vim.opt.virtualedit = "block"
 -- Wrap conditions.
 vim.opt.whichwrap = "b,s,<,>,[,]"
 
--- Highlight column after 'textwidth'.
-vim.opt.colorcolumn = "+1"
+-- Highlight limit column for specific languages.
 vim.api.nvim_create_autocmd("Filetype", {
   pattern = { "c", "cpp", "python" },
   callback = function()
-    vim.opt.textwidth = 99
+    vim.opt_local.textwidth = 99
+    vim.opt_local.colorcolumn = "+1"
   end,
 })
 
@@ -49,7 +49,7 @@ vim.opt.splitright = true
 -- Set minimal width for current window.
 vim.opt.winwidth = 30
 -- Set height of command line.
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 0
 -- Set maximam command line window.
 vim.opt.cmdwinheight = 5
 -- Adjust window size of preview and help.
@@ -135,7 +135,7 @@ vim.g.sonokai_better_performance = 1
 vim.api.nvim_set_hl(0, "MatchParen", { fg = "white", bg = "#f85e84", bold = true })
 
 -- Enable syntax color.
-vim.opt.syntax = "enable"
+vim.cmd("syntax enable")
 
 -- Show title.
 vim.opt.title = true
@@ -146,11 +146,11 @@ vim.opt.signcolumn = "yes"
 -- Show the line and column number of the cursor position.
 vim.opt.ruler = true
 -- Always display a status line at the bottom of the window.
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 -- Highlight Cursour Line
 vim.opt.cursorline = true
 -- Show command on statusline.
-vim.opt.showcmd = true
+vim.opt.showcmd = false
 -- Highlight parenthesis.
 vim.opt.showmatch = true
 -- Highlight a pair of < and >.
