@@ -68,23 +68,85 @@ alias gsh='git show'
 alias gt='git tag'
 
 ## Docker aliases
-alias dce='docker container exec -it $(dcls | fzf --prompt "exec> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1) /bin/bash'
-alias dcea='docker container exec -it $(dcls | fzf --prompt "ash> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1) /bin/ash'
-alias dcl='docker container logs $(dcla | fzf --prompt "logs> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
-alias dclf='docker container logs -f $(dcls | fzf --prompt "logs> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
 alias dcla='docker container ls -a'
 alias dcls='docker container ls'
 alias dcp='docker container prune'
-alias dcrm='docker container rm $(dcla | grep "Exited" | fzf -m --prompt "rm> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
-alias dcs='docker container stop $(dcls | fzf -m --prompt "stop> " --height=40% --layout=reverse | cut -d'"'"' '"'"' -f 1)'
 alias dib='DOCKER_BUILDKIT=1 docker image build'
 alias dils='docker image ls'
 alias dip='docker image prune'
-alias dirm='docker image rm $(dils | fzf -m --prompt "rm> " --height=40% --layout=reverse | awk '"'"'{ print $3 }'"'"')'
 alias dnls='docker network ls'
 alias dnp='docker network prune'
 alias dvls='docker volume ls'
 alias dvp='docker volume prune'
+
+_docker_fzf_select_container() {
+  local prompt="$1"; shift
+  local selection
+  selection=$(docker container "$@" | awk 'NR==1 {next} {print}' | fzf --prompt "${prompt}> " --height=40% --layout=reverse)
+  [[ -n "${selection}" ]] || return 1
+  printf '%s\n' "${selection}" | awk '{print $1}'
+}
+
+_docker_fzf_select_containers_multi() {
+  local prompt="$1"; shift
+  local selection
+  selection=$(docker container "$@" | awk 'NR==1 {next} {print}' | fzf --prompt "${prompt}> " --height=40% --layout=reverse --multi)
+  [[ -n "${selection}" ]] || return 1
+  printf '%s\n' "${selection}" | awk '{print $1}'
+}
+
+_docker_fzf_select_images_multi() {
+  local prompt="$1"; shift
+  local selection
+  selection=$(docker image "$@" | awk 'NR==1 {next} {print}' | fzf --prompt "${prompt}> " --height=40% --layout=reverse --multi)
+  [[ -n "${selection}" ]] || return 1
+  printf '%s\n' "${selection}" | awk '{print $3}'
+}
+
+dce() {
+  local container
+  container=$(_docker_fzf_select_container "exec" ls) || return 1
+  docker container exec -it "${container}" /bin/bash
+}
+
+dcl() {
+  local container
+  container=$(_docker_fzf_select_container "logs" ls -a) || return 1
+  docker container logs "${container}"
+}
+
+dclf() {
+  local container
+  container=$(_docker_fzf_select_container "logs" ls) || return 1
+  docker container logs -f "${container}"
+}
+
+dcrm() {
+  local selection
+  local -a containers
+  selection=$(_docker_fzf_select_containers_multi "rm" ls -a --filter status=exited) || return 1
+  containers=(${(f)selection})
+  (( ${#containers[@]} )) || return 1
+  docker container rm "${containers[@]}"
+}
+
+dcs() {
+  local selection
+  local -a containers
+  selection=$(_docker_fzf_select_containers_multi "stop" ls) || return 1
+  containers=(${(f)selection})
+  (( ${#containers[@]} )) || return 1
+  docker container stop "${containers[@]}"
+}
+
+dirm() {
+  local selection
+  local -a images
+  selection=$(_docker_fzf_select_images_multi "rm" ls) || return 1
+  images=(${(f)selection})
+  (( ${#images[@]} )) || return 1
+  docker image rm "${images[@]}"
+}
 
 alias k='kubectl'
 alias krew='kubectl krew'
@@ -92,7 +154,7 @@ alias kns='kubectl ns'
 alias kcx='kubectl ctx'
 alias st='stern'
 
-## GCP
+## Google Cloud
 alias gcurl='curl --header "Authorization: Bearer $(gcloud auth print-identity-token)"'
 
 ## Global aliases.
@@ -152,8 +214,6 @@ elif [[ "${OSTYPE}" == linux* ]]; then
 
   alias zfs='sudo zfs'
   alias zpool='sudo zpool'
-
-  type sway >& /dev/null && alias sway='XKB_DEFAULT_OPTIONS=ctrl:nocaps sway'
 fi
 
 ## Overwrite ls aliases with lsd
