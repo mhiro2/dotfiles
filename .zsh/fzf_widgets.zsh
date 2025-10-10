@@ -2,8 +2,10 @@
 
 # Smart change directory using cdr
 fzf-cdr() {
-  local selected_dir
-  selected_dir=$(cdr -l | sed 's/^[0-9][0-9]*[[:space:]]*//' | fzf --prompt="cd> " --height=40% --layout=reverse)
+  local selected_dir query
+  query="${LBUFFER##* }"
+  query="${query//$'\n'/ }"
+  selected_dir=$(cdr -l | sed 's/^[0-9][0-9]*[[:space:]]*//' | fzf --prompt="cd> " --height=40% --layout=reverse --query="${query}")
   if [[ -n "$selected_dir" ]]; then
     LBUFFER="cd ${selected_dir}"
     zle accept-line
@@ -14,8 +16,9 @@ zle -N fzf-cdr
 
 # Smart history search and execute
 fzf-execute-history() {
-  local selected_command
-  selected_command=$(fc -l -1000 | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//' | tac | fzf --prompt="exec> " --height=40% --layout=reverse)
+  local selected_command query
+  query="${BUFFER//$'\n'/ }"
+  selected_command=$(fc -l -1000 | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//' | tac | fzf --prompt="exec> " --height=40% --layout=reverse --query="${query}")
   if [[ -n "$selected_command" ]]; then
     LBUFFER="$selected_command"
     zle accept-line
@@ -26,8 +29,9 @@ zle -N fzf-execute-history
 
 # Smart history search and put command line
 fzf-put-history() {
-  local selected_command
-  selected_command=$(fc -l -1000 | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//' | tac | fzf --prompt="hist> " --height=40% --layout=reverse)
+  local selected_command query
+  query="${BUFFER//$'\n'/ }"
+  selected_command=$(fc -l -1000 | sed 's/^[[:space:]]*[0-9]*[[:space:]]*//' | tac | fzf --prompt="hist> " --height=40% --layout=reverse --query="${query}")
   if [[ -n "$selected_command" ]]; then
     LBUFFER="$selected_command"
   fi
