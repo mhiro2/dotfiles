@@ -1,61 +1,62 @@
 ##------------------------------
-# zsh plugins
+# Prompt and completion helpers
 
-# Disable async git prompt in oh-my-zsh to avoid the error.
-# ref: https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#disable-async-git-prompt
-zstyle ':omz:alpha:lib:git' async-prompt no
+# Force the experimental async git prompt for a snappier prompt.
+# ref: https://github.com/ohmyzsh/ohmyzsh?tab=readme-ov-file#async-git-prompt
+zstyle ':omz:alpha:lib:git' async-prompt force
 
-# Git prompt.
+# Preload async helper so the git library finds _omz_register_handler.
+zinit snippet OMZL::async_prompt.zsh
+
+# Oh My Zsh git prompt integration.
 zinit snippet OMZL::git.zsh
 
-# Syntax highlighting.
-zinit light 'zdharma-continuum/fast-syntax-highlighting'
+# Defer helper plugins; load them after initial prompt setup.
+zinit ice wait lucid
+zinit light-mode for \
+  zdharma-continuum/fast-syntax-highlighting \
+  zsh-users/zsh-autosuggestions \
+  b4b4r07/zsh-vimode-visual
 
-# History search.
+# Load history substring search eagerly because key bindings use it straight away.
 zinit light 'zsh-users/zsh-history-substring-search'
 
-# Fish-like fast/unobtrusive autosuggestions.
-zinit light 'zsh-users/zsh-autosuggestions'
-
-# Visual mode for vi-mode.
-zinit light 'b4b4r07/zsh-vimode-visual'
-
-# Display current k8s context and namespace.
-zinit light "superbrothers/zsh-kubectl-prompt"
-
-# Lazy load packages.
-zinit wait lucid for \
-  OMZP::docker-compose/_docker-compose \
-  OMZP::gcloud \
-  OMZP::helm \
-  OMZP::kubectl \
-  OMZP::terraform/_terraform
-
-# Completions.
+# Additional completion definitions.
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
   zsh-users/zsh-completions
 
-#------------------------------
-# Useful commands
+# Ensure completion cache dir exists and add it to $fpath.
+typeset -g ZSH_CACHE_DIR="${ZSH_CACHE_DIR:-$HOME/.cache/omz}"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
-zinit ice from"gh-r" as"program" pick"*/bat"
+zinit wait lucid for \
+   OMZP::docker \
+   OMZP::kubectl \
+   OMZP::terraform/_terraform
+
+#------------------------------
+# CLI utilities
+
+zinit ice lucid from"gh-r" as"program" pick"*/bat"
 zinit load sharkdp/bat
 
-zinit ice from"gh-r" as"program" pick"*/fd"
+zinit ice wait lucid from"gh-r" as"program" pick"*/fd"
 zinit load sharkdp/fd
 
-zinit ice from"gh-r" as"program"
-zinit light junegunn/fzf
+zinit ice wait lucid from"gh-r" as"program"
+zinit load junegunn/fzf
 
-zinit ice from"gh-r" as"program" pick"*/ghq"
+zinit ice wait lucid from"gh-r" as"program" pick"*/ghq"
 zinit load x-motemen/ghq
 
-zinit ice from"gh-r" as"program" pick"*/lsd"
+zinit ice lucid from"gh-r" as"program" pick"*/lsd"
 zinit load lsd-rs/lsd
 
-zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
-zinit light BurntSushi/ripgrep
+zinit ice lucid from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
+zinit load BurntSushi/ripgrep
 
+zinit ice lucid as"program" pick"bin/xpanes"
 zinit light greymd/tmux-xpanes
 
 zinit wait lucid from"gh-r" as"program" for \
@@ -70,5 +71,5 @@ zinit wait lucid from"gh-r" as"program" for \
   pick"*/viddy" sachaos/viddy \
   pick"*/xxh" xxh/xxh
 
-zinit wait lucid for \
-  as"program" make Xfennec/progress \
+zinit ice wait lucid as"program" make
+zinit load Xfennec/progress

@@ -34,5 +34,3 @@ function git_prompt_info() {
 
 PROMPT='${HOST_PROMPT}${DIR_PROMPT}$(git_prompt_info)
 $PROMPT_HEAD '
-
-RPROMPT='($ZSH_KUBECTL_PROMPT)'
