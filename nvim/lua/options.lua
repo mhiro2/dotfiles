@@ -133,6 +133,9 @@ vim.g.sonokai_style = "default"
 vim.cmd("colorscheme sonokai")
 vim.g.sonokai_better_performance = 1
 vim.api.nvim_set_hl(0, "MatchParen", { fg = "white", bg = "#f85e84", bold = true })
+vim.api.nvim_set_hl(0, "MatchParenCur", { fg = "#161821", bg = "#f85e84", bold = true })
+vim.api.nvim_set_hl(0, "MatchWord", { bg = "#3b465b", bold = true, underline = true })
+vim.api.nvim_set_hl(0, "MatchWordCur", { bg = "#46516a", bold = true, underline = true })
 
 -- Enable syntax color.
 vim.cmd("syntax enable")
