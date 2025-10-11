@@ -4,6 +4,20 @@ return {
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
+      ensure_installed = {
+        "bash",
+        "comment",
+        "go",
+        "html",
+        "javascript",
+        "markdown",
+        "python",
+        "rust",
+        "terraform",
+        "tsx",
+        "typescript",
+      },
+      autotag = { enable = true },
       highlight = { enable = true },
       indent = { enable = true },
       matchup = { enable = true },
