@@ -129,8 +129,8 @@ vim.opt.shiftround = true
 -- Change colorscheme.
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
+vim.g.sonokai_style = "default"
 vim.cmd("colorscheme sonokai")
-vim.g.sonokai_style = "espresso"
 vim.g.sonokai_better_performance = 1
 vim.api.nvim_set_hl(0, "MatchParen", { fg = "white", bg = "#f85e84", bold = true })
 
