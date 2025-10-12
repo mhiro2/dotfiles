@@ -178,7 +178,7 @@ if [[ "${OSTYPE}" == darwin* ]]; then
   alias ll='la'
   alias ls='ls -hFG'
   # coreutils
-  if [ -d /usr/local/Cellar/coreutils ]; then
+  if [ -d /usr/local/Cellar/coreutils ] || [ -d /opt/homebrew/Cellar/coreutils ]; then
     alias cp='gcp -i'
     alias mv='gmv -i'
     alias rm='grm -i'
@@ -186,7 +186,7 @@ if [[ "${OSTYPE}" == darwin* ]]; then
     alias shuf='gshuf'
   fi
   # findutils
-  if [ -d /usr/local/Cellar/findutils ]; then
+  if [ -d /usr/local/Cellar/findutils ] || [ -d /opt/homebrew/Cellar/findutils ]; then
     alias find='gfind'
     alias xargs='gxargs'
   fi
