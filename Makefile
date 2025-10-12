@@ -3,8 +3,16 @@ EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules
 DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
 DOT_FILES_ALL    := $(DOT_FILES) $(XDG_CONFIG_FILES)
 
-ZINIT_CMD := $(shell command -v zinit 2> /dev/null)
+BREW_CMD := $(shell command -v brew 2> /dev/null)
 MISE_CMD := $(shell command -v mise 2> /dev/null)
+ZINIT_DIR := $(HOME)/.local/share/zinit
+ZINIT_INSTALLED := $(shell test -d "$(ZINIT_DIR)/zinit.git" && echo installed)
+ZINIT_SCRIPT := $(ZINIT_DIR)/zinit.git/zinit.zsh
+
+COLOR_INFO := \033[1;34m
+COLOR_SUCCESS := \033[1;32m
+COLOR_SKIP := \033[1;33m
+COLOR_RESET := \033[0m
 
 .PHONY: all
 all: init brew zinit mise
@@ -12,49 +20,93 @@ all: init brew zinit mise
 .PHONY: brew
 brew:
 ifeq ($(shell uname), Darwin)
-  ifeq ($(shell uname -m), arm64)
-		arch -arm64e /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  endif
-	arch -x86_64 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ifeq ($(BREW_CMD),)
+	@printf "$(COLOR_INFO)==> Homebrew をインストールします$(COLOR_RESET)\n"
+ifeq ($(shell uname -m), arm64)
+	NONINTERACTIVE=1 arch -arm64e /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+endif
+	NONINTERACTIVE=1 arch -x86_64 /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	@printf "$(COLOR_SUCCESS)✔ Homebrew のインストールが完了しました$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_SKIP)✔ Homebrew は既にインストール済みのためスキップします$(COLOR_RESET)\n"
+endif
+else
+	@printf "$(COLOR_SKIP)✔ macOS 以外のため Homebrew インストールをスキップします$(COLOR_RESET)\n"
 endif
 
 .PHONY: clean
 clean:
+	@printf "$(COLOR_INFO)==> シンボリックリンクを削除します$(COLOR_RESET)\n"
 	@-$(foreach f, $(DOT_FILES), unlink $(HOME)/$(f);)
 	@-$(foreach f, $(XDG_CONFIG_FILES), unlink $(HOME)/.config/$(f);)
+	@printf "$(COLOR_SUCCESS)✔ clean が完了しました$(COLOR_RESET)\n"
 
 .PHONY: install
 install:
-	make -j all
+	@printf "$(COLOR_INFO)==> すべてのセットアップタスクを実行します$(COLOR_RESET)\n"
+	$(MAKE) all
+	@printf "$(COLOR_SUCCESS)✔ install が完了しました$(COLOR_RESET)\n"
 
 .PHONY: init
 init:
+	@printf "$(COLOR_INFO)==> サブモジュールとシンボリックリンクを初期化します$(COLOR_RESET)\n"
 	git submodule init
 	git submodule update
 	mkdir -p $(HOME)/.config
-	@-$(foreach f, $(DOT_FILES), ln -sf $(PWD)/$(f) $(HOME);)
-	@-$(foreach f, $(XDG_CONFIG_FILES), ln -sf $(PWD)/$(f) $(HOME)/.config;)
+	@-$(foreach f, $(DOT_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)";)
+	@-$(foreach f, $(XDG_CONFIG_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)/.config";)
+	@printf "$(COLOR_SUCCESS)✔ init が完了しました$(COLOR_RESET)\n"
 
 .PHONY: list
 list:
+	@printf "$(COLOR_INFO)==> 管理対象ファイルを一覧表示します$(COLOR_RESET)\n"
 	@$(foreach f, $(DOT_FILES_ALL), ls -dF $(f);)
+	@printf "$(COLOR_SUCCESS)✔ list が完了しました$(COLOR_RESET)\n"
 
-.PHONY: update
-update:
-	git pull origin main
+.PHONY: upgrade
+upgrade:
+	@printf "$(COLOR_INFO)==> 各種ツールのアップグレードを実行します$(COLOR_RESET)\n"
+ifeq ($(shell uname), Darwin)
+ifeq ($(BREW_CMD),)
+	@printf "$(COLOR_SKIP)✔ Homebrew は未インストールのためスキップします$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_INFO)   -> Homebrew を更新します$(COLOR_RESET)\n"
+	@brew update
+	@HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade
+	@printf "$(COLOR_SUCCESS)✔ Homebrew のアップグレードが完了しました$(COLOR_RESET)\n"
+endif
+else
+	@printf "$(COLOR_SKIP)✔ macOS 以外のため Homebrew アップグレードをスキップします$(COLOR_RESET)\n"
+endif
+ifeq ($(ZINIT_INSTALLED),)
+	@printf "$(COLOR_SKIP)✔ zinit は未インストールのためスキップします$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_INFO)   -> zinit を更新します$(COLOR_RESET)\n"
+	@zsh -ic "source \"$(ZINIT_SCRIPT)\"; typeset -i exit_code=0; zinit self-update || exit_code=$$?; zinit update --parallel || exit_code=$$?; wait || exit_code=$$?; exit $$exit_code"
+	@printf "$(COLOR_SUCCESS)✔ zinit のアップグレードが完了しました$(COLOR_RESET)\n"
+endif
+	@printf "$(COLOR_SUCCESS)✔ upgrade が完了しました$(COLOR_RESET)\n"
 
 .PHONY: mise
 mise:
-ifndef $(MISE_CMD)
+ifeq ($(MISE_CMD),)
+	@printf "$(COLOR_INFO)==> mise をインストールします$(COLOR_RESET)\n"
 ifeq ($(shell uname), Darwin)
-	brew install mise
+	HOMEBREW_NO_AUTO_UPDATE=1 brew install mise
 else
 	curl -s https://mise.run | sh
 endif
+	@printf "$(COLOR_SUCCESS)✔ mise のインストールが完了しました$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_SKIP)✔ mise は既にインストール済みのためスキップします$(COLOR_RESET)\n"
 endif
 
 .PHONY: zinit
 zinit:
-ifndef $(ZINIT_CMD)
+ifeq ($(ZINIT_INSTALLED),)
+	@printf "$(COLOR_INFO)==> zinit をインストールします$(COLOR_RESET)\n"
 	NO_INPUT=1 NO_ANNEXES=1 NO_EDIT=1 NO_TUTORIAL=1 bash -c "$$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
+	@printf "$(COLOR_SUCCESS)✔ zinit のインストールが完了しました$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_SKIP)✔ zinit は既にインストール済みのためスキップします$(COLOR_RESET)\n"
 endif
