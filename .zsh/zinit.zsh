@@ -22,8 +22,8 @@ zinit light-mode for \
 zinit light 'zsh-users/zsh-history-substring-search'
 
 # Additional completion definitions.
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-  zsh-users/zsh-completions
+zinit ice lucid nocd atload"zicompinit; zicdreplay" blockf
+zinit light zsh-users/zsh-completions
 
 # Ensure completion cache dir exists and add it to $fpath.
 typeset -g ZSH_CACHE_DIR="${ZSH_CACHE_DIR:-$HOME/.cache/omz}"
