@@ -38,38 +38,12 @@ zinit wait lucid for \
 #------------------------------
 # CLI utilities
 
-zinit ice lucid from"gh-r" as"program" pick"*/bat"
-zinit load sharkdp/bat
-
-zinit ice wait lucid from"gh-r" as"program" pick"*/fd"
-zinit load sharkdp/fd
-
-zinit ice wait lucid from"gh-r" as"program"
-zinit load junegunn/fzf
-
-zinit ice wait lucid from"gh-r" as"program" pick"*/ghq"
-zinit load x-motemen/ghq
-
-zinit ice lucid from"gh-r" as"program" pick"*/lsd"
-zinit load lsd-rs/lsd
-
-zinit ice lucid from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
-zinit load BurntSushi/ripgrep
-
 zinit ice lucid as"program" pick"bin/xpanes"
 zinit light greymd/tmux-xpanes
 
 zinit wait lucid from"gh-r" as"program" for \
   pick"*/csview" wfxr/csview \
-  pick"*/delta" dandavison/delta \
-  wagoodman/dive \
-  pick"*/gojq" itchyny/gojq \
-  pick"*/grex" pemistahl/grex \
-  pick"*/jnv" ynqa/jnv \
-  pick"*/killport" jkfran/killport \
-  pick"*/tailspin" bensadeh/tailspin \
-  pick"*/viddy" sachaos/viddy \
-  pick"*/xxh" xxh/xxh
+  pick"*/tailspin" bensadeh/tailspin
 
 zinit ice wait lucid as"program" make
 zinit load Xfennec/progress

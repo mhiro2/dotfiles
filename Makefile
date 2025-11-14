@@ -1,4 +1,4 @@
-XDG_CONFIG_FILES := bat git nvim yamllint
+XDG_CONFIG_FILES := bat git mise nvim yamllint
 EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules
 DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
 DOT_FILES_ALL    := $(DOT_FILES) $(XDG_CONFIG_FILES)
@@ -100,6 +100,7 @@ endif
 else
 	@printf "$(COLOR_SKIP)✔ mise は既にインストール済みのためスキップします$(COLOR_RESET)\n"
 endif
+	mise install
 
 .PHONY: zinit
 zinit:
