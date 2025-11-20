@@ -44,6 +44,10 @@ typeset -T LD_LIBRARY_PATH ld_library_path; typeset -U ld_library_path
 typeset -T LIBRARY_PATH library_path; typeset -U library_path
 typeset -T CPATH cpath; typeset -U cpath
 
+## XDG base directory
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_CACHE_HOME=${HOME}/.cache
+
 ## Enable coloring
 export CLICOLOR=1
 
@@ -69,9 +73,6 @@ export PATH=${GOBIN}:${PATH}
 # Settings for rust
 export CARGO_HOME=${HOME}/.cargo
 export PATH=${CARGO_HOME}/bin:${PATH}
-
-## XDG base directory
-export XDG_CONFIG_HOME=${HOME}/.config
 
 ## fzf
 export FZF_DEFAULT_OPTS='--extended --ansi --multi'

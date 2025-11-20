@@ -21,8 +21,8 @@ zinit light-mode for \
 # Load history substring search eagerly because key bindings use it straight away.
 zinit light 'zsh-users/zsh-history-substring-search'
 
-# Additional completion definitions.
-zinit ice lucid nocd atload"zicompinit; zicdreplay" blockf
+# Additional completion definitions
+zinit ice lucid nocd blockf
 zinit light zsh-users/zsh-completions
 
 # Ensure completion cache dir exists and add it to $fpath.
@@ -31,8 +31,6 @@ mkdir -p "$ZSH_CACHE_DIR/completions"
 fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
 zinit wait lucid for \
-   OMZP::docker \
-   OMZP::kubectl \
    OMZP::terraform/_terraform
 
 #------------------------------

@@ -32,3 +32,9 @@ zstyle ':completion:*:(cd|mv|cp):*' ignore-parents parent pwd
 zstyle ':completion:*:(mv|rm|kill|diff):*' ignore-line yes
 # If you end up using a directory as argument, this will remove the trailing slash (usefull in ln)
 zstyle ':completion:*' squeeze-slashes true
+
+typeset -g ZSH_LOCAL_COMPLETIONS="${ZSH_LOCAL_COMPLETIONS:-${XDG_CACHE_HOME}/zsh/completions}"
+typeset -g ZSH_ZCOMPDUMP="${ZSH_ZCOMPDUMP:-${XDG_CACHE_HOME}/zsh/.zcompdump}"
+fpath=("${ZSH_LOCAL_COMPLETIONS}" $fpath)
+
+autoload -Uz compinit && compinit -C -d "${ZSH_ZCOMPDUMP}"

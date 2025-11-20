@@ -4,7 +4,6 @@
 
 limit coredumpsize 0
 
-autoload -Uz compinit && compinit -u
 autoload -Uz colors && colors
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-latest
