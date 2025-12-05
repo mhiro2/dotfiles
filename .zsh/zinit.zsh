@@ -39,9 +39,5 @@ zinit wait lucid for \
 zinit ice lucid as"program" pick"bin/xpanes"
 zinit light greymd/tmux-xpanes
 
-zinit wait lucid from"gh-r" as"program" for \
-  pick"*/csview" wfxr/csview \
-  pick"*/tailspin" bensadeh/tailspin
-
 zinit ice wait lucid as"program" make
 zinit load Xfennec/progress

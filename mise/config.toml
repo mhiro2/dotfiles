@@ -24,3 +24,6 @@ terraform = "latest"
 tflint = "latest"
 trivy = "latest"
 uv = "latest"
+
+"github:bensadeh/tailspin" = "latest"
+"github:wfxr/csview" = "latest"
