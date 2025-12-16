@@ -16,7 +16,7 @@ return {
           ensure_installed = {
             "bashls",
             "biome",
-            "cuepls",
+            "cue",
             "clangd",
             "dockerls",
             "gopls",
