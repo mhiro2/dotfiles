@@ -43,6 +43,7 @@ type bat >& /dev/null && alias cat='bat -pp' && \
                          alias lvv='bat --paging=always' && \
                          alias less='bat --paging=always'
 type gojq >& /dev/null && alias jq='gojq'
+type gitui >& /dev/null && alias gui='gitui'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type nvim >& /dev/null && alias vim='nvim'
 type viddy >& /dev/null && alias watch='viddy'
