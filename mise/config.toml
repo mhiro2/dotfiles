@@ -24,6 +24,7 @@ stern = "latest"
 terraform = "latest"
 tflint = "latest"
 trivy = "latest"
+typos = "latest"
 uv = "latest"
 
 "github:bensadeh/tailspin" = "latest"

@@ -1,0 +1,36 @@
+output:
+  - summary
+  - meta
+
+pre-commit:
+  parallel: true
+  commands:
+    end-of-file-fixer:
+      exclude: "*.{jpg,jpeg,png,gif,bmp,tiff,svg,pdf,xls,xlsx}"
+      run: |
+        fixed_files=0
+        for file in {staged_files}; do
+          if [ -f "$file" ] && [ -s "$file" ]; then
+            if [ "$(tail -c 1 "$file" | wc -l)" -eq 0 ]; then
+              echo "Fixing end-of-file for: $file"
+              echo "" >> "$file"
+              fixed_files=$((fixed_files + 1))
+            fi
+          fi
+        done
+        if [ $fixed_files -gt 0 ]; then
+          echo "Fixed $fixed_files file(s). Please stage the changes and commit again."
+          exit 1
+        fi
+
+    typos:
+      run: |
+        files=""
+        for file in {staged_files}; do
+          if [ -f "$file" ]; then
+            files="$files $file"
+          fi
+        done
+        if [ -n "$files" ]; then
+          typos --config typos.toml $files
+        fi
