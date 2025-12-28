@@ -27,4 +27,5 @@ trivy = "latest"
 uv = "latest"
 
 "github:bensadeh/tailspin" = "latest"
+"github:k1LoW/git-wt" = "latest"
 "github:wfxr/csview" = "latest"
