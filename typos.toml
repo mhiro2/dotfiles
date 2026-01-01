@@ -1,3 +1,7 @@
+[default.extend-words]
+GTI = "GTI"
+noice = "noice"
+
 [files]
 extend-exclude = [
   ".git/",
