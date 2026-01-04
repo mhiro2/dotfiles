@@ -12,13 +12,15 @@ return {
       "mason-org/mason-lspconfig.nvim",
       config = function()
         require("mason-lspconfig").setup({
-          automatic_installation = true,
           ensure_installed = {
             "bashls",
             "biome",
             "cue",
             "clangd",
+            "dagger",
             "dockerls",
+            "eslint",
+            "golangci_lint_ls",
             "gopls",
             "graphql",
             "html",
@@ -27,12 +29,12 @@ return {
             "ruff",
             "rust_analyzer",
             "sqruff",
+            "sqlls",
             "terraformls",
             "tflint",
             "ts_ls",
             "yamlls",
           },
-          max_concurrent_installers = 10,
         })
       end,
     },
@@ -73,7 +75,7 @@ return {
       end,
     })
 
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     vim.lsp.config("*", {
       capabilities = capabilities,
