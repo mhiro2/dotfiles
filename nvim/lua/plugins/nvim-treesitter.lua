@@ -17,7 +17,6 @@ return {
         "tsx",
         "typescript",
       },
-      autotag = { enable = true },
       highlight = { enable = true },
       indent = { enable = true },
       matchup = { enable = true },
