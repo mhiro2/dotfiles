@@ -18,7 +18,10 @@ return {
       ["<S-Tab>"] = false,
     },
     sources = {
-      default = { "lsp", "path", "buffer" },
+      default = { "lsp", "path", "buffer", "i18n_status" },
+      providers = {
+        i18n_status = { name = "i18n-status", module = "i18n-status.blink" },
+      },
     },
     completion = {
       accept = {
