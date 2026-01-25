@@ -14,6 +14,7 @@ return {
         "python",
         "rust",
         "terraform",
+        "toml",
         "tsx",
         "typescript",
       },

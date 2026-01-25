@@ -18,9 +18,10 @@ return {
       ["<S-Tab>"] = false,
     },
     sources = {
-      default = { "lsp", "path", "buffer", "i18n_status" },
+      default = { "lsp", "path", "buffer", "i18n_status", "pydeps" },
       providers = {
         i18n_status = { name = "i18n-status", module = "i18n-status.blink" },
+        pydeps = { name = "pydeps", module = "pydeps.completion.blink" },
       },
     },
     completion = {
