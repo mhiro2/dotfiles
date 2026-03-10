@@ -29,4 +29,8 @@ uv = "latest"
 
 "github:bensadeh/tailspin" = "latest"
 "github:k1LoW/git-wt" = "latest"
+"github:k1LoW/mo" = "latest"
+"github:pamburus/hl" = "latest"
 "github:wfxr/csview" = "latest"
+
+"npm:portless" = "latest"
