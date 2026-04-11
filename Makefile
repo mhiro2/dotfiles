@@ -1,5 +1,6 @@
 XDG_CONFIG_FILES := bat git mise nvim yamllint
-EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules
+EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules .claude
+CLAUDE_FILES     := .claude/settings.json .claude/statusline.py
 DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
 DOT_FILES_ALL    := $(DOT_FILES) $(XDG_CONFIG_FILES)
 
@@ -58,6 +59,8 @@ init:
 	mkdir -p $(HOME)/.config
 	@-$(foreach f, $(DOT_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)";)
 	@-$(foreach f, $(XDG_CONFIG_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)/.config";)
+	mkdir -p $(HOME)/.claude
+	@-$(foreach f, $(CLAUDE_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)/$(f)";)
 	@printf "$(COLOR_SUCCESS)✔ init が完了しました$(COLOR_RESET)\n"
 
 .PHONY: list

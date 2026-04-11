@@ -1,0 +1,58 @@
+{
+  "model": "opus",
+  "env": {
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
+  },
+  "permissions": {
+   "allow": [
+      "Bash(cat *)",
+      "Bash(cd *)",
+      "Bash(cp *)",
+      "Bash(diff *)",
+      "Bash(echo *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(head *)",
+      "Bash(ls *)",
+      "Bash(make *)",
+      "Bash(mkdir *)",
+      "Bash(mise *)",
+      "Bash(pwd)",
+      "Bash(touch *)",
+      "Bash(sed *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Read",
+      "Edit",
+      "Write"
+    ],
+    "ask": [
+      "Bash(curl *)",
+      "Bash(mv *)",
+      "Bash(rm *)",
+      "Bash(wget *)",
+      "Bash(git push *)",
+      "Bash(git rebase *)",
+      "Bash(git reset *)",
+      "Bash(git revert *)",
+      "WebFetch"
+    ],
+    "deny": [
+      "Bash(chmod *)",
+      "Bash(chown *)",
+      "Bash(find * -delete*)",
+      "Bash(find * -exec rm *)",
+      "Bash(reboot *)",
+      "Bash(shutdown *)",
+      "Bash(ssh *)",
+      "Bash(su *)",
+      "Bash(sudo *)",
+      "Read(**/.env*)",
+      "Edit(**/.env*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.py"
+  }
+}
