@@ -4,7 +4,7 @@
     "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
   },
   "permissions": {
-   "allow": [
+    "allow": [
       "Bash(cat *)",
       "Bash(cd *)",
       "Bash(cp *)",
@@ -26,19 +26,7 @@
       "Edit",
       "Write"
     ],
-    "ask": [
-      "Bash(curl *)",
-      "Bash(mv *)",
-      "Bash(rm *)",
-      "Bash(wget *)",
-      "Bash(git push *)",
-      "Bash(git rebase *)",
-      "Bash(git reset *)",
-      "Bash(git revert *)",
-      "WebFetch"
-    ],
     "deny": [
-      "Bash(chmod *)",
       "Bash(chown *)",
       "Bash(find * -delete*)",
       "Bash(find * -exec rm *)",
@@ -49,6 +37,25 @@
       "Bash(sudo *)",
       "Read(**/.env*)",
       "Edit(**/.env*)"
+    ],
+    "ask": [
+      "Bash(chmod *)",
+      "Bash(curl *)",
+      "Bash(find * | xargs *)",
+      "Bash(mv *)",
+      "Bash(rm *)",
+      "Bash(wget *)",
+      "Bash(git push *)",
+      "Bash(git rebase *)",
+      "Bash(git reset *)",
+      "Bash(git revert *)",
+      "Bash(git filter-branch *)",
+      "Bash(npx *)",
+      "Bash(pnpx *)",
+      "Bash(pnpm dlx *)",
+      "Bash(bunx *)",
+      "Bash(uvx *)",
+      "WebFetch"
     ]
   },
   "statusLine": {
