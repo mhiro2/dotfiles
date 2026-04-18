@@ -19,7 +19,7 @@ COLOR_SKIP := \033[1;33m
 COLOR_RESET := \033[0m
 
 .PHONY: all
-all: init brew zinit mise refresh-completion
+all: init brew zinit mise refresh-completion treesitter
 
 .PHONY: brew
 brew:
@@ -143,3 +143,9 @@ ifeq ($(ZINIT_INSTALLED),)
 else
 	@printf "$(COLOR_SKIP)✔ zinit は既にインストール済みのためスキップします$(COLOR_RESET)\n"
 endif
+
+.PHONY: treesitter
+treesitter:
+	@printf "$(COLOR_INFO)==> Tree-sitter parser をローカル生成します$(COLOR_RESET)\n"
+	@./nvim/scripts/build-treesitter-parsers.sh
+	@printf "$(COLOR_SUCCESS)✔ Tree-sitter parser の生成が完了しました$(COLOR_RESET)\n"

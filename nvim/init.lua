@@ -23,5 +23,6 @@ require("lazy").setup({
   { import = "plugins" },
 })
 
+require("treesitter")
 require("options")
 require("mappings")

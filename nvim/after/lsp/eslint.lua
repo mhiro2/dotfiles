@@ -1,4 +1,4 @@
-vim.lsp.config.eslint = {
+return {
   root_markers = {
     ".eslintrc",
     ".eslintrc.js",

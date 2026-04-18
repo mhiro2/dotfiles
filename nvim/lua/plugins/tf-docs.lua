@@ -1,6 +1,5 @@
 return {
   "mhiro2/tf-docs.nvim",
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
   ft = { "terraform", "hcl" },
   config = function()
     require("tf-docs").setup()

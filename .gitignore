@@ -5,6 +5,8 @@ Thumbs.db
 # Vim
 .netrwhist
 *~
+nvim/parser/*.so
+nvim/parser/*.wasm
 
 # tmux
 .tmux/plugins

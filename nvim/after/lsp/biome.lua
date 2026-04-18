@@ -1,4 +1,4 @@
-vim.lsp.config.biome = {
+return {
   root_markers = {
     "biome.json",
     "biome.jsonc",
