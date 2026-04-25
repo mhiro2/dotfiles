@@ -23,7 +23,7 @@ COLOR_SKIP := \033[1;33m
 COLOR_RESET := \033[0m
 
 .PHONY: all
-all: init brew zinit tpm mise prek refresh-completion treesitter
+all: init brew zinit tpm mise prek refresh-completion treesitter fonts
 
 .PHONY: brew
 brew:
@@ -168,3 +168,13 @@ treesitter:
 	@printf "$(COLOR_INFO)==> Tree-sitter parser をローカル生成します$(COLOR_RESET)\n"
 	@./nvim/scripts/build-treesitter-parsers.sh
 	@printf "$(COLOR_SUCCESS)✔ Tree-sitter parser の生成が完了しました$(COLOR_RESET)\n"
+
+.PHONY: fonts
+fonts:
+ifeq ($(shell uname), Darwin)
+	@printf "$(COLOR_INFO)==> Moralerspace Neon フォントをインストールします$(COLOR_RESET)\n"
+	@./scripts/install-fonts.sh
+	@printf "$(COLOR_SUCCESS)✔ フォントのインストールが完了しました$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_SKIP)✔ macOS 以外のためフォントインストールをスキップします$(COLOR_RESET)\n"
+endif
