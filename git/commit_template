@@ -1,20 +1,26 @@
 
 
-# ==== Emojis ====
-# 🐛  :bug: バグ修正
-# 🚧  :construction: WIP
-# ✨  :sparkles: 機能追加・改善
-# 🎉  :tada: 盛大に祝うべき大きな機能追加
-# ♻️  :recycle: リファクタリング
-# 🔧  :wrench: 設定の変更
-# 📝  :memo: ドキュメントの追加・更新
-# 🗑️  :wastebasket: 不要な機能・使われなくなった機能の削除
-# 💚  :green_heart: テスト/ CI の修正・改善
-# 🚀  :rocket: パフォーマンス改善
-# ⬆️  :arrow_up: 依存パッケージなどのアップデート
-# 🔒  :lock: セキュリティ関連の改善
+# ==== Types ====
+# feat:     A new feature
+# fix:      A bug fix
+# docs:     Documentation only changes
+# style:    Changes that do not affect the meaning of the code (whitespace, formatting, etc.)
+# refactor: A code change that neither fixes a bug nor adds a feature
+# perf:     A code change that improves performance
+# test:     Adding missing tests or correcting existing tests
+# build:    Changes that affect the build system or external dependencies
+# ci:       Changes to CI configuration files and scripts
+# chore:    Other changes that don't modify src or test files (config, etc.)
+# revert:   Reverts a previous commit
 
 # ==== Format ====
-# :emoji: [issue No.] Subject
+# <type>(<scope>): <subject>
 #
-# Commit body...
+# <body>
+#
+# <footer>
+#
+# - scope is optional; indicates the area of impact (module name, etc.)
+# - subject must be in the imperative, present tense, within 50 characters
+# - For breaking changes, add `BREAKING CHANGE: <description>` in the footer,
+#   or append `!` after the type (e.g. feat!: ...)
