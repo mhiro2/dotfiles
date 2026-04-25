@@ -23,7 +23,7 @@ COLOR_SKIP := \033[1;33m
 COLOR_RESET := \033[0m
 
 .PHONY: all
-all: init brew zinit tpm mise refresh-completion treesitter
+all: init brew zinit tpm mise prek refresh-completion treesitter
 
 .PHONY: brew
 brew:
@@ -109,6 +109,12 @@ else
 	@printf "$(COLOR_SKIP)✔ mise は既にインストール済みのためスキップします$(COLOR_RESET)\n"
 endif
 	mise install
+
+.PHONY: prek
+prek:
+	@printf "$(COLOR_INFO)==> prek フックをインストールします$(COLOR_RESET)\n"
+	@prek install --overwrite --install-hooks
+	@printf "$(COLOR_SUCCESS)✔ prek フックのインストールが完了しました$(COLOR_RESET)\n"
 
 .PHONY: completions
 completions:
