@@ -5,7 +5,7 @@
 # Bindings.
 bindkey -v
 
-# Move to begining and end of line.
+# Move to beginning and end of line.
 bindkey -M vicmd '^A' vi-beginning-of-line
 bindkey -M vicmd '^E' vi-end-of-line
 bindkey -M viins '^A' vi-beginning-of-line

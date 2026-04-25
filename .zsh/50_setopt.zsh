@@ -168,7 +168,7 @@ set -o HIST_NO_STORE
 # Remove superfluous blanks from each command line being added to the history list.
 set -o HIST_REDUCE_BLANKS
 
-# Don't create temporaly file to copy history.
+# Don't create temporary file to copy history.
 #set +o HIST_SAVE_BY_COPY
 
 # Avoid duplicates on history saving.
@@ -276,7 +276,7 @@ set -o UNSET
 
 # Initialization {{{
 
-# Export all valiables automatically.
+# Export all variables automatically.
 #set -o ALL_EXPORT
 
 # Local variables are not globale ones.
@@ -355,7 +355,7 @@ set -o SHORT_LOOPS
 #set +o SHORT_LOOPS
 
 # If a line ends with a backquote, and there are an odd number of backquotes on the line, ignore the trailing backquote.
-#set -o SUN_KEYBORD_HACK
+#set -o SUN_KEYBOARD_HACK
 # }}}
 
 # Job Control {{{
@@ -447,7 +447,7 @@ set -o TRANSIENT_RPROMPT
 #set -o KSH_ZERO_SUBSCRIPT
 #set -o POSIX_ALIASES
 #set -o POSIX_BUILTINS
-#set -o POSIX_INDENTIFIERS
+#set -o POSIX_IDENTIFIERS
 #set -o POSIX_STRINGS
 #set -o POSIX_TRAPS
 #set -o SH_FILE_EXPANSION
@@ -491,4 +491,3 @@ set +o BEEP
 # Use zsh line editor.
 #set -o ZLE
 # }}}
-

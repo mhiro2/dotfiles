@@ -66,4 +66,3 @@ $if mode=vi
     "\C-u": unix-line-discard
     "\C-w": backward-kill-word
 $endif
-

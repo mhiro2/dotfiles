@@ -30,7 +30,7 @@ zstyle ':completion:*:(approximate|correct):*' max-errors 2 numeric
 zstyle ':completion:*:(cd|mv|cp):*' ignore-parents parent pwd
 # Ignore what's already in the line.
 zstyle ':completion:*:(mv|rm|kill|diff):*' ignore-line yes
-# If you end up using a directory as argument, this will remove the trailing slash (usefull in ln)
+# If you end up using a directory as argument, this will remove the trailing slash (useful in ln)
 zstyle ':completion:*' squeeze-slashes true
 
 typeset -g ZSH_LOCAL_COMPLETIONS="${ZSH_LOCAL_COMPLETIONS:-${XDG_CACHE_HOME}/zsh/completions}"
