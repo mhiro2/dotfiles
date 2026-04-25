@@ -1,4 +1,4 @@
-XDG_CONFIG_FILES := bat git mise nvim tmux yamllint
+XDG_CONFIG_FILES := bat git mise nvim tmux
 EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules .claude .tmux
 CLAUDE_FILES     := .claude/settings.json .claude/statusline.py
 DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
