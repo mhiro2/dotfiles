@@ -9,4 +9,4 @@ nvim/parser/*.so
 nvim/parser/*.wasm
 
 # tmux
-.tmux/plugins
+tmux/plugins

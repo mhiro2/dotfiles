@@ -1,14 +1,18 @@
-XDG_CONFIG_FILES := bat git mise nvim yamllint
-EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules .claude
+XDG_CONFIG_FILES := bat git mise nvim tmux yamllint
+EXCLUDE_FILES    := .DS_Store .git .github .gitignore .gitmodules .claude .tmux
 CLAUDE_FILES     := .claude/settings.json .claude/statusline.py
 DOT_FILES        := $(filter-out $(EXCLUDE_FILES), $(wildcard .??*))
 DOT_FILES_ALL    := $(DOT_FILES) $(XDG_CONFIG_FILES)
+
+XDG_CONFIG_HOME ?= $(HOME)/.config
 
 BREW_CMD := $(shell command -v brew 2> /dev/null)
 MISE_CMD := $(shell command -v mise 2> /dev/null)
 ZINIT_DIR := $(HOME)/.local/share/zinit
 ZINIT_INSTALLED := $(shell test -d "$(ZINIT_DIR)/zinit.git" && echo installed)
 ZINIT_SCRIPT := $(ZINIT_DIR)/zinit.git/zinit.zsh
+TPM_DIR := $(XDG_CONFIG_HOME)/tmux/plugins/tpm
+TPM_INSTALLED := $(shell test -d "$(TPM_DIR)/.git" && echo installed)
 
 ZSH_COMPLETIONS_DIR := $(XDG_CACHE_HOME)/zsh/completions
 ZSH_COMPDUMP := $(XDG_CACHE_HOME)/zsh/.zcompdump
@@ -19,7 +23,7 @@ COLOR_SKIP := \033[1;33m
 COLOR_RESET := \033[0m
 
 .PHONY: all
-all: init brew zinit mise refresh-completion treesitter
+all: init brew zinit tpm mise refresh-completion treesitter
 
 .PHONY: brew
 brew:
@@ -42,7 +46,7 @@ endif
 clean:
 	@printf "$(COLOR_INFO)==> シンボリックリンクを削除します$(COLOR_RESET)\n"
 	@-$(foreach f, $(DOT_FILES), unlink $(HOME)/$(f);)
-	@-$(foreach f, $(XDG_CONFIG_FILES), unlink $(HOME)/.config/$(f);)
+	@-$(foreach f, $(XDG_CONFIG_FILES), unlink $(XDG_CONFIG_HOME)/$(f);)
 	@printf "$(COLOR_SUCCESS)✔ clean が完了しました$(COLOR_RESET)\n"
 
 .PHONY: install
@@ -53,12 +57,10 @@ install:
 
 .PHONY: init
 init:
-	@printf "$(COLOR_INFO)==> サブモジュールとシンボリックリンクを初期化します$(COLOR_RESET)\n"
-	git submodule init
-	git submodule update
-	mkdir -p $(HOME)/.config
+	@printf "$(COLOR_INFO)==> シンボリックリンクを初期化します$(COLOR_RESET)\n"
+	mkdir -p $(XDG_CONFIG_HOME)
 	@-$(foreach f, $(DOT_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)";)
-	@-$(foreach f, $(XDG_CONFIG_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)/.config";)
+	@-$(foreach f, $(XDG_CONFIG_FILES), ln -sf "$(PWD)/$(f)" "$(XDG_CONFIG_HOME)";)
 	mkdir -p $(HOME)/.claude
 	@-$(foreach f, $(CLAUDE_FILES), ln -sf "$(PWD)/$(f)" "$(HOME)/$(f)";)
 	@printf "$(COLOR_SUCCESS)✔ init が完了しました$(COLOR_RESET)\n"
@@ -142,6 +144,17 @@ ifeq ($(ZINIT_INSTALLED),)
 	@printf "$(COLOR_SUCCESS)✔ zinit のインストールが完了しました$(COLOR_RESET)\n"
 else
 	@printf "$(COLOR_SKIP)✔ zinit は既にインストール済みのためスキップします$(COLOR_RESET)\n"
+endif
+
+.PHONY: tpm
+tpm: init
+ifeq ($(TPM_INSTALLED),)
+	@printf "$(COLOR_INFO)==> TPM をインストールします$(COLOR_RESET)\n"
+	@mkdir -p "$(XDG_CONFIG_HOME)/tmux/plugins"
+	git clone https://github.com/tmux-plugins/tpm "$(TPM_DIR)"
+	@printf "$(COLOR_SUCCESS)✔ TPM のインストールが完了しました$(COLOR_RESET)\n"
+else
+	@printf "$(COLOR_SKIP)✔ TPM は既にインストール済みのためスキップします$(COLOR_RESET)\n"
 endif
 
 .PHONY: treesitter
