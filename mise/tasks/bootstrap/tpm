@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#MISE description="tmux plugin manager をインストールする"
+set -euo pipefail
+
+TASK_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+readonly TASK_DIR
+REPO_ROOT="$(git -C "${TASK_DIR}" rev-parse --show-toplevel)"
+readonly REPO_ROOT
+cd "${REPO_ROOT}"
+
+# shellcheck source=scripts/common.sh
+source "${REPO_ROOT}/scripts/common.sh"
+
+readonly xdg_config_home="${XDG_CONFIG_HOME:-${HOME}/.config}"
+readonly tpm_dir="${xdg_config_home}/tmux/plugins/tpm"
+
+if [[ -d "${tpm_dir}/.git" ]]; then
+  skip "TPM は既にインストール済みのためスキップします"
+  exit 0
+fi
+
+info "TPM をインストールします"
+mkdir -p "${xdg_config_home}/tmux/plugins"
+git clone https://github.com/tmux-plugins/tpm "${tpm_dir}"
+success "TPM のインストールが完了しました"

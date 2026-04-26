@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="yuru7/moralerspace"
-FAMILY="Neon"
-FONTS_DIR="${HOME}/Library/Fonts"
-STATE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/dotfiles"
-MARKER="${STATE_DIR}/moralerspace.version"
+readonly REPO="yuru7/moralerspace"
+readonly FAMILY="Neon"
+readonly FONTS_DIR="${HOME}/Library/Fonts"
+readonly STATE_DIR="${XDG_CACHE_HOME:-${HOME}/.cache}/dotfiles"
+readonly MARKER="${STATE_DIR}/moralerspace.version"
 
 if [[ "$(uname)" != "Darwin" ]]; then
   echo "macOS 以外のためスキップします"
   exit 0
 fi
 
-latest_tag=$(curl -fsSLI -o /dev/null -w '%{url_effective}' \
-  "https://github.com/${REPO}/releases/latest" | awk -F'/' '{print $NF}')
+latest_tag="$(
+  curl -fsSLI -o /dev/null -w '%{url_effective}' \
+    "https://github.com/${REPO}/releases/latest" | awk -F'/' '{print $NF}'
+)"
+readonly latest_tag
 
 if [[ -z "${latest_tag}" || "${latest_tag}" == "latest" ]]; then
   echo "最新バージョンの取得に失敗しました" >&2
@@ -25,9 +28,10 @@ if [[ -f "${MARKER}" ]] && [[ "$(cat "${MARKER}")" == "${latest_tag}" ]]; then
   exit 0
 fi
 
-zip_name="Moralerspace_${latest_tag}.zip"
-download_url="https://github.com/${REPO}/releases/download/${latest_tag}/${zip_name}"
-tmpdir=$(mktemp -d)
+readonly zip_name="Moralerspace_${latest_tag}.zip"
+readonly download_url="https://github.com/${REPO}/releases/download/${latest_tag}/${zip_name}"
+tmpdir="$(mktemp -d)"
+readonly tmpdir
 trap 'rm -rf "${tmpdir}"' EXIT
 
 echo "Moralerspace ${latest_tag} をダウンロードします"
