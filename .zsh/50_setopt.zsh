@@ -69,7 +69,7 @@ set -o AUTO_MENU
 #set +o AUTO_MENU
 
 # Use named dirs when possible
-set -o AUTO_NAME_DIRS
+#set -o AUTO_NAME_DIRS
 
 # Complete parenthesis and a parameter name automatically.
 set -o AUTO_PARAM_KEYS
