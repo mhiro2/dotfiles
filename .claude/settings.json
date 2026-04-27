@@ -1,9 +1,9 @@
 {
-  "model": "opus",
   "env": {
     "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
   },
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Bash(cat *)",
       "Bash(cd *)",
@@ -51,15 +51,18 @@
       "Bash(git revert *)",
       "Bash(git filter-branch *)",
       "Bash(npx *)",
-      "Bash(pnpx *)",
       "Bash(pnpm dlx *)",
       "Bash(bunx *)",
       "Bash(uvx *)",
       "WebFetch"
     ]
   },
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.py"
-  }
+  },
+  "effortLevel": "xhigh",
+  "theme": "dark-daltonized",
+  "skipAutoPermissionPrompt": true
 }
