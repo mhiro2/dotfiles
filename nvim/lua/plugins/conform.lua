@@ -17,11 +17,11 @@ return {
       return #found > 0
     end
 
-    local function biome_or_prettier(bufnr)
+    local function biome_or_oxfmt(bufnr)
       if has_biome_config(bufnr) then
         return { "biome" }
       end
-      return { "prettier" }
+      return { "oxfmt" }
     end
 
     return {
@@ -36,11 +36,11 @@ return {
         terraform = { "terraform_fmt" },
         yaml = { "prettier" },
 
-        javascript = biome_or_prettier,
-        typescript = biome_or_prettier,
-        javascriptreact = biome_or_prettier,
-        typescriptreact = biome_or_prettier,
-        json = biome_or_prettier,
+        javascript = biome_or_oxfmt,
+        typescript = biome_or_oxfmt,
+        javascriptreact = biome_or_oxfmt,
+        typescriptreact = biome_or_oxfmt,
+        json = biome_or_oxfmt,
 
         ["*"] = { "typos", "trim_newlines", "trim_whitespace" },
       },
