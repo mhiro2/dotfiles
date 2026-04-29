@@ -8,7 +8,6 @@ return {
       build = ":MasonUpdate",
     },
     "b0o/schemastore.nvim",
-    "folke/neodev.nvim",
     {
       "mason-org/mason-lspconfig.nvim",
       config = function()
@@ -41,11 +40,6 @@ return {
     },
   },
   config = function()
-    local ok, neodev = pcall(require, "neodev")
-    if ok then
-      neodev.setup()
-    end
-
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -109,10 +103,6 @@ return {
     vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
-          workspace = {
-            checkThirdParty = false,
-            library = vim.api.nvim_get_runtime_file("", true),
-          },
           diagnostics = {
             globals = { "vim" },
           },
