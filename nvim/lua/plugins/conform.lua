@@ -6,13 +6,13 @@ return {
     local function has_biome_config(bufnr)
       local name = vim.api.nvim_buf_get_name(bufnr)
       if name == "" then
-        name = vim.loop.cwd()
+        name = vim.uv.cwd()
       end
       local search_path = vim.fs.dirname(name) or name
       local found = vim.fs.find({ "biome.json", "biome.jsonc" }, {
         path = search_path,
         upward = true,
-        stop = vim.loop.os_homedir(),
+        stop = vim.uv.os_homedir(),
       })
       return #found > 0
     end
