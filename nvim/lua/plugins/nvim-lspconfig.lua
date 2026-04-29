@@ -78,36 +78,6 @@ return {
       capabilities = capabilities,
     })
 
-    local ok_schemastore, schemastore = pcall(require, "schemastore")
-    if ok_schemastore then
-      vim.lsp.config("jsonls", {
-        settings = {
-          json = {
-            schemas = schemastore.json.schemas(),
-            validate = { enable = true },
-          },
-        },
-      })
-      vim.lsp.config("yamlls", {
-        settings = {
-          yaml = {
-            schemaStore = { enable = false, url = "" },
-            schemas = schemastore.yaml.schemas(),
-            validate = true,
-          },
-        },
-      })
-    end
-    vim.lsp.config("lua_ls", {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { "vim" },
-          },
-        },
-      },
-    })
-
     vim.lsp.enable({
       "bashls",
       "biome",
