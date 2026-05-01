@@ -86,7 +86,7 @@ set -o AUTO_PARAM_SLASH
 #set -o BASH_AUTO_LIST
 
 # Don't replace alias before completion.
-set -o COMPLETE_ALIASES
+#set -o COMPLETE_ALIASES
 
 # the cursor is not set to the end of the word if completion is started
 set -o COMPLETE_IN_WORD
@@ -179,7 +179,7 @@ set +o HIST_VERIFY
 #set -o HIST_VERIFY
 
 # New history lines are added to the $HISTFILE incrementally.
-set -o INC_APPEND_HISTORY
+#set -o INC_APPEND_HISTORY
 
 # Share history file among all zsh sessions.
 set -o SHARE_HISTORY
@@ -299,7 +299,7 @@ set -o ALIASES
 set +o CLOBBER
 
 # Try to correct the spelling of commands.
-set -o CORRECT
+#set -o CORRECT
 
 # Try to correct the spelling of all arguments in a line.
 #set -o CORRECT_ALL

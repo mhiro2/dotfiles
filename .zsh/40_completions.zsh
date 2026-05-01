@@ -1,10 +1,10 @@
 ### Completion
 
 # Insert space and slash used by the _expand completer.
-zstyle ':completion:*' add-space true
+zstyle ':completion:*' add-space yes
 # Completion modifiers.
 zstyle ':completion:*' completer \
-         _expand _complete _match _ignored _approximate _oldlist _list _history _prefix
+         _expand _complete _match _ignored _oldlist _list _history _prefix
 # Ignore case.
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 # Verbose output for completion listing.
@@ -12,7 +12,7 @@ zstyle ':completion:*' verbose yes
 # All different types of matches displayed separately.
 zstyle ':completion:*' group-name ''
 # Make the completion menu selectable.
-zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*:default' menu select=long-list
 # Try to keep a preﬁx containing a tilde or parameter expansion.
 zstyle ':completion:*' keep-prefix
 # Use a completion cache.
@@ -37,4 +37,9 @@ typeset -g ZSH_LOCAL_COMPLETIONS="${ZSH_LOCAL_COMPLETIONS:-${XDG_CACHE_HOME}/zsh
 typeset -g ZSH_ZCOMPDUMP="${ZSH_ZCOMPDUMP:-${XDG_CACHE_HOME}/zsh/.zcompdump}"
 fpath=("${ZSH_LOCAL_COMPLETIONS}" $fpath)
 
-autoload -Uz compinit && compinit -C -d "${ZSH_ZCOMPDUMP}"
+autoload -Uz compinit
+if [[ -n ${ZSH_ZCOMPDUMP}(#qN.mh+24) ]]; then
+  compinit -d "${ZSH_ZCOMPDUMP}"
+else
+  compinit -C -d "${ZSH_ZCOMPDUMP}"
+fi
