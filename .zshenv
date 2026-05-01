@@ -6,7 +6,6 @@ umask 0022
 ## LANG
 export LANGUAGE='en_US.UTF-8'
 export LANG=${LANGUAGE}
-export LC_ALL=${LANGUAGE}
 
 ## EDITOR
 export EDITOR=nvim
@@ -27,8 +26,6 @@ path=(
   /sbin(N-/)
 )
 
-cdpath=(${HOME})
-
 manpath=(
   /opt/homebrew/share/man(N-/)
   /usr/local/share/man(N-/)
@@ -48,24 +45,24 @@ typeset -T CPATH cpath; typeset -U cpath
 ## XDG base directory
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_CACHE_HOME=${HOME}/.cache
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_STATE_HOME=${HOME}/.local/state
 
 ## Enable coloring
 export CLICOLOR=1
 
-# Settings for golang
-export GOPATH=${HOME}/go
-export GOBIN=${GOPATH}/bin
-export PATH=${GOBIN}:${PATH}
-
-# Settings for rust
-export CARGO_HOME=${HOME}/.cargo
-export PATH=${CARGO_HOME}/bin:${PATH}
+## User-installed binaries land in ~/.local/bin (already on PATH)
+export GOBIN=${HOME}/.local/bin
+export CARGO_INSTALL_ROOT=${HOME}/.local
 
 ## fzf
-export FZF_DEFAULT_OPTS='--extended --ansi --multi'
+export FZF_DEFAULT_OPTS='--extended --ansi --multi --height=80% --layout=reverse --border'
+export FZF_CTRL_T_OPTS='--preview="bat --color=always --style=numbers --line-range=:200 {} 2>/dev/null || cat {}"'
+export FZF_CTRL_R_OPTS='--bind="ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort"'
 
 ## command history
-HISTFILE=${HOME}/.zsh_history
+[[ -d ${XDG_STATE_HOME}/zsh ]] || mkdir -p ${XDG_STATE_HOME}/zsh
+HISTFILE=${XDG_STATE_HOME}/zsh/history
 HISTSIZE=100000
 SAVEHIST=${HISTSIZE}
 if [[ $UID == 0 ]]; then
