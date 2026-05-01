@@ -15,9 +15,7 @@ return {
           ensure_installed = {
             "bashls",
             "biome",
-            "cue",
             "clangd",
-            "dagger",
             "dockerls",
             "golangci_lint_ls",
             "gopls",
@@ -83,8 +81,6 @@ return {
       "bashls",
       "biome",
       "clangd",
-      "cue",
-      "dagger",
       "dockerls",
       "golangci_lint_ls",
       "gopls",
