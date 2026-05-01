@@ -7,7 +7,7 @@ font-size = 13
 
 # Cursor
 cursor-style = block
-cursor-style-blink = true
+cursor-style-blink = false
 cursor-invert-fg-bg = true
 
 # Mouse / clipboard
