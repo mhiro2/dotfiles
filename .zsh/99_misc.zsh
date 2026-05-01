@@ -22,23 +22,5 @@ case "${TERM}" in
     ;;
 esac
 
-# cursor for vi-mode
-function zle-keymap-select zle-line-init zle-line-finish {
-  case ${KEYMAP} in
-    vicmd)
-      printf "\e[2 q"  # block cursor
-      ;;
-    viins|main)
-      printf "\e[6 q"  # bar cursor
-      ;;
-    vivis|vivli)
-      printf "\e[2 q"  # block cursor
-      ;;
-  esac
-}
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-
 # git-wt
 eval "$(git wt --init zsh)"

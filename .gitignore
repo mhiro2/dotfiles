@@ -10,3 +10,6 @@ nvim/parser/*.wasm
 
 # tmux
 tmux/plugins
+
+# antidote (generated static loader)
+.zsh/.zsh_plugins.zsh

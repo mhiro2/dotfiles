@@ -11,7 +11,7 @@ cd "${REPO_ROOT}"
 mise run dotfiles:init
 mise run bootstrap:homebrew
 mise run bootstrap:tpm
-mise run zsh:zinit
+mise run zsh:antidote
 
 mise install
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#MISE description="mise tools と zinit を更新する"
+#MISE description="mise tools と antidote を更新する"
 set -euo pipefail
 
 TASK_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
@@ -16,5 +16,5 @@ info "各種ツールのアップグレードを実行します"
 mise self-update
 mise up
 
-"${REPO_ROOT}/scripts/install-zinit.sh" update
+"${REPO_ROOT}/scripts/install-antidote.sh" update
 success "upgrade が完了しました"

@@ -1,0 +1,22 @@
+# Plugin bundle for antidote
+# https://getantidote.github.io/
+
+# Async git prompt helpers from oh-my-zsh
+ohmyzsh/ohmyzsh path:lib/async_prompt.zsh kind:zsh
+ohmyzsh/ohmyzsh path:lib/git.zsh kind:zsh
+
+# Vi mode
+jeffreytse/zsh-vi-mode
+
+# fpath-only plugins
+zsh-users/zsh-completions kind:fpath path:src
+ohmyzsh/ohmyzsh path:plugins/terraform kind:fpath
+
+# tmux-xpanes binary
+greymd/tmux-xpanes path:bin kind:path
+
+# Order matters: autosuggestions before syntax highlighting,
+# history-substring-search after both.
+zsh-users/zsh-autosuggestions
+z-shell/F-Sy-H
+zsh-users/zsh-history-substring-search
