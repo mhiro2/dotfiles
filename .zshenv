@@ -16,6 +16,7 @@ typeset -U PATH path cdpath fpath manpath
 setopt no_global_rcs
 
 path=(
+  ${HOME}/.local/bin(N-/)
   /opt/homebrew/bin(N-/)
   /opt/homebrew/sbin(N-/)
   /usr/local/bin(N-/)
