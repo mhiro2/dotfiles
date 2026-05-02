@@ -23,7 +23,7 @@ alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias history='history -i'
 alias hist='history'
-alias http-server='python -m http.server'
+alias http-server='python3 -m http.server'
 alias mkdir='mkdir -p'
 alias pk='fzf-kill'
 alias pssh='fzf-ssh-alias'
@@ -40,13 +40,11 @@ alias zmv='noglob zmv -W'
 ## Optional aliases
 type bat >& /dev/null && alias cat='bat -pp' && \
                          alias lv='bat -p' && \
-                         alias lvv='bat --paging=always' && \
-                         alias less='bat --paging=always'
+                         alias lvv='bat --paging=always'
 type gojq >& /dev/null && alias jq='gojq'
 type gitui >& /dev/null && alias gui='gitui'
 type http >& /dev/null && alias https='http --default-scheme=https'
 type nvim >& /dev/null && alias vim='nvim'
-type viddy >& /dev/null && alias watch='viddy'
 type xpanes >& /dev/null && alias xp='xpanes'
 
 ## Git aliases
@@ -168,9 +166,7 @@ alias -g T='| tail'
 alias -g W='| wc'
 alias -g X='| xargs'
 type gojq >& /dev/null && alias -g J='| gojq'
-type pv >& /dev/null && alias -g P='| pv'
 type rg >& /dev/null && alias -g R='| rg'
-#type xsel >& /dev/null && alias -g X='| xsel -bi'
 type yq >& /dev/null && alias -g Y='| yq'
 
 ## Architecture depends
@@ -203,18 +199,10 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   type xsel >& /dev/null && alias pbcopy='xsel -bi' \
                          && alias pbpaste='xsel -bo'
 
-  alias firewall-cmd='sudo firewall-cmd'
-  alias fw='firewall-cmd'
-  alias fwl='fw --list-all'
-  alias fwr='fw --reload'
-
   alias journalctl='sudo journalctl'
   alias jcl='journalctl'
   alias systemctl='sudo systemctl'
   alias scl='systemctl'
-
-  alias zfs='sudo zfs'
-  alias zpool='sudo zpool'
 fi
 
 ## Overwrite ls aliases with lsd
@@ -227,5 +215,4 @@ alias -s zip=zipinfo
 alias -s {tgz,gz}=gzcat
 alias -s {tbz,bz2}=bzcat
 alias -s {md,txt}=vim
-alias -s csv=csview
 alias -s {json,xml,yaml,yml}=bat

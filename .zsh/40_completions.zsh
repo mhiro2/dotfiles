@@ -3,8 +3,7 @@
 # Insert space and slash used by the _expand completer.
 zstyle ':completion:*' add-space yes
 # Completion modifiers.
-zstyle ':completion:*' completer \
-         _expand _complete _match _ignored _oldlist _list _history _prefix
+zstyle ':completion:*' completer _expand _complete _match
 # Ignore case.
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 # Verbose output for completion listing.
@@ -25,7 +24,6 @@ zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories
 # Fuzzy matching of completions for when you mistype them
 zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:(approximate|correct):*' max-errors 2 numeric
 # Ignore parent directory.
 zstyle ':completion:*:(cd|mv|cp):*' ignore-parents parent pwd
 # Ignore what's already in the line.
