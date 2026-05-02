@@ -7,15 +7,33 @@
 
 [commit]
   template = ~/.config/git/commit_template
+  verbose = true
 
 [push]
   default = current
+  autoSetupRemote = true
 
 [pull]
   ff = only
 
+[fetch]
+  prune = true
+
 [rebase]
   autostash = true
+  updateRefs = true
+
+[merge]
+  conflictStyle = zdiff3
+
+[rerere]
+  enabled = true
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = -version:refname
 
 [core]
   editor = nvim
@@ -23,18 +41,13 @@
 
 [color]
   ui = auto
-  status = auto
-  diff = auto
-  branch = auto
-  interactive = auto
-  grep = auto
 
 [pager]
   branch = cat
 
 [diff]
-  compactionHeuristic = true
   colorMoved = default
+  colorMovedWS = allow-indentation-change
 
 [interactive]
   diffFilter = delta --color-only --features=interactive
