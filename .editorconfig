@@ -1,5 +1,3 @@
-# EditorConfig: http://EditorConfig.org
-
 root = true
 
 [*]
@@ -12,6 +10,7 @@ insert_final_newline = true
 
 [Makefile]
 indent_style = tab
+indent_size = tab
 
 [*.md]
 trim_trailing_whitespace = false
@@ -20,5 +19,5 @@ trim_trailing_whitespace = false
 indent_size = 4
 
 [{*.go,*.rego}]
-indent_size = 4
 indent_style = tab
+indent_size = tab
