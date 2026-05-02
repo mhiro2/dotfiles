@@ -67,8 +67,9 @@
   sh = show
 
 [delta]
-  negative = true
   features = side-by-side line-numbers decorations
+  navigate = true
+  hyperlinks = true
   minus-style = normal "#660000"
   minus-emph-style = normal "#e00b00"
   plus-style = syntax "#084200"
@@ -83,5 +84,4 @@
   hunk-header-decoration-style = cyan box ul
 
 [ghq]
-  root = ~/go/src
   root = ~/ghq
