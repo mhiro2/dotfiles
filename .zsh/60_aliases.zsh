@@ -52,7 +52,6 @@ if (( ${+commands[bat]} )); then
 fi
 (( ${+commands[gojq]} ))   && alias jq='gojq'
 (( ${+commands[gitui]} ))  && alias gui='gitui'
-(( ${+commands[http]} ))   && alias https='http --default-scheme=https'
 (( ${+commands[nvim]} ))   && alias vim='nvim'
 (( ${+commands[xpanes]} )) && alias xp='xpanes'
 

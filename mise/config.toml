@@ -35,6 +35,7 @@ trivy = "latest"
 typos = "latest"
 uv = "latest"
 vivid = "latest"
+xh = "latest"
 
 "aqua:vercel-labs/agent-browser" = "latest"
 "aqua:walles/moor" = "latest"
