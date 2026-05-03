@@ -22,9 +22,6 @@ show_buffer_stack() {
 }
 zle -N show_buffer_stack
 
-# Load fzf widgets.
-source ~/.zsh/fzf_widgets.zsh
-
 custom_keybinds() {
   # Move to beginning and end of line.
   bindkey -M vicmd '^A' vi-beginning-of-line

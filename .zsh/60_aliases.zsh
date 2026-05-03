@@ -7,12 +7,22 @@
 #     $ \vim
 # ---------------------------------------------------
 
-function fzf-ssh-alias {
-  local host=$(grep '^Host' ~/.ssh/config | awk '{ print $2 }' | fzf --prompt 'ssh> ' --height=40% --layout=reverse)
-  if [ -n "${host}" ]; then
-    echo "ssh ${host}"
-    \ssh ${host}
-  fi
+# CLI wrappers for fzf widgets that are otherwise registered with `zle -N`
+# in 45_fzf_widgets.zsh. Calling those widgets directly from the command line
+# would error because they manipulate LBUFFER / call `zle accept-line` etc.
+fzf-tmux-attach-cli() {
+  local session
+  session=$(tmux list-sessions -F '#{session_name}' 2>/dev/null \
+    | fzf --prompt='tmux> ' --height=40% --layout=reverse)
+  [[ -n "${session}" ]] && tmux attach-session -t "${session}"
+}
+
+fzf-git-add-cli() {
+  local files
+  files=$(git status --porcelain \
+    | fzf --prompt='add> ' --height=40% --layout=reverse --multi \
+    | awk '{print $2}')
+  [[ -n "${files}" ]] && print -r -- "${files}" | xargs git add
 }
 
 ## Common aliases
@@ -22,19 +32,17 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias history='history -i'
-alias hist='history'
 alias http-server='python3 -m http.server'
 alias mkdir='mkdir -p'
 alias pk='fzf-kill'
-alias pssh='fzf-ssh-alias'
+alias pssh='fzf-ssh'
 alias reboot='sudo reboot'
-alias scp='scp -p'
+alias scp='rsync -avhP'
 alias sort='LC_ALL=C sort'
 alias sudo='sudo '
-alias ta='fzf-tmux-attach'
+alias ta='fzf-tmux-attach-cli'
 alias tl='tmux ls'
 alias uniq='LC_ALL=C uniq'
-autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
@@ -42,22 +50,22 @@ if (( ${+commands[bat]} )); then
   alias cat='bat -pp'
   alias lv='bat --paging=always'
 fi
-type gojq >& /dev/null && alias jq='gojq'
-type gitui >& /dev/null && alias gui='gitui'
-type http >& /dev/null && alias https='http --default-scheme=https'
-type nvim >& /dev/null && alias vim='nvim'
-type xpanes >& /dev/null && alias xp='xpanes'
+(( ${+commands[gojq]} ))   && alias jq='gojq'
+(( ${+commands[gitui]} ))  && alias gui='gitui'
+(( ${+commands[http]} ))   && alias https='http --default-scheme=https'
+(( ${+commands[nvim]} ))   && alias vim='nvim'
+(( ${+commands[xpanes]} )) && alias xp='xpanes'
 
 ## Git aliases
 alias g='git'
 alias ga='git add'
-alias gaa='fzf-git-add'
+alias gaa='fzf-git-add-cli'
 alias gb='git branch'
-alias gc='git checkout'
+alias gco='git checkout'
 alias gd='git diff'
 alias gf='git fetch'
 alias gl='git log'
-alias glo='git log --pretty=oneline'
+alias glo='git log --oneline --graph --decorate'
 alias gm='git merge'
 alias gp='git push'
 alias gr='git reset'
@@ -68,6 +76,7 @@ alias gsh='git show'
 alias gt='git tag'
 
 ## Docker aliases
+# fzf-driven helpers (dce, dcl, dclf, dcrm, dcs, dirm) live in 65_docker.zsh.
 alias dcla='docker container ls -a'
 alias dcls='docker container ls'
 alias dcp='docker container prune'
@@ -79,75 +88,7 @@ alias dnp='docker network prune'
 alias dvls='docker volume ls'
 alias dvp='docker volume prune'
 
-_docker_fzf_select_container() {
-  local prompt="$1"; shift
-  local selection
-  selection=$(docker container "$@" | awk 'NR==1 {next} {print}' | fzf --prompt "${prompt}> " --height=40% --layout=reverse)
-  [[ -n "${selection}" ]] || return 1
-  printf '%s\n' "${selection}" | awk '{print $1}'
-}
-
-_docker_fzf_select_containers_multi() {
-  local prompt="$1"; shift
-  local selection
-  selection=$(docker container "$@" | awk 'NR==1 {next} {print}' | fzf --prompt "${prompt}> " --height=40% --layout=reverse --multi)
-  [[ -n "${selection}" ]] || return 1
-  printf '%s\n' "${selection}" | awk '{print $1}'
-}
-
-_docker_fzf_select_images_multi() {
-  local prompt="$1"; shift
-  local selection
-  selection=$(docker image "$@" | awk 'NR==1 {next} {print}' | fzf --prompt "${prompt}> " --height=40% --layout=reverse --multi)
-  [[ -n "${selection}" ]] || return 1
-  printf '%s\n' "${selection}" | awk '{print $3}'
-}
-
-dce() {
-  local container
-  container=$(_docker_fzf_select_container "exec" ls) || return 1
-  docker container exec -it "${container}" /bin/bash
-}
-
-dcl() {
-  local container
-  container=$(_docker_fzf_select_container "logs" ls -a) || return 1
-  docker container logs "${container}"
-}
-
-dclf() {
-  local container
-  container=$(_docker_fzf_select_container "logs" ls) || return 1
-  docker container logs -f "${container}"
-}
-
-dcrm() {
-  local selection
-  local -a containers
-  selection=$(_docker_fzf_select_containers_multi "rm" ls -a --filter status=exited) || return 1
-  containers=(${(f)selection})
-  (( ${#containers[@]} )) || return 1
-  docker container rm "${containers[@]}"
-}
-
-dcs() {
-  local selection
-  local -a containers
-  selection=$(_docker_fzf_select_containers_multi "stop" ls) || return 1
-  containers=(${(f)selection})
-  (( ${#containers[@]} )) || return 1
-  docker container stop "${containers[@]}"
-}
-
-dirm() {
-  local selection
-  local -a images
-  selection=$(_docker_fzf_select_images_multi "rm" ls) || return 1
-  images=(${(f)selection})
-  (( ${#images[@]} )) || return 1
-  docker image rm "${images[@]}"
-}
-
+## Kubernetes
 alias k='kubectl'
 alias krew='kubectl krew'
 alias kns='kubectl ns'
@@ -157,48 +98,64 @@ alias st='stern'
 ## Google Cloud
 alias gcurl='curl --header "Authorization: Bearer $(gcloud auth print-identity-token)"'
 
-## Global aliases.
+## Global aliases
 alias -g A='| awk'
 alias -g G='| grep'
 alias -g H='| head'
-alias -g L='| lv'
 alias -g S='| sed'
 alias -g T='| tail'
 alias -g W='| wc'
 alias -g X='| xargs'
-type gojq >& /dev/null && alias -g J='| gojq'
-type rg >& /dev/null && alias -g R='| rg'
-type yq >& /dev/null && alias -g Y='| yq'
+if (( ${+commands[bat]} )); then
+  alias -g L='| bat --paging=always'
+else
+  alias -g L='| ${PAGER:-less}'
+fi
+(( ${+commands[gojq]} )) && alias -g J='| gojq'
+(( ${+commands[rg]} ))   && alias -g R='| rg'
+(( ${+commands[yq]} ))   && alias -g Y='| yq'
 
-## Architecture depends
-if [[ "${OSTYPE}" == darwin* ]]; then
-  alias la='ls -AFlhGp'
-  alias ll='la'
+## ls family
+# Prefer lsd; otherwise fall back to BSD/GNU ls based on OS.
+if (( ${+commands[lsd]} )); then
+  alias ls='lsd'
+  alias la='lsd -lah'
+  alias ll='lsd -lh'
+elif [[ "${OSTYPE}" == darwin* ]]; then
   alias ls='ls -hFG'
+  alias la='ls -AFlhGp'
+  alias ll='ls -AFlhGp'
+elif [[ "${OSTYPE}" == linux* ]]; then
+  alias ls='ls --color'
+  alias la='ls -aFhl --color'
+  alias ll='ls -Fhl --color'
+fi
+
+## OS-specific (non-ls) aliases
+if [[ "${OSTYPE}" == darwin* ]]; then
   # coreutils
-  if command -v gcp >/dev/null 2>&1; then
+  if (( ${+commands[gcp]} )); then
     alias cp='gcp -i'
     alias mv='gmv -i'
-    alias rm='grm -i'
+    alias rm='grm -I'
     alias nproc='gnproc'
     alias shuf='gshuf'
   fi
   # findutils
-  if command -v gfind >/dev/null 2>&1; then
+  if (( ${+commands[gfind]} )); then
     alias find='gfind'
     alias xargs='gxargs'
   fi
 elif [[ "${OSTYPE}" == linux* ]]; then
   alias cp='cp -i'
   alias mv='mv -i'
-  alias rm='rm -i'
-  alias la='ls -aFhl --color'
-  alias ll='ls -Fhl --color'
-  alias ls='ls --color'
+  alias rm='rm -I'
 
-  type xdg-open >& /dev/null && alias open='xdg-open'
-  type xsel >& /dev/null && alias pbcopy='xsel -bi' \
-                         && alias pbpaste='xsel -bo'
+  (( ${+commands[xdg-open]} )) && alias open='xdg-open'
+  if (( ${+commands[xsel]} )); then
+    alias pbcopy='xsel -bi'
+    alias pbpaste='xsel -bo'
+  fi
 
   alias journalctl='sudo journalctl'
   alias jcl='journalctl'
@@ -206,14 +163,13 @@ elif [[ "${OSTYPE}" == linux* ]]; then
   alias scl='systemctl'
 fi
 
-## Overwrite ls aliases with lsd
-type lsd >& /dev/null && alias la='lsd -lah' \
-                      && alias ll='lsd -lh' \
-                      && alias ls='lsd'
-
 ## Suffix aliases
 alias -s zip=zipinfo
-alias -s {tgz,gz}=gzcat
+if (( ${+commands[gzcat]} )); then
+  alias -s {tgz,gz}=gzcat
+elif (( ${+commands[zcat]} )); then
+  alias -s {tgz,gz}=zcat
+fi
 alias -s {tbz,bz2}=bzcat
 alias -s {md,txt}=vim
 alias -s {json,xml,yaml,yml}=bat
