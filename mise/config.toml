@@ -37,6 +37,7 @@ uv = "latest"
 vivid = "latest"
 
 "aqua:vercel-labs/agent-browser" = "latest"
+"aqua:walles/moor" = "latest"
 
 "cargo:selene" = "latest"
 

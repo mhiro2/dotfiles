@@ -11,7 +11,7 @@ source "${SCRIPT_DIR}/common.sh"
 readonly action="${1:-init}"
 readonly xdg_config_home="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
-readonly -a xdg_config_files=(bat cmux ghostty git mise nvim tmux)
+readonly -a xdg_config_files=(cmux ghostty git mise nvim tmux)
 readonly -a exclude_files=(.DS_Store .git .github .gitignore .gitmodules .claude .tmux)
 readonly -a claude_files=(.claude/settings.json .claude/statusline.py)
 

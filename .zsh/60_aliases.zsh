@@ -38,9 +38,10 @@ autoload -Uz zmv
 alias zmv='noglob zmv -W'
 
 ## Optional aliases
-type bat >& /dev/null && alias cat='bat -pp' && \
-                         alias lv='bat -p' && \
-                         alias lvv='bat --paging=always'
+if (( ${+commands[bat]} )); then
+  alias cat='bat -pp'
+  alias lv='bat --paging=always'
+fi
 type gojq >& /dev/null && alias jq='gojq'
 type gitui >& /dev/null && alias gui='gitui'
 type http >& /dev/null && alias https='http --default-scheme=https'

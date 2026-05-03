@@ -10,6 +10,10 @@ export LANG=${LANGUAGE}
 ## EDITOR
 export EDITOR=nvim
 
+## PAGER
+export BAT_PAGER='moor --no-linenumbers'
+export MANPAGER=moor
+
 ## PATH
 typeset -U PATH path cdpath fpath manpath
 setopt no_global_rcs
