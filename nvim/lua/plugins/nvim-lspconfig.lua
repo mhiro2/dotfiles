@@ -31,6 +31,7 @@ return {
             "terraformls",
             "tflint",
             "ts_ls",
+            "typos_lsp",
             "yamlls",
           },
           automatic_enable = false,
@@ -95,6 +96,7 @@ return {
       "terraformls",
       "tflint",
       "ts_ls",
+      "typos_lsp",
       "yamlls",
     })
   end,

@@ -42,7 +42,7 @@ return {
         typescriptreact = biome_or_oxfmt,
         json = biome_or_oxfmt,
 
-        ["*"] = { "typos", "trim_newlines", "trim_whitespace" },
+        ["*"] = { "trim_newlines", "trim_whitespace" },
       },
       format_on_save = {
         timeout_ms = 500,
