@@ -57,7 +57,7 @@ dcs() {
 dirm() {
   local selection
   local -a images
-  selection=$(_docker_fzf_select 'rm' image 3 1 ls) || return 1
+  selection=$(_docker_fzf_select 'rm' image 2 1 ls --format 'table {{.Repository}}:{{.Tag}}\t{{.ID}}\t{{.Size}}') || return 1
   images=(${(f)selection})
   (( ${#images[@]} )) || return 1
   docker image rm "${images[@]}"
