@@ -48,8 +48,9 @@ alias zmv='noglob zmv -W'
 ## Optional aliases
 if (( ${+commands[bat]} )); then
   alias cat='bat -pp'
-  alias lv='bat --paging=always'
+  alias lv='bat -p'
 fi
+(( ${+commands[moor]} )) && alias lvv='moor'
 (( ${+commands[gojq]} ))   && alias jq='gojq'
 (( ${+commands[gitui]} ))  && alias gui='gitui'
 (( ${+commands[nvim]} ))   && alias vim='nvim'
