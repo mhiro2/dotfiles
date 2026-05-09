@@ -65,6 +65,8 @@
   st = status
   ss = status -s
   sh = show
+  hd = -c core.pager=\"hunk pager\" diff
+  hs = -c core.pager=\"hunk pager\" show
 
 [delta]
   features = side-by-side line-numbers decorations

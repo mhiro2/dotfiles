@@ -53,5 +53,7 @@ yq = "latest"
 "github:k1LoW/mo" = "latest"
 "github:pamburus/hl" = "latest"
 
+"npm:hunkdiff" = "latest"
+
 [settings]
 install_before = "7d"
