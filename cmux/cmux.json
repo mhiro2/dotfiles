@@ -5,6 +5,6 @@
     "commandPaletteSearchesAllSurfaces": true
   },
   "browser": {
-    "openTerminalLinksInCmuxBrowser": true
+    "openTerminalLinksInCmuxBrowser": false
   }
 }
