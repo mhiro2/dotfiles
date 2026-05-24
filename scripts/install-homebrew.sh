@@ -17,20 +17,17 @@ if command -v brew >/dev/null 2>&1; then
 fi
 
 info "Homebrew をインストールします"
-install_for_arch() {
-  local -r arch_name="$1"
-  NONINTERACTIVE=1 arch "${arch_name}" /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
 
-if [[ "$(uname -m)" == "arm64" ]]; then
-  install_for_arch -arm64
-  if arch -x86_64 /usr/bin/true >/dev/null 2>&1; then
-    install_for_arch -x86_64
-  else
-    skip "Rosetta が利用できないため x86_64 Homebrew インストールをスキップします"
-  fi
-else
-  install_for_arch -x86_64
-fi
+# NONINTERACTIVE=1 だと installer が sudo -n -v でチェックするため、
+# 事前に sudo credential をキャッシュしておく必要がある。
+info "sudo パスワードをキャッシュします（Homebrew installer が要求するため）"
+sudo -v
+
+# Homebrew のインストールには時間がかかるため、sudo timestamp を維持し続ける。
+( while true; do sudo -n true; sleep 60; kill -0 "$$" 2>/dev/null || exit; done ) &
+readonly SUDO_KEEPALIVE_PID=$!
+trap 'kill "${SUDO_KEEPALIVE_PID}" 2>/dev/null || true' EXIT
+
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 success "Homebrew のインストールが完了しました"
