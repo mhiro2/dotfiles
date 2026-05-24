@@ -1,5 +1,6 @@
 return {
   "mhiro2/i18n-status.nvim",
+  build = "./scripts/download-binary.sh",
   config = function()
     require("i18n-status").setup({
       primary_lang = "ja",
