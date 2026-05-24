@@ -20,4 +20,9 @@ if [[ -z "${mise_cmd}" ]]; then
   exit 1
 fi
 
+# Makefile 経由の `mise run` では auto-install をスキップする。
+# 未インストールのツールがあっても init/clean などのタスクが走るように、
+# またフルセットアップ時は dotfiles:install 内の明示的な `mise install` に任せる。
+export MISE_TASK_RUN_AUTO_INSTALL=false
+
 exec "${mise_cmd}" run "${task}"

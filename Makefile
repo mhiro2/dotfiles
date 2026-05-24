@@ -21,7 +21,7 @@ help: ## タスク一覧を表示する
 ## セットアップ ##
 
 .PHONY: install
-install: bootstrap ## すべての dotfiles セットアップタスクを実行する
+install: bootstrap init ## すべての dotfiles セットアップタスクを実行する
 	@$(MISE_TASK) dotfiles:install
 
 .PHONY: bootstrap
@@ -39,11 +39,11 @@ mise: ## mise をインストールする
 
 .PHONY: init
 init: ## dotfiles のシンボリックリンクを作成する
-	@$(MISE_TASK) dotfiles:init
+	@./scripts/link-dotfiles.sh init
 
 .PHONY: clean
 clean: ## dotfiles のシンボリックリンクを削除する
-	@$(MISE_TASK) dotfiles:clean
+	@./scripts/link-dotfiles.sh clean
 
 .PHONY: upgrade
 upgrade: ## 管理対象ツールを更新する
