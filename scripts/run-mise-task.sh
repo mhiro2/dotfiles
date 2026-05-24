@@ -11,12 +11,6 @@ resolved_mise_cmd="$(command -v mise 2>/dev/null || true)"
 if [[ -z "${resolved_mise_cmd}" && -x "${HOME}/.local/bin/mise" ]]; then
   resolved_mise_cmd="${HOME}/.local/bin/mise"
 fi
-if [[ -z "${resolved_mise_cmd}" && -x "/opt/homebrew/bin/mise" ]]; then
-  resolved_mise_cmd="/opt/homebrew/bin/mise"
-fi
-if [[ -z "${resolved_mise_cmd}" && -x "/usr/local/bin/mise" ]]; then
-  resolved_mise_cmd="/usr/local/bin/mise"
-fi
 
 readonly mise_cmd="${resolved_mise_cmd}"
 unset resolved_mise_cmd
