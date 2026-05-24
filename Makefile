@@ -48,3 +48,9 @@ clean: ## dotfiles のシンボリックリンクを削除する
 .PHONY: upgrade
 upgrade: ## 管理対象ツールを更新する
 	@$(MISE_TASK) dotfiles:upgrade
+
+## macOS ##
+
+.PHONY: macos
+macos: ## macOS の defaults を適用する
+	@$(MISE_TASK) macos:defaults

@@ -17,5 +17,6 @@ mise install
 mise run zsh:refresh-completion
 mise run nvim:treesitter
 mise run fonts:install
+mise run macos:defaults
 
 prek install --overwrite --install-hooks
