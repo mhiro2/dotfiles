@@ -58,3 +58,4 @@ yq = "latest"
 
 [settings]
 install_before = "7d"
+not_found_auto_install = false
