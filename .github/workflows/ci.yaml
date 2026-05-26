@@ -26,7 +26,7 @@ jobs:
     strategy:
       matrix:
         os:
-          - macos-latest
+          - macos-26
           - ubuntu-latest
     steps:
       - name: Checkout repository
