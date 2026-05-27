@@ -3,7 +3,10 @@
 # Insert space and slash used by the _expand completer.
 zstyle ':completion:*' add-space yes
 # Completion modifiers.
-zstyle ':completion:*' completer _expand _complete _match
+zstyle ':completion:*' completer _expand _complete _match _approximate
+# Approximate (typo-tolerant) matching: allow 1 error per 3 chars of the word,
+# so short words (e.g. command names) stay strict and huge candidate sets don't blow up.
+zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) numeric )'
 # Ignore case.
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 # Verbose output for completion listing.
