@@ -7,10 +7,22 @@ zstyle ':completion:*' completer _expand _complete _match _approximate
 # Approximate (typo-tolerant) matching: allow 1 error per 3 chars of the word,
 # so short words (e.g. command names) stay strict and huge candidate sets don't blow up.
 zstyle ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SUFFIX) / 3 )) numeric )'
-# Ignore case.
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
+# Staged matching: exact -> case-insensitive -> partial-after-separator -> substring.
+# Tries each rule in order, only loosening when the previous yields no matches.
+zstyle ':completion:*' matcher-list \
+  '' \
+  'm:{a-zA-Z}={A-Za-z}' \
+  'r:|[._-]=* r:|=*' \
+  'l:|=* r:|=*'
 # Verbose output for completion listing.
 zstyle ':completion:*' verbose yes
+# Colorize the completion list using LS_COLORS (set in 30_colors.zsh via vivid).
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# Colored, labelled group headings / messages in the completion listing.
+zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*:messages'     format '%F{cyan}-- %d --%f'
+zstyle ':completion:*:warnings'     format '%F{red}-- no matches --%f'
 # All different types of matches displayed separately.
 zstyle ':completion:*' group-name ''
 # Make the completion menu selectable.
