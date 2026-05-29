@@ -1,9 +1,5 @@
 {
-  "env": {
-    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
-  },
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Bash(cat *)",
       "Bash(cd *)",
@@ -55,12 +51,16 @@
       "Bash(bunx *)",
       "Bash(uvx *)",
       "WebFetch"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.py"
+  },
+  "enabledPlugins": {
+    "security-guidance@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
   "theme": "dark-daltonized",
