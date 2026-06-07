@@ -14,17 +14,13 @@ return {
         -- Ensure we run after other attach handlers
         vim.schedule(function()
           vim.keymap.set("n", "K", function()
-            local ok_resolver, resolver = pcall(require, "tf-docs.resolver")
-            local ok_ui, ui = pcall(require, "tf-docs.ui")
-            if ok_resolver and ok_ui then
-              local ok, url = pcall(function()
-                local u = resolver.resolve(0) -- url|nil, trace
-                return u
-              end)
-              if ok and url and url ~= "" then
-                ui.open(url)
-                return
-              end
+            local tf = require("tf-docs")
+            -- resolve() returns (url|nil, trace) without opening anything,
+            -- so we can route to LSP hover when there's no docs to open.
+            local url = tf.resolve(0)
+            if url and url ~= "" then
+              tf.open(0)
+              return
             end
             if vim.lsp and vim.lsp.buf and vim.lsp.buf.hover then
               vim.lsp.buf.hover()

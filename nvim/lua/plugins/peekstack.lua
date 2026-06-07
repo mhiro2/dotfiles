@@ -6,9 +6,6 @@ return {
       picker = {
         backend = "snacks",
       },
-      providers = {
-        grep = { enable = true },
-      },
     })
 
     vim.keymap.set("n", "gpd", function()
