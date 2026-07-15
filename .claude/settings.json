@@ -54,7 +54,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.py"
@@ -63,6 +63,8 @@
     "security-guidance@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
+  "tui": "default",
+  "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
   "skipAutoPermissionPrompt": true
 }
