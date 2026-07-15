@@ -25,8 +25,9 @@ zstyle ':completion:*:messages'     format '%F{cyan}-- %d --%f'
 zstyle ':completion:*:warnings'     format '%F{red}-- no matches --%f'
 # All different types of matches displayed separately.
 zstyle ':completion:*' group-name ''
-# Make the completion menu selectable.
-zstyle ':completion:*:default' menu select=long-list
+# Make the completion menu selectable, highlighting the current candidate
+# whenever there are 2+ matches (not only when the list overflows the screen).
+zstyle ':completion:*:default' menu select=2
 # Try to keep a preﬁx containing a tilde or parameter expansion.
 zstyle ':completion:*' keep-prefix
 # Use a completion cache.
