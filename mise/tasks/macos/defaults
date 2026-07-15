@@ -8,4 +8,12 @@ REPO_ROOT="$(git -C "${TASK_DIR}" rev-parse --show-toplevel)"
 readonly REPO_ROOT
 cd "${REPO_ROOT}"
 
-./scripts/apply-macos-defaults.sh
+if [[ "$(uname)" != "Darwin" ]]; then
+  echo "macOS 以外のためスキップします"
+  exit 0
+fi
+
+# 値は mise.toml の [bootstrap.macos.defaults] に定義。単体実行では
+# post-defaults hook が走らないため killall はここで明示的に行う。
+mise bootstrap macos defaults apply --yes
+killall Finder 2>/dev/null || true

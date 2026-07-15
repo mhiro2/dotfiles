@@ -1,0 +1,60 @@
+# mise bootstrap 用のセットアップ定義
+#
+# tools はグローバル config (mise/config.toml) 側にあり mise install で導入される。
+
+# symlink する dotfiles
+[dotfiles]
+# $HOME 直下
+"~/.editorconfig"           = { source = ".editorconfig", mode = "symlink" }
+"~/.gemrc"                  = { source = ".gemrc", mode = "symlink" }
+"~/.inputrc"                = { source = ".inputrc", mode = "symlink" }
+"~/.sqliterc"               = { source = ".sqliterc", mode = "symlink" }
+"~/.zsh"                    = { source = ".zsh", mode = "symlink" }
+"~/.zshenv"                 = { source = ".zshenv", mode = "symlink" }
+"~/.zshrc"                  = { source = ".zshrc", mode = "symlink" }
+# ~/.config 配下
+"~/.config/cmux"            = { source = "cmux", mode = "symlink" }
+"~/.config/ghostty"         = { source = "ghostty", mode = "symlink" }
+"~/.config/git"             = { source = "git", mode = "symlink" }
+"~/.config/mise"            = { source = "mise", mode = "symlink" }
+"~/.config/nvim"            = { source = "nvim", mode = "symlink" }
+"~/.config/tmux"            = { source = "tmux", mode = "symlink" }
+# ~/.claude 配下
+"~/.claude/settings.json"   = { source = ".claude/settings.json", mode = "symlink" }
+"~/.claude/statusline.py"   = { source = ".claude/statusline.py", mode = "symlink" }
+
+# macOS defaults
+[bootstrap.macos.defaults."com.apple.finder"]
+AppleShowAllFiles = true
+ShowPathbar = true
+ShowStatusBar = true
+FXPreferredViewStyle = "Nlsv"
+FXEnableExtensionChangeWarning = false
+_FXShowPosixPathInWindowTitle = true
+_FXSortFoldersFirst = true
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleShowAllExtensions = true
+InitialKeyRepeat = 10
+KeyRepeat = 2
+ApplePressAndHoldEnabled = false
+NSAutomaticQuoteSubstitutionEnabled = false
+NSAutomaticDashSubstitutionEnabled = false
+NSAutomaticPeriodSubstitutionEnabled = false
+NSAutomaticCapitalizationEnabled = false
+NSAutomaticSpellingCorrectionEnabled = false
+
+# defaults 反映後に Finder を再起動して即時反映
+[bootstrap.hooks.post-defaults]
+run = "killall Finder 2>/dev/null || true"
+
+# 宣言セクションに落とせない後処理
+[tasks.bootstrap]
+run = [
+  "./scripts/install-antidote.sh install",
+  "mise run bootstrap:tpm",
+  "mise run zsh:refresh-completion",
+  "mise run nvim:treesitter",
+  "mise run fonts:install",
+  "prek install --overwrite --install-hooks",
+]

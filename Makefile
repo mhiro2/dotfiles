@@ -21,11 +21,8 @@ help: ## タスク一覧を表示する
 ## セットアップ ##
 
 .PHONY: install
-install: bootstrap init ## すべての dotfiles セットアップタスクを実行する
-	@$(MISE_TASK) dotfiles:install
-
-.PHONY: bootstrap
-bootstrap: brew mise ## make install に必要な最小ツールを用意する
+install: brew mise ## mise bootstrap でマシンをセットアップする
+	@./scripts/run-mise-bootstrap.sh
 
 .PHONY: brew
 brew: ## Homebrew をインストールする
@@ -36,10 +33,6 @@ mise: ## mise をインストールする
 	@./scripts/install-mise.sh
 
 ## dotfiles ##
-
-.PHONY: init
-init: ## dotfiles のシンボリックリンクを作成する
-	@./scripts/link-dotfiles.sh init
 
 .PHONY: clean
 clean: ## dotfiles のシンボリックリンクを削除する
