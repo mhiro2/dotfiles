@@ -57,5 +57,7 @@ yq = "latest"
 "npm:hunkdiff" = "latest"
 
 [settings]
-install_before = "7d"
+minimum_release_age = "7d"
+minimum_release_age_excludes = ["claude-code", "codex"]
 not_found_auto_install = false
+auto_install = false
