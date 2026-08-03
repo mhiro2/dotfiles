@@ -55,6 +55,9 @@ export CLICOLOR=1
 export GOBIN=${HOME}/.local/bin
 export CARGO_INSTALL_ROOT=${HOME}/.local
 
+## mise
+export MISE_AUTO_INSTALL=false
+
 ## fzf
 export FZF_DEFAULT_OPTS='--extended --ansi --multi --height=80% --layout=reverse --border'
 export FZF_CTRL_T_OPTS='--preview="bat --color=always --style=numbers --line-range=:200 {} 2>/dev/null || cat {}"'
