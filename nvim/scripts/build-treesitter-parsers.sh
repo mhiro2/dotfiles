@@ -6,7 +6,13 @@ repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 manifest="${repo_root}/nvim/treesitter/sources.tsv"
 parser_dir="${repo_root}/nvim/parser"
 cache_root="${XDG_CACHE_HOME:-${HOME}/.cache}/dotfiles-treesitter"
+tarball_cache="${cache_root}/tarballs"
 abi="${TREE_SITTER_ABI:-15}"
+force="${TREESITTER_FORCE:-0}"
+
+if [[ "${1:-}" == "--force" ]]; then
+  force=1
+fi
 
 if [[ ! -f "${manifest}" ]]; then
   echo "manifest not found: ${manifest}" >&2
@@ -29,46 +35,75 @@ for cmd in curl tar; do
   fi
 done
 
-mkdir -p "${parser_dir}" "${cache_root}"
+mkdir -p "${parser_dir}" "${cache_root}" "${tarball_cache}"
 
-download_and_extract() {
+# tarball は revision 単位でキャッシュし、再取得を避ける。
+fetch_tarball() {
   local url="$1"
   local revision="$2"
-  local output_dir="$3"
-  local repo_name tarball_path tmp_dir extracted dir_rev
+  local repo_name="$3"
+  local tarball_path="$4"
+  local tmp_path
 
-  repo_name="${url##*/}"
-  repo_name="${repo_name%.git}"
-  tarball_path="${cache_root}/${repo_name}-${revision}.tar.gz"
-  tmp_dir="${output_dir}.tmp"
-  dir_rev="${revision}"
+  if [[ -f "${tarball_path}" ]]; then
+    echo "==> cached tarball ${repo_name}@${revision}"
+    return 0
+  fi
+
+  echo "==> download ${repo_name}@${revision}"
+  tmp_path="${tarball_path}.part"
+  curl --silent --fail --show-error --location \
+    "${url%.git}/archive/${revision}.tar.gz" \
+    --output "${tmp_path}"
+  mv "${tmp_path}" "${tarball_path}"
+}
+
+extract_tarball() {
+  local revision="$1"
+  local repo_name="$2"
+  local tarball_path="$3"
+  local output_dir="$4"
+  local tmp_dir="${output_dir}.tmp"
+  local dir_rev="${revision}"
+
   if [[ "${revision}" =~ ^v[0-9] ]]; then
     dir_rev="${revision#v}"
   fi
 
   rm -rf "${output_dir}" "${tmp_dir}"
-
-  echo "==> download ${repo_name}@${revision}"
-  curl --silent --fail --show-error --location \
-    "${url%.git}/archive/${revision}.tar.gz" \
-    --output "${tarball_path}"
-
   mkdir -p "${tmp_dir}"
   tar -xzf "${tarball_path}" -C "${tmp_dir}"
-
-  extracted="${tmp_dir}/${repo_name}-${dir_rev}"
-  mv "${extracted}" "${output_dir}"
-
-  rm -rf "${tmp_dir}" "${tarball_path}"
+  mv "${tmp_dir}/${repo_name}-${dir_rev}" "${output_dir}"
+  rm -rf "${tmp_dir}"
 }
+
+built=0
+skipped=0
 
 while IFS=$'\t' read -r lang url revision location; do
   if [[ -z "${lang}" || "${lang}" == \#* ]]; then
     continue
   fi
 
+  parser_so="${parser_dir}/${lang}.so"
+  marker="${parser_dir}/${lang}.rev"
+  # 生成物が入力 (revision + ABI) と一致していれば再生成しない。
+  stamp="${revision} abi=${abi}"
+
+  if [[ "${force}" != "1" && -f "${parser_so}" && -f "${marker}" ]] &&
+    [[ "$(cat "${marker}")" == "${stamp}" ]]; then
+    echo "==> up-to-date ${lang}@${revision}"
+    skipped=$((skipped + 1))
+    continue
+  fi
+
+  repo_name="${url##*/}"
+  repo_name="${repo_name%.git}"
+  tarball_path="${tarball_cache}/${repo_name}-${revision}.tar.gz"
   work_dir="${cache_root}/${lang}"
-  download_and_extract "${url}" "${revision}" "${work_dir}"
+
+  fetch_tarball "${url}" "${revision}" "${repo_name}" "${tarball_path}"
+  extract_tarball "${revision}" "${repo_name}" "${tarball_path}" "${work_dir}"
 
   source_dir="${work_dir}"
   if [[ "${location}" != "." ]]; then
@@ -91,10 +126,16 @@ while IFS=$'\t' read -r lang url revision location; do
   fi
 
   echo "==> build ${lang}"
+  # ビルド失敗時に marker だけ残らないよう、先に無効化する。
+  rm -f "${marker}"
   (
     cd "${source_dir}"
-    "${tree_sitter_cmd[@]}" build -o "${parser_dir}/${lang}.so"
+    "${tree_sitter_cmd[@]}" build -o "${parser_so}"
   )
+  echo "${stamp}" >| "${marker}"
+  built=$((built + 1))
 
   rm -rf "${work_dir}"
 done < "${manifest}"
+
+echo "==> done (built: ${built}, up-to-date: ${skipped})"
