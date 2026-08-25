@@ -62,9 +62,11 @@
   "enabledPlugins": {
     "security-guidance@claude-plugins-official": true
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "tui": "default",
+  "outputStyle": "Concise",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
+  "switchModelsOnFlag": false,
   "skipAutoPermissionPrompt": true
 }
