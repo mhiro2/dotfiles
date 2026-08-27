@@ -7,6 +7,7 @@ manifest="${repo_root}/nvim/treesitter/sources.tsv"
 parser_dir="${repo_root}/nvim/parser"
 cache_root="${XDG_CACHE_HOME:-${HOME}/.cache}/dotfiles-treesitter"
 tarball_cache="${cache_root}/tarballs"
+marker_dir="${cache_root}/rev"
 abi="${TREE_SITTER_ABI:-15}"
 force="${TREESITTER_FORCE:-0}"
 
@@ -35,7 +36,9 @@ for cmd in curl tar; do
   fi
 done
 
-mkdir -p "${parser_dir}" "${cache_root}" "${tarball_cache}"
+mkdir -p "${parser_dir}" "${cache_root}" "${tarball_cache}" "${marker_dir}"
+
+rm -f "${parser_dir}"/*.rev
 
 # tarball は revision 単位でキャッシュし、再取得を避ける。
 fetch_tarball() {
@@ -86,7 +89,7 @@ while IFS=$'\t' read -r lang url revision location; do
   fi
 
   parser_so="${parser_dir}/${lang}.so"
-  marker="${parser_dir}/${lang}.rev"
+  marker="${marker_dir}/${lang}.rev"
   # 生成物が入力 (revision + ABI) と一致していれば再生成しない。
   stamp="${revision} abi=${abi}"
 

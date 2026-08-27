@@ -7,7 +7,6 @@ Thumbs.db
 *~
 nvim/parser/*.so
 nvim/parser/*.wasm
-nvim/parser/*.rev
 
 # tmux
 tmux/plugins
