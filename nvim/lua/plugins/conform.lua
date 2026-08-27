@@ -41,13 +41,13 @@ return {
         javascriptreact = biome_or_oxfmt,
         typescriptreact = biome_or_oxfmt,
         json = biome_or_oxfmt,
+        jsonc = biome_or_oxfmt,
 
         ["*"] = { "trim_newlines", "trim_whitespace" },
       },
-      format_on_save = {
-        timeout_ms = 500,
-        lsp_format = "fallback",
-      },
+      format_on_save = function(bufnr)
+        return require("format").opts(bufnr)
+      end,
     }
   end,
 }

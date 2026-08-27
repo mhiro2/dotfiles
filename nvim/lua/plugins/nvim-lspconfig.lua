@@ -54,7 +54,9 @@ return {
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "gf", function()
-          require("conform").format({ bufnr = ev.buf, async = true, lsp_fallback = true })
+          require("conform").format(
+            vim.tbl_extend("force", require("format").opts(ev.buf), { bufnr = ev.buf, async = true })
+          )
         end, opts)
       end,
     })
