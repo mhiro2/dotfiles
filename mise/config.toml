@@ -53,8 +53,7 @@ yq = "latest"
 "github:k1LoW/git-wt" = "latest"
 "github:k1LoW/mo" = "latest"
 "github:pamburus/hl" = "latest"
-
-"npm:hunkdiff" = "latest"
+"github:tomasz-tomczyk/crit" = "latest"
 
 [settings]
 minimum_release_age = "7d"
