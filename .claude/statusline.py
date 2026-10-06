@@ -14,6 +14,7 @@ R = "\033[0m"
 DIM = "\033[2m"
 GREEN = "\033[38;2;100;200;120m"
 RED = "\033[38;2;230;110;110m"
+YELLOW = "\033[38;2;230;190;80m"
 
 
 def gradient(pct):
@@ -54,6 +55,12 @@ def fmt_reset(resets_at):
     return f"{d}d{h}h" if h else f"{d}d"
 
 
+def fmt_tokens(n):
+    if n >= 1_000_000:
+        return f"{n / 1_000_000:.1f}M"
+    return f"{round(n / 1000)}k"
+
+
 def fmt(label, pct, reset=""):
     p = round(pct)
     s = f"{label} {gradient(pct)}{bar(pct)} {p}%{R}"
@@ -80,6 +87,29 @@ if five.get("used_percentage") is not None:
 week = rl.get("seven_day", {})
 if week.get("used_percentage") is not None:
     parts.append(fmt("7d", week["used_percentage"], fmt_reset(week.get("resets_at"))))
+
+pc = data.get("prompt_cache") or {}
+if pc and pc.get("caching_observed", True):
+    ttl = pc.get("ttl")
+    ttl_secs = {"5m": 300, "1h": 3600}.get(ttl)
+    expires = pc.get("expires_at")
+    left = int(expires - time.time()) if expires else 0
+    if pc.get("warm") and left > 0:
+        color = YELLOW if ttl_secs and left < ttl_secs * 0.2 else GREEN
+        s = f"cache {color}● {fmt_reset(expires)}{R}"
+    else:
+        s = f"cache {RED}○ cold"
+        recache = pc.get("recache_tokens_if_cold")
+        if recache:
+            s += f" {fmt_tokens(recache)}"
+        s += R
+    misses = pc.get("misses") or 0
+    if misses:
+        causes = (pc.get("last_miss_cause") or {}).get("causes") or []
+        s += f" {RED}miss {misses}{R}"
+        if causes:
+            s += f" {DIM}{','.join(causes)}{R}"
+    parts.append(s)
 
 cost = data.get("cost", {})
 added = cost.get("total_lines_added", 0) or 0

@@ -57,7 +57,8 @@
   "model": "opus[1m]",
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline.py"
+    "command": "~/.claude/statusline.py",
+    "refreshInterval": 30
   },
   "enabledPlugins": {
     "security-guidance@claude-plugins-official": true
