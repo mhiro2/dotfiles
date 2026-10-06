@@ -56,6 +56,7 @@ yq = "latest"
 "github:tomasz-tomczyk/crit" = "latest"
 
 [settings]
+idiomatic_version_file_enable_tools = ["rust"]
 minimum_release_age = "7d"
 minimum_release_age_excludes = ["claude-code", "codex"]
 not_found_auto_install = false
