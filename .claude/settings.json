@@ -54,7 +54,8 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
+  "fallbackModel": [],
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.py",
@@ -63,9 +64,17 @@
   "enabledPlugins": {
     "security-guidance@claude-plugins-official": true
   },
-  "effortLevel": "high",
-  "tui": "default",
   "outputStyle": "Concise",
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
+  "tui": "default",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-daltonized",
   "switchModelsOnFlag": false,
