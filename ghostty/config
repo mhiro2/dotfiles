@@ -24,7 +24,7 @@ selection-foreground = #ffffff
 window-padding-x = 8
 window-padding-y = 8
 window-padding-balance = true
-background-opacity = 0.70
+background-opacity = 0.90
 macos-titlebar-style = transparent
 macos-option-as-alt = true
 
