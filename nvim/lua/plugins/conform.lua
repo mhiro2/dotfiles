@@ -26,15 +26,11 @@ return {
 
     return {
       formatters_by_ft = {
-        css = { "prettier" },
         go = { "goimports" },
-        html = { "prettier" },
         lua = { "stylua" },
-        markdown = { "prettier" },
         python = { "ruff_format" },
         sql = { "sqlfmt" },
         terraform = { "terraform_fmt" },
-        yaml = { "prettier" },
 
         javascript = biome_or_oxfmt,
         typescript = biome_or_oxfmt,
