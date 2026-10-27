@@ -298,6 +298,9 @@ set -o ALIASES
 # Allows '>' redirection to truncate existing files, and '>>' to create files. Otherwise '>!' or '>|' must be used to truncate a file, and '>>!' or '>>|' to create a file.
 set +o CLOBBER
 
+# With NO_CLOBBER, allows '>>' to create files (truncation via '>' stays blocked).
+set -o APPEND_CREATE
+
 # Try to correct the spelling of commands.
 #set -o CORRECT
 
