@@ -1,4 +1,5 @@
 [tools]
+agent-browser = "latest"
 awscli = "latest"
 azure-cli = "latest"
 bat = "latest"
@@ -46,19 +47,18 @@ vivid = "latest"
 xh = "latest"
 yq = "latest"
 
-"aqua:vercel-labs/agent-browser" = "latest"
 "aqua:walles/moor" = "latest"
 
 "cargo:selene" = "latest"
 
 "github:k1LoW/git-wt" = "latest"
-"github:k1LoW/mo" = "latest"
 "github:pamburus/hl" = "latest"
 "github:tomasz-tomczyk/crit" = "latest"
+"github:backnotprop/plannotator" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["rust"]
-minimum_release_age = "7d"
+minimum_release_age = "3d"
 minimum_release_age_excludes = ["claude-code", "codex"]
 not_found_auto_install = false
 auto_install = false
