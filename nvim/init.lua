@@ -19,6 +19,8 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("cooldown").setup(3 * 24 * 60 * 60)
+
 require("lazy").setup({
   { import = "plugins" },
 })
