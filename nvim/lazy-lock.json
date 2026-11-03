@@ -7,7 +7,6 @@
   "fern-renderer-nerdfont.vim": { "branch": "master", "commit": "325629c68eb543229715b68920fbcb92b206beb6" },
   "fern.vim": { "branch": "main", "commit": "eaf8395c355bbc1e09d273b59affc92ede28dadd" },
   "fidget.nvim": { "branch": "main", "commit": "9e0201673e08e997e7cf52afca5565c70bd117f3" },
-  "gha-pin.nvim": { "branch": "main", "commit": "a9f130cb3e6d2166972920295a88926776d64628" },
   "gitsigns.nvim": { "branch": "main", "commit": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f" },
   "hlchunk.nvim": { "branch": "main", "commit": "4ddc056e4ca45f1c7dc6aa21935df710b263b1aa" },
   "hop.nvim": { "branch": "master", "commit": "6e83486f351066e38c3ae9daad2a4f01dfb262ad" },
